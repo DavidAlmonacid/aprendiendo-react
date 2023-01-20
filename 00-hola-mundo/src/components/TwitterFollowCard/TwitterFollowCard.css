@@ -1,0 +1,63 @@
+article {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+article section {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+article section img {
+  width: 52px;
+  height: 52px;
+  border-radius: 9em;
+}
+
+article section h3 {
+  max-width: 160px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+article section span {
+  opacity: 0.6;
+}
+
+article aside button {
+  border-radius: 9em;
+  border: 0;
+  padding: 6px 20px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+article aside button.is-following {
+  outline: solid 1px white;
+  padding: 6px 0;
+  width: 124px;
+  background-color: transparent;
+  color: white;
+  transition: 0.4s ease;
+}
+
+article aside button.is-following:hover {
+  outline-color: rgba(255, 0, 0, 0.2);
+  background-color: rgba(255, 0, 0, 0.1);
+  color: red;
+}
+
+article aside button.is-following:hover :first-child {
+  display: none;
+}
+
+article aside button.is-following:hover :last-child {
+  display: inline;
+}
+
+article aside button:active {
+  opacity: 0.8;
+}

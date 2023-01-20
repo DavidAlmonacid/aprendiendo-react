@@ -1,0 +1,19 @@
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: grid;
+  place-items: center;
+  padding: 0 16px;
+  height: 100vh;
+  background-color: #222;
+  font-family: system-ui, sans-serif;
+  color: #fff;
+}
+
+button,
+input {
+  font: 14px/1.2 system-ui, sans-serif;
+}

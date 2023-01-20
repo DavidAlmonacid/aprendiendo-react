@@ -1,0 +1,5 @@
+.App {
+  display: grid;
+  grid-template-columns: minmax(332px, 352px);
+  gap: 16px;
+}
