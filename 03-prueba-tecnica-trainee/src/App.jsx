@@ -11,7 +11,7 @@ const App = () => {
       const { fact } = data;
 
       setFact(fact);
-      setFirstWord(fact.split(' ')[0]);
+      setFirstWord(encodeURIComponent(fact.split(' ')[0]));
     };
     getFact();
   }, []);
@@ -20,10 +20,7 @@ const App = () => {
     <>
       <h1>Random facts about cats</h1>
       <p>{fact}</p>
-      <img
-        src={`https://cataas.com/cat/says/${encodeURIComponent(firstWord)}`}
-        alt=''
-      />
+      <img src={`https://cataas.com/cat/says/${firstWord}`} alt='' />
     </>
   );
 };
