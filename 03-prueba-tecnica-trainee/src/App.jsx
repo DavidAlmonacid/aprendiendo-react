@@ -1,19 +1,13 @@
 import { useEffect, useState } from 'react';
-
-const RANDOM_FACT_ENDPOINT = 'https://catfact.ninja/fact';
-const BASE_IMAGE_URL = 'https://cataas.com';
+import { BASE_IMAGE_URL, getCatImage } from './api/cat-image';
+import { getRandomFact } from './api/fact';
 
 const App = () => {
   const [fact, setFact] = useState('');
   const [imageURL, setImageURL] = useState('');
 
   useEffect(() => {
-    fetch(RANDOM_FACT_ENDPOINT)
-      .then((response) => response.json())
-      .then((data) => {
-        const { fact } = data;
-        setFact(fact);
-      });
+    getRandomFact().then((newFact) => setFact(newFact));
   }, []);
 
   useEffect(() => {
@@ -22,13 +16,13 @@ const App = () => {
     const threeFirstWords = fact.split(' ', 3).join(' ');
     const threeFirstWordsURL = encodeURIComponent(threeFirstWords);
 
-    fetch(`${BASE_IMAGE_URL}/c/s/${threeFirstWordsURL}?wi=400&he=400&json=true`)
-      .then((response) => response.json())
-      .then((data) => {
-        const { url } = data;
-        setImageURL(url);
-      });
+    getCatImage(threeFirstWordsURL).then((newImage) => setImageURL(newImage));
   }, [fact]);
+
+  const handleClick = async () => {
+    const newFact = await getRandomFact();
+    setFact(newFact);
+  };
 
   return (
     <main className='main'>
@@ -42,6 +36,10 @@ const App = () => {
             alt={`image extracted using the three first words for '${fact}'`}
           />
         )}
+      </section>
+
+      <section>
+        <button onClick={handleClick}>Get new fact</button>
       </section>
     </main>
   );
