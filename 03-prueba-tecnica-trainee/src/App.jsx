@@ -31,16 +31,19 @@ const App = () => {
   }, [fact]);
 
   return (
-    <>
+    <main className='main'>
       <h1>Random facts about cats</h1>
-      {fact && <p>{fact}</p>}
-      {imageURL && (
-        <img
-          src={BASE_IMAGE_URL + imageURL}
-          alt={`image extracted using the three first words for '${fact}'`}
-        />
-      )}
-    </>
+
+      <section className='info'>
+        {fact && <p>{fact}</p>}
+        {imageURL && (
+          <img
+            src={BASE_IMAGE_URL + imageURL}
+            alt={`image extracted using the three first words for '${fact}'`}
+          />
+        )}
+      </section>
+    </main>
   );
 };
 
