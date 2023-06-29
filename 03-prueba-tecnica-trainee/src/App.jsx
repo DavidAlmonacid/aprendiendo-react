@@ -1,23 +1,16 @@
 import { useEffect, useState } from 'react';
-import { BASE_IMAGE_URL, getCatImage } from './api/cat-image';
 import { getRandomFact } from './api/fact';
+import { useCatImage } from './hooks/useCatImage';
+
+const BASE_IMAGE_URL = 'https://cataas.com';
 
 const App = () => {
   const [fact, setFact] = useState('');
-  const [imageURL, setImageURL] = useState('');
+  const { imageURL } = useCatImage({ fact });
 
   useEffect(() => {
     getRandomFact().then((newFact) => setFact(newFact));
   }, []);
-
-  useEffect(() => {
-    if (!fact) return;
-
-    const threeFirstWords = fact.split(' ', 3).join(' ');
-    const threeFirstWordsURL = encodeURIComponent(threeFirstWords);
-
-    getCatImage(threeFirstWordsURL).then((newImage) => setImageURL(newImage));
-  }, [fact]);
 
   const handleClick = async () => {
     const newFact = await getRandomFact();
