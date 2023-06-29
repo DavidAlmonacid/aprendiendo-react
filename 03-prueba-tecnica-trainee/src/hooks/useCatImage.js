@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 
+const BASE_IMAGE_URL = 'https://cataas.com';
+
 export const useCatImage = ({ fact }) => {
   const [imageURL, setImageURL] = useState('');
 
@@ -9,9 +11,7 @@ export const useCatImage = ({ fact }) => {
     const threeFirstWords = fact.split(' ', 3).join(' ');
     const threeFirstWordsURL = encodeURIComponent(threeFirstWords);
 
-    fetch(
-      `https://cataas.com/c/s/${threeFirstWordsURL}?wi=400&he=400&json=true`
-    )
+    fetch(`${BASE_IMAGE_URL}/c/s/${threeFirstWordsURL}?wi=400&he=400&json=true`)
       .then((response) => response.json())
       .then((data) => {
         const { url } = data;
@@ -19,5 +19,5 @@ export const useCatImage = ({ fact }) => {
       });
   }, [fact]);
 
-  return { imageURL };
+  return { imageURL: BASE_IMAGE_URL + imageURL };
 };
