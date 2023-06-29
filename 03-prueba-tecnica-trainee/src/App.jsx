@@ -1,20 +1,11 @@
-import { useEffect, useState } from 'react';
-import { getRandomFact } from './api/fact';
-import { useCatImage } from './hooks/useCatImage';
-
-const BASE_IMAGE_URL = 'https://cataas.com';
+import { useCatFact, useCatImage } from './hooks';
 
 const App = () => {
-  const [fact, setFact] = useState('');
+  const { fact, randomFact } = useCatFact();
   const { imageURL } = useCatImage({ fact });
 
-  useEffect(() => {
-    getRandomFact().then((newFact) => setFact(newFact));
-  }, []);
-
   const handleClick = async () => {
-    const newFact = await getRandomFact();
-    setFact(newFact);
+    randomFact();
   };
 
   return (
@@ -25,7 +16,7 @@ const App = () => {
         {fact && <p>{fact}</p>}
         {imageURL && (
           <img
-            src={BASE_IMAGE_URL + imageURL}
+            src={imageURL}
             alt={`image extracted using the three first words for '${fact}'`}
           />
         )}
