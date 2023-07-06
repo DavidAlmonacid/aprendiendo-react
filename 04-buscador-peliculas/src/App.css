@@ -1,0 +1,17 @@
+.form {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 28px;
+}
+
+.form__input {
+  border: 0;
+  border-radius: 4px;
+  padding: 0 8px;
+  width: 100%;
+  max-width: 312px;
+  background-color: #3b3b3b;
+  color: inherit;
+  font: inherit;
+}

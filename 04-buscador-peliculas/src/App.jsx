@@ -1,8 +1,22 @@
+import './App.css';
+
 const App = () => {
   return (
-    <>
-      <h1>React + Vite</h1>
-    </>
+    <div>
+      <header>
+        <h1>Buscador de películas</h1>
+
+        <form className='form'>
+          <input
+            className='form__input'
+            type='search'
+            placeholder='Spider-Man, The Flash, Transformers, ...'
+          />
+
+          <button type='submit'>Search</button>
+        </form>
+      </header>
+    </div>
   );
 };
 
