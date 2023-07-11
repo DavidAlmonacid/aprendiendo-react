@@ -1,15 +1,18 @@
 import './App.css';
 import { SearchResult } from './components/SearchResult';
-import { useMovies } from './hooks/useMovies';
+import { useMovies, useSearch } from './hooks';
 
 const App = () => {
   const { movies } = useMovies();
+  const { search, updateSearch, error } = useSearch();
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const data = new FormData(event.target);
-    const movieName = data.get('movieName');
-    console.log({ movieName });
+    updateSearch(search.trim());
+  };
+
+  const handleChange = (event) => {
+    updateSearch(event.target.value);
   };
 
   return (
@@ -23,11 +26,17 @@ const App = () => {
             className='form__input'
             type='search'
             placeholder='Spider-Man, The Flash, Transformers, ...'
+            value={search}
+            onChange={handleChange}
             required
           />
 
-          <button type='submit'>Search</button>
+          <button type='submit' disabled={search.length <= 1}>
+            Search
+          </button>
         </form>
+
+        {error && <p className='error-message'>{error}</p>}
       </header>
 
       <main>

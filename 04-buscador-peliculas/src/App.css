@@ -16,3 +16,7 @@
   font: inherit;
   text-transform: capitalize;
 }
+
+.error-message {
+  color: red;
+}
