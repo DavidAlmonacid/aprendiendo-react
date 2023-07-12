@@ -1,0 +1,42 @@
+.movies {
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(auto-fill, 300px);
+  gap: 36px;
+  margin: 0 auto;
+  max-width: 1308px;
+}
+
+.movie {
+  border-radius: 16px;
+  width: fit-content;
+  overflow: hidden;
+  box-shadow: 0 0 8px hsl(24, 4%, 20%);
+}
+
+.movie__image {
+  width: 300px;
+  aspect-ratio: 15 / 22;
+  object-fit: cover;
+}
+
+.movie__info {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  padding: 4px 10px 8px;
+  background-color: rgb(247 225 215 / 88%);
+  color: #312127;
+}
+
+.movie__title {
+  font-size: 18px;
+  max-width: 200px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.movie__year {
+  font-weight: 600;
+}

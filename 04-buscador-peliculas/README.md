@@ -13,7 +13,7 @@ API Key: aaf5165c
 
 - [x] Que el formulario funcione.
 
-- [ ] Haz que las películas se muestren en un grid responsive.
+- [x] Haz que las películas se muestren en un grid responsive.
 
 - [ ] Hacer el fetching de datos a la API.
 

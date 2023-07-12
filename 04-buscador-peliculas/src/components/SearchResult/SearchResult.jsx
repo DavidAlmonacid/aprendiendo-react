@@ -1,16 +1,24 @@
+import './ListOfMovies.css';
+
 const ListOfMovies = ({ movies }) => {
   return (
-    <div>
+    <div className='movies'>
       {movies.map((movie) => (
-        <article key={movie.id}>
-          <h3>{movie.title}</h3>
-
-          <figure>
-            <picture>
-              <img src={movie.poster} alt={movie.title} />
-            </picture>
-            <figcaption>{movie.year}</figcaption>
-          </figure>
+        <article key={movie.id} className='movie'>
+          <picture className='movie__image-container'>
+            <img
+              src={movie.poster}
+              alt={movie.title}
+              width={300}
+              className='movie__image'
+            />
+          </picture>
+          <div className='movie__info'>
+            <h3 className='movie__title' title={movie.title}>
+              {movie.title}
+            </h3>
+            <span className='movie__year'>{movie.year}</span>
+          </div>
         </article>
       ))}
     </div>
@@ -19,8 +27,8 @@ const ListOfMovies = ({ movies }) => {
 
 const NoResults = () => {
   return (
-    <div>
-      <p>No matched results</p>
+    <div style={{ textAlign: 'center' }}>
+      <p style={{ fontSize: 18 }}>No matched results</p>
     </div>
   );
 };

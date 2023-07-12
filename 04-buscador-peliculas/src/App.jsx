@@ -17,8 +17,8 @@ const App = () => {
 
   return (
     <div>
-      <header>
-        <h1>Your Best Film Finder</h1>
+      <header className='header'>
+        <h1 className='header__title'>Your Best Film Finder</h1>
 
         <form className='form' onSubmit={handleSubmit}>
           <input
@@ -40,7 +40,7 @@ const App = () => {
       </header>
 
       <main>
-        <div>
+        <div className='movies-wrapper'>
           <SearchResult movies={movies} />
         </div>
       </main>
