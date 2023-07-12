@@ -3,12 +3,13 @@ import { SearchResult } from './components/SearchResult';
 import { useMovies, useSearch } from './hooks';
 
 const App = () => {
-  const { movies } = useMovies();
   const { search, updateSearch, error } = useSearch();
+  const { movies, getMovies } = useMovies({ search });
 
   const handleSubmit = (event) => {
     event.preventDefault();
     updateSearch(search.trim());
+    getMovies();
   };
 
   const handleChange = (event) => {

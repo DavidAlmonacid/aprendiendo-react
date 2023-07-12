@@ -1,6 +1,10 @@
-import responseMovies from '../response-template/ok.json';
+import { useState } from 'react';
 
-export const useMovies = () => {
+const BASE_URL = 'https://www.omdbapi.com/';
+
+export const useMovies = ({ search }) => {
+  const [responseMovies, setResponseMovies] = useState({});
+
   const movies = responseMovies.Search;
 
   const mappedMovies = movies?.map((movie) => ({
@@ -10,5 +14,11 @@ export const useMovies = () => {
     poster: movie.Poster
   }));
 
-  return { movies: mappedMovies };
+  const getMovies = () => {
+    fetch(`${BASE_URL}?apikey=aaf5165c&s=${search.trim()}`)
+      .then((res) => res.json())
+      .then((data) => setResponseMovies(data));
+  };
+
+  return { movies: mappedMovies, getMovies };
 };
