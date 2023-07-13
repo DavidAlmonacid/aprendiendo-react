@@ -1,24 +1,23 @@
 import { useState } from 'react';
-
-const BASE_URL = 'https://www.omdbapi.com/';
+import { searchMovies } from '../api/movies';
 
 export const useMovies = ({ search }) => {
-  const [responseMovies, setResponseMovies] = useState({});
+  const [movies, setMovies] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const trimmedSearch = search.trim();
 
-  const movies = responseMovies.Search;
+  const getMovies = async () => {
+    try {
+      setLoading(true);
 
-  const mappedMovies = movies?.map((movie) => ({
-    id: movie.imdbID,
-    title: movie.Title,
-    year: movie.Year,
-    poster: movie.Poster
-  }));
-
-  const getMovies = () => {
-    fetch(`${BASE_URL}?apikey=aaf5165c&s=${search.trim()}`)
-      .then((res) => res.json())
-      .then((data) => setResponseMovies(data));
+      const newMovies = await searchMovies({ search: trimmedSearch });
+      setMovies(newMovies);
+    } catch (error) {
+      throw new Error('There was an error');
+    } finally {
+      setLoading(false);
+    }
   };
 
-  return { movies: mappedMovies, getMovies };
+  return { movies, getMovies, loading };
 };
