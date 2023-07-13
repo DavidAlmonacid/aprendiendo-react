@@ -36,6 +36,8 @@
 
 .movies-wrapper {
   padding: 0 32px;
+  text-align: center;
+  font-size: 18px;
 }
 
 @media screen and (min-width: 768px) {

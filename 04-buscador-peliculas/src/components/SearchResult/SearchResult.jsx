@@ -27,8 +27,8 @@ const ListOfMovies = ({ movies }) => {
 
 const NoResults = () => {
   return (
-    <div style={{ textAlign: 'center' }}>
-      <p style={{ fontSize: 18 }}>No matched results</p>
+    <div>
+      <p>No matched results</p>
     </div>
   );
 };
