@@ -1,10 +1,12 @@
+import { useState } from 'react';
 import './App.css';
 import { SearchResult } from './components/SearchResult';
 import { useMovies, useSearch } from './hooks';
 
 const App = () => {
+  const [isSorted, setIsSorted] = useState(false);
   const { search, updateSearch, error } = useSearch();
-  const { movies, getMovies, loading } = useMovies({ search });
+  const { movies, getMovies, loading } = useMovies({ search, isSorted });
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -14,6 +16,10 @@ const App = () => {
 
   const handleChange = (event) => {
     updateSearch(event.target.value);
+  };
+
+  const handleSort = () => {
+    setIsSorted(!isSorted);
   };
 
   return (
@@ -33,10 +39,22 @@ const App = () => {
             required
           />
 
-          <button type='submit' disabled={search.length <= 1}>
+          <button type='submit' disabled={search.length < 3}>
             Search
           </button>
         </form>
+
+        <div className='sort'>
+          <label className='sort__wrapper'>
+            <input
+              type='checkbox'
+              className='sort__checkbox'
+              onChange={handleSort}
+              checked={isSorted}
+            />
+            <span className='sort__text'>Ordenar alfabéticamente</span>
+          </label>
+        </div>
 
         {error && <p className='error-message'>{error}</p>}
       </header>

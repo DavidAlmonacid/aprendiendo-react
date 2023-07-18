@@ -11,7 +11,7 @@
   display: flex;
   justify-content: center;
   gap: 16px;
-  margin-top: 48px;
+  margin: 48px 0 16px;
   padding: 0 8px;
 }
 
@@ -25,6 +25,17 @@
   color: inherit;
   font: inherit;
   text-transform: capitalize;
+}
+
+.sort__wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.sort__text {
+  font-size: 15px;
 }
 
 .error-message {

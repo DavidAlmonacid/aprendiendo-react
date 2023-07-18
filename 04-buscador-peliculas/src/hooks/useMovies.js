@@ -1,7 +1,7 @@
 import { useRef, useState } from 'react';
 import { searchMovies } from '../api/movies';
 
-export const useMovies = ({ search }) => {
+export const useMovies = ({ search, isSorted }) => {
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(false);
 
@@ -26,5 +26,14 @@ export const useMovies = ({ search }) => {
     }
   };
 
-  return { movies, getMovies, loading };
+  const getSortedMovies = () => {
+    console.log('getSortedMovies');
+    const sortedMovies = isSorted
+      ? movies.toSorted((a, b) => a.title.localeCompare(b.title))
+      : movies;
+
+    return sortedMovies;
+  };
+
+  return { movies: getSortedMovies(), getMovies, loading };
 };

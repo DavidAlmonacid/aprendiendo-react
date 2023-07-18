@@ -11,8 +11,8 @@ export const useSearch = () => {
       return;
     }
 
-    if (search.length < 2) {
-      setError('The search must contain at least 2 letters');
+    if (search.length < 3) {
+      setError('The search must contain at least 3 letters');
       return;
     }
 
