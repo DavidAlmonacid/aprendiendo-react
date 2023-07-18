@@ -29,6 +29,7 @@ const App = () => {
             placeholder='Spider-Man, The Flash, Transformers, ...'
             value={search}
             onChange={handleChange}
+            autoFocus
             required
           />
 
