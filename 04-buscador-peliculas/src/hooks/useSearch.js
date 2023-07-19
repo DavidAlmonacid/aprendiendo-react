@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 
 export const useSearch = () => {
-  const [search, setSearch] = useState('');
+  const [search, updateSearch] = useState('');
   const [error, setError] = useState('');
   const isFirstSearch = useRef(true);
 
@@ -21,7 +21,7 @@ export const useSearch = () => {
 
   return {
     search,
-    updateSearch: setSearch,
+    updateSearch,
     error
   };
 };
