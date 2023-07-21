@@ -18,3 +18,15 @@ export type Product = {
   thumbnail: string;
   images: string[];
 };
+
+export interface Filter {
+  category:
+    | 'all'
+    | 'fragrances'
+    | 'groceries'
+    | 'home-decoration'
+    | 'laptops'
+    | 'skincare'
+    | 'smartphones';
+  minPrice: number;
+}

@@ -1,28 +1,34 @@
+import { getProducts } from '@/api/products';
+import { Header, Products } from '@/components';
+import { Filter, Product } from '@/types';
 import { useEffect, useState } from 'react';
-import './App.css';
-import { getProducts } from './api/products';
-import { Product } from './types';
 
-function App() {
+const App = () => {
   const [products, setProducts] = useState<Product[]>([]);
+  const [filters, setFilters] = useState<Filter>({
+    category: 'all',
+    minPrice: 0
+  });
 
   useEffect(() => {
     getProducts().then((data) => setProducts(data));
   }, []);
 
+  const filterProducts = (products: Product[]) => {
+    return products.filter(
+      (product) =>
+        product.price >= filters.minPrice &&
+        (filters.category === 'all' || product.category === filters.category)
+    );
+  };
+
   return (
     <>
-      <h1>My shopping cart</h1>
-
-      {products &&
-        products.map((product: Product) => (
-          <article key={product.id}>
-            <h1>{product.title}</h1>
-            <img src={product.thumbnail} alt={product.title} />
-          </article>
-        ))}
+      {/* <Header filters={filters} setFilters={setFilters} /> */}
+      <Header />
+      <Products products={filterProducts(products)} />
     </>
   );
-}
+};
 
 export default App;

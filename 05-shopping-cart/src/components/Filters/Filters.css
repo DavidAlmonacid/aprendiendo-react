@@ -1,0 +1,18 @@
+.filters {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+  max-width: 919px;
+}
+
+.filters > label {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.filters > label > span {
+  font-size: 15px;
+  font-weight: 500;
+}
