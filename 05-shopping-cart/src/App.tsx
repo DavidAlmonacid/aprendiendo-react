@@ -1,7 +1,7 @@
 import { getProducts } from '@/api/products';
 import { Header, Products } from '@/components';
-import { Filter, Product } from '@/types';
 import { useEffect, useState } from 'react';
+import { Filter, Product } from './types';
 
 const App = () => {
   const [products, setProducts] = useState<Product[]>([]);

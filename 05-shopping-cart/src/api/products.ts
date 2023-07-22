@@ -1,4 +1,4 @@
-import { Root } from '../types';
+import { Root } from '@/types';
 
 export const getProducts = async () => {
   const response = await fetch('/products.json');
