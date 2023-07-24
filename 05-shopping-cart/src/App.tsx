@@ -25,7 +25,7 @@ const App = () => {
   return (
     <>
       {/* <Header filters={filters} setFilters={setFilters} /> */}
-      <Header />
+      <Header changeFilters={setFilters} />
       <Products products={filterProducts(products)} />
     </>
   );

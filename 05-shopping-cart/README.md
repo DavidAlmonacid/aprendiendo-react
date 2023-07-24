@@ -6,9 +6,9 @@ Creación de un e-commerce
 
 - [x] Muestra una lista de productos que vienen de un JSON.
 
-- [ ] Añade un filtro por categoría.
+- [x] Añade un filtro por categoría.
 
-- [ ] Añade un filtro por precio.
+- [x] Añade un filtro por precio.
 
 - [ ] Haz uso de useContext para evitar pasar props innecesarias.
 

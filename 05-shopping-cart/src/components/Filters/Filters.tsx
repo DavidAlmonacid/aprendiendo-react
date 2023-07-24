@@ -1,19 +1,50 @@
+import { Filter } from '@/types';
+import { useState } from 'react';
 import './Filters.css';
 
-export type FiltersProps = {};
+export type FiltersProps = {
+  changeFilters: React.Dispatch<React.SetStateAction<Filter>>;
+};
 
-const Filters: React.FC<FiltersProps> = ({}) => {
+const Filters: React.FC<FiltersProps> = ({ changeFilters }) => {
+  const [minPrice, setMinPrice] = useState(0);
+
+  const handleChangeMinPrice = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const newPrice = parseInt(event.target.value);
+
+    setMinPrice(newPrice);
+    changeFilters((prev) => ({
+      ...prev,
+      minPrice: newPrice
+    }));
+  };
+
+  const handleChangeCategory = (
+    event: React.ChangeEvent<HTMLSelectElement>
+  ) => {
+    changeFilters((prev) => ({
+      ...prev,
+      category: event.target.value
+    }));
+  };
+
   return (
     <div className='filters'>
       <label>
-        <span>Min Price</span>
-        <input type='range' min={0} max={1000} />
+        <span>Min Price:</span>
+        <input
+          type='range'
+          min={0}
+          max={1000}
+          onChange={handleChangeMinPrice}
+        />
+        <span>${minPrice}</span>
       </label>
 
       <label>
         <span>Category</span>
 
-        <select>
+        <select onChange={handleChangeCategory}>
           <option value='all'>All</option>
           <option value='fragrances'>Fragrances</option>
           <option value='groceries'>Groceries</option>

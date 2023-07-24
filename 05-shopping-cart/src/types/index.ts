@@ -20,13 +20,6 @@ export type Product = {
 };
 
 export interface Filter {
-  category:
-    | 'all'
-    | 'fragrances'
-    | 'groceries'
-    | 'home-decoration'
-    | 'laptops'
-    | 'skincare'
-    | 'smartphones';
+  category: string;
   minPrice: number;
 }
