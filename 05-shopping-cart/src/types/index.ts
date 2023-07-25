@@ -19,7 +19,7 @@ export type Product = {
   images: string[];
 };
 
-export interface Filter {
+export type Filter = {
   category: string;
   minPrice: number;
-}
+};
