@@ -10,7 +10,7 @@ Creación de un e-commerce
 
 - [x] Añade un filtro por precio.
 
-- [ ] Haz uso de useContext para evitar pasar props innecesarias.
+- [x] Haz uso de useContext para evitar pasar props innecesarias.
 
   #### Carrito:
 
