@@ -1,15 +1,10 @@
 import { Filters } from '@/components';
-import { Filter } from '@/types';
 
-export type HeaderProps = {
-  changeFilters: React.Dispatch<React.SetStateAction<Filter>>;
-};
-
-const Header: React.FC<HeaderProps> = ({ changeFilters }) => {
+const Header: React.FC = () => {
   return (
     <header>
       <h1>Shopping Cart</h1>
-      <Filters changeFilters={changeFilters} />
+      <Filters />
     </header>
   );
 };

@@ -1,32 +1,24 @@
-import { getProducts } from '@/api/products';
-import { Header, Products } from '@/components';
 import { useEffect, useState } from 'react';
-import { Filter, Product } from './types';
+import { getProducts } from './api/products.ts';
+import { Debugger, Header, Products } from './components';
+import { IS_DEVELOPMENT } from './config.ts';
+import { useFilters } from './hooks/useFilters.ts';
+import type { Product } from './types';
 
 const App = () => {
   const [products, setProducts] = useState<Product[]>([]);
-  const [filters, setFilters] = useState<Filter>({
-    category: 'all',
-    minPrice: 0
-  });
+  const { filterProducts } = useFilters();
+  const filteredProducts = filterProducts(products);
 
   useEffect(() => {
     getProducts().then((data) => setProducts(data));
   }, []);
 
-  const filterProducts = (products: Product[]) => {
-    return products.filter(
-      (product) =>
-        product.price >= filters.minPrice &&
-        (filters.category === 'all' || product.category === filters.category)
-    );
-  };
-
   return (
     <>
-      {/* <Header filters={filters} setFilters={setFilters} /> */}
-      <Header changeFilters={setFilters} />
-      <Products products={filterProducts(products)} />
+      <Header />
+      <Products products={filteredProducts} />
+      {IS_DEVELOPMENT && <Debugger />}
     </>
   );
 };

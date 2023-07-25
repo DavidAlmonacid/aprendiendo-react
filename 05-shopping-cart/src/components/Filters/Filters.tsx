@@ -1,19 +1,16 @@
-import { Filter } from '@/types';
+import { useFilters } from '@/hooks/useFilters';
 import { useState } from 'react';
 import './Filters.css';
 
-export type FiltersProps = {
-  changeFilters: React.Dispatch<React.SetStateAction<Filter>>;
-};
-
-const Filters: React.FC<FiltersProps> = ({ changeFilters }) => {
+const Filters: React.FC = () => {
   const [minPrice, setMinPrice] = useState(0);
+  const { setFilters } = useFilters();
 
   const handleChangeMinPrice = (event: React.ChangeEvent<HTMLInputElement>) => {
     const newPrice = parseInt(event.target.value);
 
     setMinPrice(newPrice);
-    changeFilters((prev) => ({
+    setFilters((prev) => ({
       ...prev,
       minPrice: newPrice
     }));
@@ -22,7 +19,7 @@ const Filters: React.FC<FiltersProps> = ({ changeFilters }) => {
   const handleChangeCategory = (
     event: React.ChangeEvent<HTMLSelectElement>
   ) => {
-    changeFilters((prev) => ({
+    setFilters((prev) => ({
       ...prev,
       category: event.target.value
     }));
