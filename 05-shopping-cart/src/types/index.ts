@@ -1,11 +1,11 @@
-export type Root = {
+export interface Root {
   products: Product[];
   total: number;
   skip: number;
   limit: number;
-};
+}
 
-export type Product = {
+export interface Product {
   id: number;
   title: string;
   description: string;
@@ -17,9 +17,13 @@ export type Product = {
   category: string;
   thumbnail: string;
   images: string[];
-};
+}
 
-export type Filter = {
+export interface CartProduct extends Product {
+  quantity: number;
+}
+
+export interface Filter {
   category: string;
   minPrice: number;
-};
+}
