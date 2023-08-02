@@ -1,6 +1,8 @@
 import { Cart, Filters } from '@/components';
 
-const Header: React.FC = () => {
+type HeaderProps = {};
+
+const Header: React.FC<HeaderProps> = () => {
   return (
     <header>
       <h1>Shopping Cart</h1>

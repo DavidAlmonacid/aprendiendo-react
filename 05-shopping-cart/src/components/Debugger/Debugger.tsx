@@ -1,7 +1,9 @@
 import { useFilters } from '@/hooks/useFilters';
 import './Debugger.css';
 
-const Debugger: React.FC = () => {
+type DebuggerProps = {};
+
+const Debugger: React.FC<DebuggerProps> = ({}) => {
   const { filters } = useFilters();
 
   return (
