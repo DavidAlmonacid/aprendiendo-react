@@ -1,4 +1,5 @@
 import { AddToCartIcon } from '@/components';
+import { useCart } from '@/hooks/useCart';
 import { Product } from '@/types';
 import './Products.css';
 
@@ -7,6 +8,8 @@ export type ProductsProps = {
 };
 
 const Products: React.FC<ProductsProps> = ({ products }) => {
+  const { addToCart } = useCart();
+
   return (
     <section className='products'>
       {products.map((product: Product) => (
@@ -27,7 +30,7 @@ const Products: React.FC<ProductsProps> = ({ products }) => {
 
           <div className='product__price'>
             <span>${product.price}</span>
-            <button>
+            <button onClick={() => addToCart(product)}>
               <AddToCartIcon />
             </button>
           </div>
