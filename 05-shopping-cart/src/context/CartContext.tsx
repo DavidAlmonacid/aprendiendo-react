@@ -4,6 +4,7 @@ import { createContext, useState } from 'react';
 type CartContextType = {
   cartProducts: CartProduct[];
   addToCart: (product: Product) => void;
+  removeFromCart: (product: Product) => void;
   clearCart: () => void;
 };
 
@@ -30,6 +31,12 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
     }
   };
 
+  const removeFromCart = (product: Product) => {
+    setCartProducts(
+      cartProducts.filter((cartProduct) => cartProduct.id !== product.id)
+    );
+  };
+
   const clearCart = () => {
     setCartProducts([]);
   };
@@ -39,6 +46,7 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
       value={{
         cartProducts,
         addToCart,
+        removeFromCart,
         clearCart
       }}
     >
