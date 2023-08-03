@@ -1,10 +1,12 @@
 import { CartIcon, ClearCartIcon } from '@/components';
+import { useCart } from '@/hooks/useCart';
 import { useId } from 'react';
 import './Cart.css';
 
 type CartProps = {};
 
 const Cart: React.FC<CartProps> = ({}) => {
+  const { cartProducts, addToCart, clearCart } = useCart();
   const cartCheckboxId = useId();
 
   return (
@@ -16,20 +18,22 @@ const Cart: React.FC<CartProps> = ({}) => {
 
       <aside className='cart'>
         <ul>
-          <li>
-            <img src='https://picsum.photos/seed/1/100/100' alt='Product 1' />
-            <div>
-              <strong>Laptop</strong> - $1000
-            </div>
+          {cartProducts.map((product) => (
+            <li key={product.id}>
+              <img src={product.thumbnail} alt={product.title} />
+              <div>
+                <strong>{product.title}</strong> - ${product.price}
+              </div>
 
-            <footer>
-              <small>Qty: 1</small>
-              <button>+</button>
-            </footer>
-          </li>
+              <footer>
+                <small>Qty: {product.quantity}</small>
+                <button onClick={() => addToCart(product)}>+</button>
+              </footer>
+            </li>
+          ))}
         </ul>
 
-        <button>
+        <button onClick={clearCart}>
           <ClearCartIcon />
         </button>
       </aside>
