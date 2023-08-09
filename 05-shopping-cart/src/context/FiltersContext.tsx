@@ -1,4 +1,4 @@
-import type { Filter } from '@/types';
+import { Filter } from '@/types';
 import { createContext, useState } from 'react';
 
 export type FiltersContextType = {

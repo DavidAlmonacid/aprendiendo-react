@@ -4,7 +4,7 @@ import { Debugger, Header, Products } from './components';
 import { IS_DEVELOPMENT } from './config.ts';
 import { CartProvider } from './context/CartContext.tsx';
 import { useFilters } from './hooks/useFilters.ts';
-import type { Product } from './types';
+import { Product } from './types';
 
 const App = () => {
   const [products, setProducts] = useState<Product[]>([]);

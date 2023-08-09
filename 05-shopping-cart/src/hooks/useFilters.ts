@@ -1,5 +1,5 @@
 import { FiltersContext } from '@/context/FiltersContext.tsx';
-import type { Product } from '@/types';
+import { Product } from '@/types';
 import { useContext } from 'react';
 
 export const useFilters = () => {
