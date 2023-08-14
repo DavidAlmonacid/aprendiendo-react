@@ -1,27 +1,31 @@
-# React + TypeScript + Vite
+## Enunciado
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Crea un React Router desde cero
 
-Currently, two official plugins are available:
+### Requerimientos
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- [x] Instalar el linter
 
-## Expanding the ESLint configuration
+- [] Crear una forma de hacer MPAs (Multiple Page Application)
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- [] Crea una forma de hacer SPAs (Single Page Applications)
 
-- Configure the top-level `parserOptions` property like this:
+- [] Poder navegar entre páginas con el botón de atrás
 
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
-```
+- [] Crear componente Link para hacerlo declarativo
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+- [] Crear componente Router para hacerlo más declarativo
+
+- [] Soportar ruta por defecto (404)
+
+- [] Soportar rutas con parámetros
+
+- [] Componente <Route /> para hacerlo declarativo
+
+- [] Lazy Loading de las rutas
+
+- [] Hacer un i18n con las rutas
+
+- [] Testing
+
+- [] Publicar el paquete en NPM
