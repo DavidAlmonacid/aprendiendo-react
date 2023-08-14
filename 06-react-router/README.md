@@ -6,7 +6,7 @@ Crea un React Router desde cero
 
 - [x] Instalar el linter
 
-- [] Crear una forma de hacer MPAs (Multiple Page Application)
+- [x] Crear una forma de hacer MPAs (Multiple Page Application)
 
 - [] Crea una forma de hacer SPAs (Single Page Applications)
 
