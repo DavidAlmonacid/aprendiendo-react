@@ -11,7 +11,13 @@ export enum CartActiontype {
   CLEAR_CART = 'CLEAR_CART'
 }
 
-export const cartInitialState: CartProduct[] = [];
+export const cartInitialState = JSON.parse(
+  window.localStorage.getItem('cart') || '[]'
+);
+
+export const updateLocalStorage = (state: CartProduct[]) => {
+  window.localStorage.setItem('cart', JSON.stringify(state));
+};
 
 export const cartReducer = (state: CartProduct[], action: Action) => {
   switch (action.type) {
@@ -24,19 +30,29 @@ export const cartReducer = (state: CartProduct[], action: Action) => {
       if (productInCartIndex >= 0) {
         const newState = structuredClone(state);
         newState[productInCartIndex].quantity += 1;
+        updateLocalStorage(newState);
         return newState;
       }
 
-      return [...state, { ...action.payload!, quantity: 1 }];
+      const newState = [...state, { ...action.payload!, quantity: 1 }];
+
+      updateLocalStorage(newState);
+      return newState;
     }
 
     case CartActiontype.REMOVE_FROM_CART: {
       const { id } = action.payload!;
-      return state.filter((product) => product.id !== id);
+      const newState = state.filter((product) => product.id !== id);
+
+      updateLocalStorage(newState);
+      return newState;
     }
 
-    case CartActiontype.CLEAR_CART:
-      return cartInitialState;
+    case CartActiontype.CLEAR_CART: {
+      const newState: CartProduct[] = [];
+      updateLocalStorage(newState);
+      return newState;
+    }
   }
 
   return state;
