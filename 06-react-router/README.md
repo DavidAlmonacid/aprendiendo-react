@@ -12,7 +12,7 @@ Crea un React Router desde cero
 
 - [x] Poder navegar entre páginas con el botón de atrás
 
-- [] Crear componente Link para hacerlo declarativo
+- [x] Crear componente Link para hacerlo declarativo
 
 - [] Crear componente Router para hacerlo más declarativo
 

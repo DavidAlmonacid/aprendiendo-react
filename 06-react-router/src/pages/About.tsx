@@ -1,4 +1,4 @@
-import { navigate } from '../utils';
+import { Link } from '../components/Link';
 
 const About = () => {
   return (
@@ -7,7 +7,7 @@ const About = () => {
 
       <p>This is the about page.</p>
 
-      <button onClick={() => navigate('/')}>Go to home page</button>
+      <Link to='/'>Go to home page</Link>
     </>
   );
 };
