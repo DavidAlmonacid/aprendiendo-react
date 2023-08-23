@@ -1,30 +1,28 @@
-import { useEffect, useState } from 'react';
 import './App.css';
+import { Router } from './components';
 import { About, Home } from './pages';
-import { NavigationEvents } from './types/navigation.ts';
+
+export interface Route {
+  path: string;
+  component: React.FC;
+}
+
+const routes: Route[] = [
+  {
+    path: '/',
+    component: Home
+  },
+  {
+    path: '/about',
+    component: About
+  }
+];
 
 const App = () => {
-  const [currentPath, setCurrentPath] = useState(window.location.pathname);
-
-  useEffect(() => {
-    const onLocationChange = () => {
-      setCurrentPath(window.location.pathname);
-    };
-
-    window.addEventListener(NavigationEvents.PUSHSTATE, onLocationChange);
-    window.addEventListener(NavigationEvents.POPSTATE, onLocationChange);
-
-    return () => {
-      window.removeEventListener(NavigationEvents.PUSHSTATE, onLocationChange);
-      window.removeEventListener(NavigationEvents.POPSTATE, onLocationChange);
-    };
-  }, []);
-
   return (
     <>
       <h1>React Router</h1>
-      {currentPath === '/' && <Home />}
-      {currentPath === '/about' && <About />}
+      <Router routes={routes} />
     </>
   );
 };

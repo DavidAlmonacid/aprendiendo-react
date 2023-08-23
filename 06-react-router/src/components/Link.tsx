@@ -1,5 +1,11 @@
 import { NavigationEvents } from '../types/navigation';
 
+interface LinkProps {
+  target?: string;
+  to: string;
+  children: React.ReactNode;
+}
+
 const navigate = (path: string) => {
   window.history.pushState({}, '', path);
 
@@ -7,18 +13,7 @@ const navigate = (path: string) => {
   window.dispatchEvent(navigationEvent);
 };
 
-interface LinkProps {
-  target?: string;
-  to: string;
-  children: React.ReactNode;
-}
-
-export const Link: React.FC<LinkProps> = ({
-  target,
-  to,
-  children,
-  ...props
-}) => {
+const Link: React.FC<LinkProps> = ({ target, to, children, ...props }) => {
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
     const isMainButton = e.button === 0;
     const isDefaultTarget = target === '_self' || target === undefined;
@@ -36,3 +31,5 @@ export const Link: React.FC<LinkProps> = ({
     </a>
   );
 };
+
+export default Link;
