@@ -18,7 +18,7 @@ Crea un React Router desde cero
 
 - [x] Soportar ruta por defecto (404)
 
-- [] Soportar rutas con parámetros
+- [x] Soportar rutas con parámetros
 
 - [] Componente <Route /> para hacerlo declarativo
 

@@ -1,10 +1,12 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 import './App.css';
 import { Router } from './components';
-import { About, Home } from './pages';
+import { About, Home, Search } from './pages';
 
 export interface Route {
   path: string;
-  component: React.FC;
+  component: React.FC<any>;
 }
 
 const routes: Route[] = [
@@ -15,6 +17,10 @@ const routes: Route[] = [
   {
     path: '/about',
     component: About
+  },
+  {
+    path: '/search/:query',
+    component: Search
   }
 ];
 

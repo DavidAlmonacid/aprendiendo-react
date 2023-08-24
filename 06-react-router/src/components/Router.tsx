@@ -1,10 +1,15 @@
+import { match } from 'path-to-regexp';
 import { useEffect, useState } from 'react';
 import { Route } from '../App';
 import { NavigationEvents } from '../types/navigation';
 
 interface RouterProps {
   routes: Route[];
-  defaultComponent?: React.FC;
+  defaultComponent?: React.FC<PageProps>;
+}
+
+interface PageProps {
+  routeParams: Record<string, string>;
 }
 
 const Router: React.FC<RouterProps> = ({
@@ -27,9 +32,29 @@ const Router: React.FC<RouterProps> = ({
     };
   }, []);
 
-  const Page = routes.find(({ path }) => path === currentPath)?.component;
+  let routeParams = {};
 
-  return Page ? <Page /> : <DefaultComponent />;
+  const Page = routes.find(({ path }) => {
+    if (path === currentPath) {
+      return true;
+    }
+
+    const matcherURL = match(path, { decode: decodeURIComponent });
+    const matched = matcherURL(currentPath);
+
+    if (matched) {
+      routeParams = matched.params;
+      return true;
+    } else {
+      return false;
+    }
+  })?.component as React.FC<PageProps>;
+
+  return Page ? (
+    <Page routeParams={routeParams} />
+  ) : (
+    <DefaultComponent routeParams={routeParams} />
+  );
 };
 
 export default Router;
