@@ -1,18 +1,8 @@
 import { match } from 'path-to-regexp';
 import { useEffect, useState } from 'react';
-import { Route } from '../App';
-import { NavigationEvents } from '../types/navigation';
+// import { NavigationEvents } from '../types/navigation';
 
-interface RouterProps {
-  routes: Route[];
-  defaultComponent?: React.FC<PageProps>;
-}
-
-interface PageProps {
-  routeParams: Record<string, string>;
-}
-
-const Router: React.FC<RouterProps> = ({
+const Router = ({
   routes = [],
   defaultComponent: DefaultComponent = () => <h1>404</h1>
 }) => {
@@ -48,7 +38,7 @@ const Router: React.FC<RouterProps> = ({
     } else {
       return false;
     }
-  })?.component as React.FC<PageProps>;
+  })?.component;
 
   return Page ? (
     <Page routeParams={routeParams} />

@@ -1,20 +1,14 @@
-import { NavigationEvents } from '../types/navigation';
+// import { NavigationEvents } from '../types/navigation';
 
-interface LinkProps {
-  target?: string;
-  to: string;
-  children: React.ReactNode;
-}
-
-const navigate = (path: string) => {
+const navigate = (path) => {
   window.history.pushState({}, '', path);
 
   const navigationEvent = new Event(NavigationEvents.PUSHSTATE);
   window.dispatchEvent(navigationEvent);
 };
 
-const Link: React.FC<LinkProps> = ({ target, to, children, ...props }) => {
-  const handleClick = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+const Link = ({ target, to, children, ...props }) => {
+  const handleClick = (e) => {
     const isMainButton = e.button === 0;
     const isDefaultTarget = target === '_self' || target === undefined;
     const isModifiedEvent = e.metaKey || e.altKey || e.ctrlKey || e.shiftKey;

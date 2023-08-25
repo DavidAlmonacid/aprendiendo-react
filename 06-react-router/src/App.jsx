@@ -1,23 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 import './App.css';
-import { Router } from './components';
+import { Route, Router } from './components';
 import { About, Home, Search } from './pages';
 
-export interface Route {
-  path: string;
-  component: React.FC<any>;
-}
-
-const routes: Route[] = [
-  {
-    path: '/',
-    component: Home
-  },
-  {
-    path: '/about',
-    component: About
-  },
+const routes = [
   {
     path: '/search/:query',
     component: Search
@@ -28,7 +15,10 @@ const App = () => {
   return (
     <>
       <h1>React Router</h1>
-      <Router routes={routes} />
+      <Router routes={routes}>
+        <Route path='/' component={Home} />
+        <Route path='/about' component={About} />
+      </Router>
     </>
   );
 };
