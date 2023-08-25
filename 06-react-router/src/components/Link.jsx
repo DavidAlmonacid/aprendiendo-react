@@ -1,9 +1,9 @@
-// import { NavigationEvents } from '../types/navigation';
+import { navigationEvents } from '../../utils/consts';
 
 const navigate = (path) => {
   window.history.pushState({}, '', path);
 
-  const navigationEvent = new Event(NavigationEvents.PUSHSTATE);
+  const navigationEvent = new Event(navigationEvents.PUSHSTATE);
   window.dispatchEvent(navigationEvent);
 };
 

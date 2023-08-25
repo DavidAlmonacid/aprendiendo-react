@@ -1,6 +1,6 @@
 import { match } from 'path-to-regexp';
 import { useEffect, useState } from 'react';
-// import { NavigationEvents } from '../types/navigation';
+import { navigationEvents } from '../../utils/consts';
 
 const Router = ({
   routes = [],
@@ -13,12 +13,12 @@ const Router = ({
       setCurrentPath(window.location.pathname);
     };
 
-    window.addEventListener(NavigationEvents.PUSHSTATE, onLocationChange);
-    window.addEventListener(NavigationEvents.POPSTATE, onLocationChange);
+    window.addEventListener(navigationEvents.PUSHSTATE, onLocationChange);
+    window.addEventListener(navigationEvents.POPSTATE, onLocationChange);
 
     return () => {
-      window.removeEventListener(NavigationEvents.PUSHSTATE, onLocationChange);
-      window.removeEventListener(NavigationEvents.POPSTATE, onLocationChange);
+      window.removeEventListener(navigationEvents.PUSHSTATE, onLocationChange);
+      window.removeEventListener(navigationEvents.POPSTATE, onLocationChange);
     };
   }, []);
 
