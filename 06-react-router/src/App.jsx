@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
 import './App.css';
 import { Route, Router } from './components';
 import { About, Home, Search } from './pages';

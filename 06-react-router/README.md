@@ -20,7 +20,7 @@ Crea un React Router desde cero
 
 - [x] Soportar rutas con parámetros
 
-- [] Componente <Route /> para hacerlo declarativo
+- [x] Componente <Route /> para hacerlo declarativo
 
 - [] Lazy Loading de las rutas
 
