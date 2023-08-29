@@ -1,6 +1,6 @@
 import { match } from 'path-to-regexp';
 import { Children, useEffect, useState } from 'react';
-import { navigationEvents } from '../../utils/consts';
+import { navigationEvents } from '../../utils/consts.js';
 
 const Router = ({
   children,

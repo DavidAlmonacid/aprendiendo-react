@@ -1,4 +1,4 @@
-import { navigationEvents } from '../../utils/consts';
+import { navigationEvents } from '../../utils/consts.js';
 
 const navigate = (path) => {
   window.history.pushState({}, '', path);
