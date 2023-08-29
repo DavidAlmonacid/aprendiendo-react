@@ -1,10 +1,14 @@
+import { Suspense, lazy } from 'react';
 import { Route, Router } from './components';
-import { About, Home, Search } from './pages';
+
+const LazyAbout = lazy(() => import('./pages/About.jsx'));
+const LazyHome = lazy(() => import('./pages/Home.jsx'));
+const LazySearch = lazy(() => import('./pages/Search.jsx'));
 
 const routes = [
   {
     path: '/search/:query',
-    component: Search
+    component: LazySearch
   }
 ];
 
@@ -12,10 +16,13 @@ const App = () => {
   return (
     <>
       <h1>React Router</h1>
-      <Router routes={routes}>
-        <Route path='/' component={Home} />
-        <Route path='/about' component={About} />
-      </Router>
+
+      <Suspense fallback={null}>
+        <Router routes={routes}>
+          <Route path='/' component={LazyHome} />
+          <Route path='/about' component={LazyAbout} />
+        </Router>
+      </Suspense>
     </>
   );
 };
