@@ -24,7 +24,7 @@ Crea un React Router desde cero
 
 - [x] Lazy Loading de las rutas
 
-- [] Hacer un i18n con las rutas
+- [x] Hacer un i18n con las rutas
 
 - [] Testing
 

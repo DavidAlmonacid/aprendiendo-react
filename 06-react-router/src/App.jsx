@@ -7,6 +7,10 @@ const LazySearch = lazy(() => import('./pages/Search.jsx'));
 
 const routes = [
   {
+    path: '/about/:lang',
+    component: LazyAbout
+  },
+  {
     path: '/search/:query',
     component: LazySearch
   }
