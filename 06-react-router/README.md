@@ -26,6 +26,4 @@ Crea un React Router desde cero
 
 - [x] Hacer un i18n con las rutas
 
-- [] Testing
-
-- [] Publicar el paquete en NPM
+- [x] Testing
