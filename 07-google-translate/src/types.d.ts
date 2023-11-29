@@ -1,3 +1,5 @@
+import { AUTO_LANGUAGE, SUPPORTED_LANGUAGES } from './constants.ts';
+
 export interface State {
   fromLanguage: string;
   toLanguage: string;
@@ -12,3 +14,9 @@ export type Action =
   | { type: 'SET_TO_LANGUAGE'; payload: string }
   | { type: 'SET_TEXT'; payload: string }
   | { type: 'SET_TRANSLATED_TEXT'; payload: string };
+
+export type Language = keyof typeof SUPPORTED_LANGUAGES;
+
+export type AutoLanguage = typeof AUTO_LANGUAGE;
+
+export type FromLanguage = Languages | AutoLanguage;
