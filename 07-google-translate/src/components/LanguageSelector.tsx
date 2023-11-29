@@ -1,16 +1,40 @@
-export function LanguageSelector() {
+import { AUTO_LANGUAGE, SUPPORTED_LANGUAGES } from '../constants.ts';
+import { SelectorType, type FromLanguage, type Language } from '../types.d';
+
+type Props =
+  | {
+      type: SelectorType.FROM;
+      value: FromLanguage;
+      onChange: (language: FromLanguage) => void;
+    }
+  | {
+      type: SelectorType.TO;
+      value: Language;
+      onChange: (language: Language) => void;
+    };
+
+export function LanguageSelector({ onChange, type, value }: Props) {
+  const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    onChange(event.target.value as Language);
+  };
+
   return (
     <select
-      className='block px-3 py-2 text-gray-700 bg-white border border-gray-300 rounded-md shadow-sm w-52 focus:outline-none focus:ring-primary-500 focus:border-primary-500'
+      className='block px-4 py-2 text-gray-700 border border-gray-300 rounded-md w-full shadow-sm focus:ring-primary-500'
       name='languages'
+      aria-label='Select a language'
+      value={value}
+      onChange={handleChange}
     >
-      <option value=''>Select an option</option>
-      <option value='dog'>Dog</option>
-      <option value='cat'>Cat</option>
-      <option value='hamster'>Hamster</option>
-      <option value='parrot'>Parrot</option>
-      <option value='spider'>Spider</option>
-      <option value='goldfish'>Goldfish</option>
+      {type === SelectorType.FROM && (
+        <option value={AUTO_LANGUAGE}>Detect language</option>
+      )}
+
+      {Object.entries(SUPPORTED_LANGUAGES).map(([key, value]) => (
+        <option key={key} value={key}>
+          {value}
+        </option>
+      ))}
     </select>
   );
 }
