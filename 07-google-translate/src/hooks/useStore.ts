@@ -49,6 +49,9 @@ function reducer(state: State, action: Action) {
         translatedText: action.payload,
         isTranslating: false
       };
+
+    default:
+      return state;
   }
 }
 
