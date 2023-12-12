@@ -9,11 +9,19 @@ export interface State {
 }
 
 export type Action =
-  | { type: 'INTERCHANGE_LANGUAGES' }
-  | { type: 'SET_FROM_LANGUAGE'; payload: FromLanguage }
-  | { type: 'SET_TO_LANGUAGE'; payload: Language }
-  | { type: 'SET_TEXT'; payload: string }
-  | { type: 'SET_TRANSLATED_TEXT'; payload: string };
+  | { type: ActionType.INTERCHANGE_LANGUAGES }
+  | { type: ActionType.SET_FROM_LANGUAGE; payload: FromLanguage }
+  | { type: ActionType.SET_TO_LANGUAGE; payload: Language }
+  | { type: ActionType.SET_TEXT; payload: string }
+  | { type: ActionType.SET_TRANSLATED_TEXT; payload: string };
+
+export enum ActionType {
+  INTERCHANGE_LANGUAGES = 'INTERCHANGE_LANGUAGES',
+  SET_FROM_LANGUAGE = 'SET_FROM_LANGUAGE',
+  SET_TO_LANGUAGE = 'SET_TO_LANGUAGE',
+  SET_TEXT = 'SET_TEXT',
+  SET_TRANSLATED_TEXT = 'SET_TRANSLATED_TEXT'
+}
 
 export type Language = keyof typeof SUPPORTED_LANGUAGES;
 
