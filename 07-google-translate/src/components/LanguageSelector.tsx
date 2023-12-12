@@ -20,7 +20,7 @@ export function LanguageSelector({ onChange, type, value }: Props) {
 
   return (
     <select
-      className='block px-4 py-2 text-gray-700 border border-gray-300 rounded-md w-full shadow-sm focus:ring-primary-500'
+      className='block p-2 text-gray-700 border border-gray-300 rounded-md w-full shadow-sm focus:ring-primary-500'
       name='languages'
       aria-label='Select a language'
       value={value}
