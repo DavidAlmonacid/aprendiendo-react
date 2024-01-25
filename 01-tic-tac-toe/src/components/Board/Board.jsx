@@ -1,8 +1,8 @@
-import { Square } from '@components';
+import { Square } from "@components";
 
 const Board = ({ board, updateBoard }) => {
   return (
-    <section className='game'>
+    <section className="game">
       {board.map((square, index) => (
         <Square key={index} index={index} updateBoard={updateBoard}>
           {square}

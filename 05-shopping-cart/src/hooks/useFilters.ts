@@ -1,6 +1,6 @@
-import { FiltersContext } from '@/context/FiltersContext.tsx';
-import { Product } from '@/types';
-import { useContext } from 'react';
+import { FiltersContext } from "@/context/FiltersContext.tsx";
+import { Product } from "@/types";
+import { useContext } from "react";
 
 export const useFilters = () => {
   const { filters, setFilters } = useContext(FiltersContext);
@@ -9,7 +9,7 @@ export const useFilters = () => {
     return products.filter(
       (product) =>
         product.price >= filters.minPrice &&
-        (filters.category === 'all' || product.category === filters.category)
+        (filters.category === "all" || product.category === filters.category),
     );
   };
 

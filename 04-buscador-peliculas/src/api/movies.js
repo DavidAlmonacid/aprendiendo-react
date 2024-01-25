@@ -1,5 +1,5 @@
-const BASE_URL = 'https://www.omdbapi.com/';
-const API_KEY = 'aaf5165c';
+const BASE_URL = "https://www.omdbapi.com/";
+const API_KEY = "aaf5165c";
 
 export const searchMovies = async ({ search }) => {
   try {
@@ -11,9 +11,9 @@ export const searchMovies = async ({ search }) => {
       id: movie.imdbID,
       title: movie.Title,
       year: movie.Year,
-      poster: movie.Poster
+      poster: movie.Poster,
     }));
   } catch (error) {
-    throw new Error('Error searching movies');
+    throw new Error("Error searching movies");
   }
 };

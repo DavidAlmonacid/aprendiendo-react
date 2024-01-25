@@ -1,1 +1,1 @@
-export { default as GameResultModal } from './GameResultModal';
+export { default as GameResultModal } from "./GameResultModal";

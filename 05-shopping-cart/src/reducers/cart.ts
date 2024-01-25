@@ -1,4 +1,4 @@
-import { CartProduct, Product } from '@/types';
+import { CartProduct, Product } from "@/types";
 
 interface Action {
   type: string;
@@ -6,17 +6,17 @@ interface Action {
 }
 
 export enum CartActiontype {
-  ADD_TO_CART = 'ADD_TO_CART',
-  REMOVE_FROM_CART = 'REMOVE_FROM_CART',
-  CLEAR_CART = 'CLEAR_CART'
+  ADD_TO_CART = "ADD_TO_CART",
+  REMOVE_FROM_CART = "REMOVE_FROM_CART",
+  CLEAR_CART = "CLEAR_CART",
 }
 
 export const cartInitialState = JSON.parse(
-  window.localStorage.getItem('cart') || '[]'
+  window.localStorage.getItem("cart") || "[]",
 );
 
 export const updateLocalStorage = (state: CartProduct[]) => {
-  window.localStorage.setItem('cart', JSON.stringify(state));
+  window.localStorage.setItem("cart", JSON.stringify(state));
 };
 
 export const cartReducer = (state: CartProduct[], action: Action) => {
@@ -24,7 +24,7 @@ export const cartReducer = (state: CartProduct[], action: Action) => {
     case CartActiontype.ADD_TO_CART: {
       const { id } = action.payload!;
       const productInCartIndex = state.findIndex(
-        (product) => product.id === id
+        (product) => product.id === id,
       );
 
       if (productInCartIndex >= 0) {

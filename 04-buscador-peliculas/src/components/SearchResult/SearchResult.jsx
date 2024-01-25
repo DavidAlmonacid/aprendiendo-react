@@ -1,21 +1,21 @@
-import './ListOfMovies.css';
+import "./ListOfMovies.css";
 
 const ListOfMovies = ({ movies }) => {
   return (
-    <div className='movies'>
+    <div className="movies">
       {movies.map((movie) => (
-        <article key={movie.id} className='movie' title={movie.title}>
-          <picture className='movie__image-container'>
+        <article key={movie.id} className="movie" title={movie.title}>
+          <picture className="movie__image-container">
             <img
               src={movie.poster}
               alt={movie.title}
               width={300}
-              className='movie__image'
+              className="movie__image"
             />
           </picture>
-          <div className='movie__info'>
-            <h3 className='movie__title'>{movie.title}</h3>
-            <span className='movie__year'>{movie.year}</span>
+          <div className="movie__info">
+            <h3 className="movie__title">{movie.title}</h3>
+            <span className="movie__year">{movie.year}</span>
           </div>
         </article>
       ))}

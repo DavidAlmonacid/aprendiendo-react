@@ -1,16 +1,16 @@
-import { Link } from '../components';
+import { Link } from "../components";
 
 const i18n = {
   es: {
-    title: 'Acerca de',
-    content: 'Esta es la página acerca de nosotros',
-    buttonText: 'Ir a la página de inicio'
+    title: "Acerca de",
+    content: "Esta es la página acerca de nosotros",
+    buttonText: "Ir a la página de inicio",
   },
   en: {
-    title: 'About',
-    content: 'This is the about page',
-    buttonText: 'Go to home page'
-  }
+    title: "About",
+    content: "This is the about page",
+    buttonText: "Go to home page",
+  },
 };
 
 const useI18n = (lang) => {
@@ -26,7 +26,7 @@ const About = ({ routeParams }) => {
 
       <p>{content}.</p>
 
-      <Link to='/'>{buttonText}</Link>
+      <Link to="/">{buttonText}</Link>
     </>
   );
 };

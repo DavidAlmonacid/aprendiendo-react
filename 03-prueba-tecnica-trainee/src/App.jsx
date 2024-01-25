@@ -1,4 +1,4 @@
-import { useCatFact, useCatImage } from './hooks';
+import { useCatFact, useCatImage } from "./hooks";
 
 const App = () => {
   const { fact, randomFact } = useCatFact();
@@ -9,10 +9,10 @@ const App = () => {
   };
 
   return (
-    <main className='main'>
+    <main className="main">
       <h1>Random facts about cats</h1>
 
-      <section className='info'>
+      <section className="info">
         {fact && <p>{fact}</p>}
         {imageURL && (
           <img

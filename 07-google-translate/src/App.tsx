@@ -1,9 +1,9 @@
-import { InterchangeIcon } from './components/Icons.tsx';
-import { LanguageSelector } from './components/LanguageSelector.tsx';
-import { TextArea } from './components/TextArea.tsx';
-import { AUTO_LANGUAGE } from './constants.ts';
-import { useStore } from './hooks/useStore.ts';
-import { SelectorType } from './types.d';
+import { InterchangeIcon } from "./components/Icons.tsx";
+import { LanguageSelector } from "./components/LanguageSelector.tsx";
+import { TextArea } from "./components/TextArea.tsx";
+import { AUTO_LANGUAGE } from "./constants.ts";
+import { useStore } from "./hooks/useStore.ts";
+import { SelectorType } from "./types.d";
 
 function App() {
   const {
@@ -16,15 +16,15 @@ function App() {
     setFromLanguage,
     setToLanguage,
     setText,
-    setTranslatedText
+    setTranslatedText,
   } = useStore();
 
   return (
     <>
-      <h1 className='mb-6 text-3xl text-center'>Google translate</h1>
+      <h1 className="mb-6 text-3xl text-center">Google translate</h1>
 
-      <div className='container mx-auto grid justify-items-center gap-4 md:grid-cols-[1fr,auto,1fr] max-w-6xl px-10'>
-        <section className='flex-grow text-center w-full'>
+      <div className="container mx-auto grid justify-items-center gap-4 md:grid-cols-[1fr,auto,1fr] max-w-6xl px-10">
+        <section className="flex-grow text-center w-full">
           <LanguageSelector
             type={SelectorType.FROM}
             value={fromLanguage}
@@ -35,7 +35,7 @@ function App() {
 
         <div>
           <button
-            className='py-1.5 px-2.5 opacity-80 cursor-pointer disabled:opacity-60 disabled:cursor-default'
+            className="py-1.5 px-2.5 opacity-80 cursor-pointer disabled:opacity-60 disabled:cursor-default"
             disabled={fromLanguage === AUTO_LANGUAGE}
             onClick={() => {
               interchangeLanguages();
@@ -45,7 +45,7 @@ function App() {
           </button>
         </div>
 
-        <section className='flex-grow text-center w-full'>
+        <section className="flex-grow text-center w-full">
           <LanguageSelector
             type={SelectorType.TO}
             value={toLanguage}

@@ -1,10 +1,10 @@
 import {
   CartActiontype,
   cartInitialState,
-  cartReducer
-} from '@/reducers/cart.ts';
-import { Product } from '@/types';
-import { useReducer } from 'react';
+  cartReducer,
+} from "@/reducers/cart.ts";
+import { Product } from "@/types";
+import { useReducer } from "react";
 
 export const useCartReducer = () => {
   const [state, dispatch] = useReducer(cartReducer, cartInitialState);

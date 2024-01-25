@@ -1,5 +1,5 @@
-import { Filter } from '@/types';
-import { createContext, useState } from 'react';
+import { Filter } from "@/types";
+import { createContext, useState } from "react";
 
 export type FiltersContextType = {
   filters: Filter;
@@ -13,18 +13,18 @@ export type FiltersProviderProps = {
 export const FiltersContext = createContext({} as FiltersContextType);
 
 export const FiltersProvider: React.FC<FiltersProviderProps> = ({
-  children
+  children,
 }) => {
   const [filters, setFilters] = useState<Filter>({
-    category: 'all',
-    minPrice: 0
+    category: "all",
+    minPrice: 0,
   });
 
   return (
     <FiltersContext.Provider
       value={{
         filters,
-        setFilters
+        setFilters,
       }}
     >
       {children}

@@ -1,5 +1,5 @@
-import { useCallback, useMemo, useRef, useState } from 'react';
-import { searchMovies } from '../api/movies';
+import { useCallback, useMemo, useRef, useState } from "react";
+import { searchMovies } from "../api/movies";
 
 export const useMovies = ({ search, isSorted }) => {
   const [movies, setMovies] = useState([]);
@@ -18,7 +18,7 @@ export const useMovies = ({ search, isSorted }) => {
       const newMovies = await searchMovies({ search });
       setMovies(newMovies);
     } catch (error) {
-      throw new Error('There was an error');
+      throw new Error("There was an error");
     } finally {
       setLoading(false);
     }

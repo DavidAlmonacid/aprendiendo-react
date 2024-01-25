@@ -1,4 +1,4 @@
 export const navigationEvents = {
-  POPSTATE: 'popstate',
-  PUSHSTATE: 'pushstate'
+  POPSTATE: "popstate",
+  PUSHSTATE: "pushstate",
 };

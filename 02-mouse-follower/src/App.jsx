@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 
 const FollowMouse = () => {
   const [enabled, setEnabled] = useState(false);
@@ -11,19 +11,19 @@ const FollowMouse = () => {
       setPosition({ x: clientX, y: clientY });
     };
 
-    enabled && document.addEventListener('mousemove', handleMove);
+    enabled && document.addEventListener("mousemove", handleMove);
 
     return () => {
-      document.removeEventListener('mousemove', handleMove);
+      document.removeEventListener("mousemove", handleMove);
     };
   }, [enabled]);
 
   // Pointer appearance
   useEffect(() => {
-    document.body.classList.toggle('show-custom-cursor', enabled);
+    document.body.classList.toggle("show-custom-cursor", enabled);
 
     return () => {
-      document.body.classList.remove('show-custom-cursor');
+      document.body.classList.remove("show-custom-cursor");
     };
   }, [enabled]);
 
@@ -36,14 +36,14 @@ const FollowMouse = () => {
   return (
     <>
       <div
-        className='custom-cursor'
+        className="custom-cursor"
         style={{
-          transform: `translate(${position.x}px, ${position.y}px)`
+          transform: `translate(${position.x}px, ${position.y}px)`,
         }}
       />
       <h1>Mouse Follower</h1>
       <button onClick={handleClick}>
-        {enabled ? 'deactivate' : 'activate'} mouse follower
+        {enabled ? "deactivate" : "activate"} mouse follower
       </button>
     </>
   );
@@ -51,7 +51,7 @@ const FollowMouse = () => {
 
 const App = () => {
   return (
-    <div className='app'>
+    <div className="app">
       <FollowMouse />
     </div>
   );

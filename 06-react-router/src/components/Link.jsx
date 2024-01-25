@@ -1,7 +1,7 @@
-import { navigationEvents } from '../utils/consts.js';
+import { navigationEvents } from "../utils/consts.js";
 
 const navigate = (path) => {
-  window.history.pushState({}, '', path);
+  window.history.pushState({}, "", path);
 
   const navigationEvent = new Event(navigationEvents.PUSHSTATE);
   window.dispatchEvent(navigationEvent);
@@ -10,7 +10,7 @@ const navigate = (path) => {
 const Link = ({ target, to, children, ...props }) => {
   const handleClick = (e) => {
     const isMainButton = e.button === 0;
-    const isDefaultTarget = target === '_self' || target === undefined;
+    const isDefaultTarget = target === "_self" || target === undefined;
     const isModifiedEvent = e.metaKey || e.altKey || e.ctrlKey || e.shiftKey;
 
     if (isMainButton && isDefaultTarget && !isModifiedEvent) {

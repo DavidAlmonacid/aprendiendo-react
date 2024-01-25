@@ -1,21 +1,21 @@
-import { Square } from '@components';
+import { Square } from "@components";
 
 const GameResultModal = ({ resetGame, winner }) => {
   if (winner === null) {
     return null;
   }
 
-  const resultText = winner ? 'Winner!' : 'Draw!';
+  const resultText = winner ? "Winner!" : "Draw!";
 
   return (
-    <section className='winner'>
-      <div className='text'>
+    <section className="winner">
+      <div className="text">
         <header>
           <h2>{resultText}</h2>
         </header>
 
         {winner && (
-          <div className='win'>
+          <div className="win">
             <Square>{winner}</Square>
           </div>
         )}

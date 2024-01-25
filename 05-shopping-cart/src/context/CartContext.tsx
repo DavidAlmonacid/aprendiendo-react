@@ -1,6 +1,6 @@
-import { useCartReducer } from '@/hooks/useCartReducer';
-import { CartProduct, Product } from '@/types';
-import { createContext } from 'react';
+import { useCartReducer } from "@/hooks/useCartReducer";
+import { CartProduct, Product } from "@/types";
+import { createContext } from "react";
 
 type CartContextType = {
   cartProducts: CartProduct[];
@@ -24,7 +24,7 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
         cartProducts: state,
         addToCart,
         removeFromCart,
-        clearCart
+        clearCart,
       }}
     >
       {children}

@@ -1,1 +1,1 @@
-export { default as TwitterFollowCard } from './TwitterFollowCard';
+export { default as TwitterFollowCard } from "./TwitterFollowCard";

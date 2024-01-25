@@ -15,5 +15,7 @@ body {
 
 button,
 input {
-  font: 14px/1.2 system-ui, sans-serif;
+  font:
+    14px/1.2 system-ui,
+    sans-serif;
 }

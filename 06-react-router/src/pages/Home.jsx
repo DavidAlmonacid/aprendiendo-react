@@ -1,4 +1,4 @@
-import { Link } from '../components';
+import { Link } from "../components";
 
 const Home = () => {
   return (
@@ -7,7 +7,7 @@ const Home = () => {
 
       <p>This is the home page.</p>
 
-      <Link to='/about'>Go to about page</Link>
+      <Link to="/about">Go to about page</Link>
     </>
   );
 };

@@ -1,12 +1,12 @@
-import { match } from 'path-to-regexp';
-import { Children, useEffect, useState } from 'react';
-import { navigationEvents } from '../utils/consts.js';
-import { getCurrentPath } from '../utils/getCurrentPath.js';
+import { match } from "path-to-regexp";
+import { Children, useEffect, useState } from "react";
+import { navigationEvents } from "../utils/consts.js";
+import { getCurrentPath } from "../utils/getCurrentPath.js";
 
 const Router = ({
   children,
   routes = [],
-  defaultComponent: DefaultComponent = () => <h1>404</h1>
+  defaultComponent: DefaultComponent = () => <h1>404</h1>,
 }) => {
   console.log(children);
 
@@ -30,7 +30,7 @@ const Router = ({
 
   const routesFromChildren = Children.map(children, ({ props, type }) => {
     const { name } = type;
-    const isRoute = name === 'Route';
+    const isRoute = name === "Route";
 
     return isRoute ? props : null;
   });

@@ -1,8 +1,8 @@
-import debounce from 'just-debounce-it';
-import { useCallback, useState } from 'react';
-import './App.css';
-import { SearchResult } from './components/SearchResult';
-import { useMovies, useSearch } from './hooks';
+import debounce from "just-debounce-it";
+import { useCallback, useState } from "react";
+import "./App.css";
+import { SearchResult } from "./components/SearchResult";
+import { useMovies, useSearch } from "./hooks";
 
 const App = () => {
   const [isSorted, setIsSorted] = useState(false);
@@ -13,13 +13,13 @@ const App = () => {
     debounce(({ search }) => {
       const trimmedSearch = search.trim();
 
-      if (trimmedSearch === '') {
+      if (trimmedSearch === "") {
         return;
       }
 
       getMovies({ search: trimmedSearch });
     }, 800),
-    [getMovies]
+    [getMovies],
   );
 
   const handleSubmit = (event) => {
@@ -43,43 +43,43 @@ const App = () => {
 
   return (
     <div>
-      <header className='header'>
-        <h1 className='header__title'>Your Best Film Finder</h1>
+      <header className="header">
+        <h1 className="header__title">Your Best Film Finder</h1>
 
-        <form className='form' onSubmit={handleSubmit}>
+        <form className="form" onSubmit={handleSubmit}>
           <input
-            name='movieName'
-            className='form__input'
-            type='search'
-            placeholder='Spider-Man, The Flash, Transformers, ...'
+            name="movieName"
+            className="form__input"
+            type="search"
+            placeholder="Spider-Man, The Flash, Transformers, ..."
             value={search}
             onChange={handleChange}
             autoFocus
             required
           />
 
-          <button type='submit' disabled={search.length < 3}>
+          <button type="submit" disabled={search.length < 3}>
             Search
           </button>
         </form>
 
-        <div className='sort'>
-          <label className='sort__wrapper'>
+        <div className="sort">
+          <label className="sort__wrapper">
             <input
-              type='checkbox'
-              className='sort__checkbox'
+              type="checkbox"
+              className="sort__checkbox"
               onChange={handleSort}
               checked={isSorted}
             />
-            <span className='sort__text'>Ordenar alfabéticamente</span>
+            <span className="sort__text">Ordenar alfabéticamente</span>
           </label>
         </div>
 
-        {error && <p className='error-message'>{error}</p>}
+        {error && <p className="error-message">{error}</p>}
       </header>
 
       <main>
-        <div className='movies-wrapper'>
+        <div className="movies-wrapper">
           {loading ? <p>Loading...</p> : <SearchResult movies={movies} />}
         </div>
       </main>

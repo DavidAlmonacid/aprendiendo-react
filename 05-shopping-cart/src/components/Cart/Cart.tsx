@@ -1,7 +1,7 @@
-import { CartIcon, ClearCartIcon } from '@/components';
-import { useCart } from '@/hooks/useCart';
-import { useId } from 'react';
-import './Cart.css';
+import { CartIcon, ClearCartIcon } from "@/components";
+import { useCart } from "@/hooks/useCart";
+import { useId } from "react";
+import "./Cart.css";
 
 type CartProps = {};
 
@@ -11,12 +11,12 @@ const Cart: React.FC<CartProps> = ({}) => {
 
   return (
     <>
-      <label htmlFor={cartCheckboxId} className='cart-button'>
+      <label htmlFor={cartCheckboxId} className="cart-button">
         <CartIcon />
       </label>
-      <input id={cartCheckboxId} type='checkbox' hidden />
+      <input id={cartCheckboxId} type="checkbox" hidden />
 
-      <aside className='cart'>
+      <aside className="cart">
         <ul>
           {cartProducts.map((product) => (
             <li key={product.id}>

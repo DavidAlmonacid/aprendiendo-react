@@ -1,4 +1,4 @@
-import { SelectorType } from '../types.d';
+import { SelectorType } from "../types.d";
 
 interface Props {
   type: SelectorType;
@@ -10,19 +10,19 @@ interface Props {
 export function TextArea({ type, value, isTranslating, onChange }: Props) {
   const getPlaceholder = ({
     type,
-    isTranslating
+    isTranslating,
   }: {
     type: SelectorType;
     isTranslating?: boolean;
   }) => {
     if (type === SelectorType.FROM) {
-      return 'Enter text';
+      return "Enter text";
     }
 
     if (type === SelectorType.TO && isTranslating) {
-      return 'Translating...';
+      return "Translating...";
     } else {
-      return 'Translation';
+      return "Translation";
     }
   };
 
@@ -31,9 +31,9 @@ export function TextArea({ type, value, isTranslating, onChange }: Props) {
   };
 
   return (
-    <div className='mt-3'>
+    <div className="mt-3">
       <textarea
-        className='px-3.5 py-1 w-full outline-none text-xl placeholder-gray-500'
+        className="px-3.5 py-1 w-full outline-none text-xl placeholder-gray-500"
         placeholder={getPlaceholder({ type, isTranslating })}
         value={value}
         autoFocus={type === SelectorType.FROM}

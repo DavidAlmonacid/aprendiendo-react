@@ -1,8 +1,8 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from "react";
 
 export const useSearch = () => {
-  const [search, updateSearch] = useState('');
-  const [error, setError] = useState('');
+  const [search, updateSearch] = useState("");
+  const [error, setError] = useState("");
   const isFirstSearch = useRef(true);
 
   useEffect(() => {
@@ -12,16 +12,16 @@ export const useSearch = () => {
     }
 
     if (search.length < 3) {
-      setError('The search must contain at least 3 letters');
+      setError("The search must contain at least 3 letters");
       return;
     }
 
-    setError('');
+    setError("");
   }, [search]);
 
   return {
     search,
     updateSearch,
-    error
+    error,
   };
 };

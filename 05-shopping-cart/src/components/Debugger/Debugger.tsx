@@ -1,5 +1,5 @@
-import { useCart } from '@/hooks/useCart';
-import './Debugger.css';
+import { useCart } from "@/hooks/useCart";
+import "./Debugger.css";
 
 type DebuggerProps = {};
 
@@ -12,9 +12,9 @@ const Debugger: React.FC<DebuggerProps> = ({}) => {
   });
 
   return (
-    <div className='debugger'>
-      <label htmlFor='toggle-debugger'>Toggle debugger</label>
-      <input type='checkbox' id='toggle-debugger' hidden />
+    <div className="debugger">
+      <label htmlFor="toggle-debugger">Toggle debugger</label>
+      <input type="checkbox" id="toggle-debugger" hidden />
       <p>{JSON.stringify(cartProductsToDisplay, null, 2)}</p>
     </div>
   );

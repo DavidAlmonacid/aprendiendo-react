@@ -1,2 +1,2 @@
-export * from './useMovies';
-export * from './useSearch';
+export * from "./useMovies";
+export * from "./useSearch";

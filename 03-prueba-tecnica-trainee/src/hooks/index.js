@@ -1,2 +1,2 @@
-export * from './useCatFact';
-export * from './useCatImage';
+export * from "./useCatFact";
+export * from "./useCatImage";

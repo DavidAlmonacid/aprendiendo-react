@@ -1,1 +1,1 @@
-export * from './TwitterFollowCard';
+export * from "./TwitterFollowCard";

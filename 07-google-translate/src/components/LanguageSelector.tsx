@@ -1,5 +1,5 @@
-import { AUTO_LANGUAGE, SUPPORTED_LANGUAGES } from '../constants.ts';
-import { SelectorType, type FromLanguage, type Language } from '../types.d';
+import { AUTO_LANGUAGE, SUPPORTED_LANGUAGES } from "../constants.ts";
+import { SelectorType, type FromLanguage, type Language } from "../types.d";
 
 type Props =
   | {
@@ -20,9 +20,9 @@ export function LanguageSelector({ onChange, type, value }: Props) {
 
   return (
     <select
-      className='block p-2 text-gray-700 border border-gray-300 rounded-md w-full shadow-sm focus:ring-primary-500'
-      name='languages'
-      aria-label='Select a language'
+      className="block p-2 text-gray-700 border border-gray-300 rounded-md w-full shadow-sm focus:ring-primary-500"
+      name="languages"
+      aria-label="Select a language"
       value={value}
       onChange={handleChange}
     >
