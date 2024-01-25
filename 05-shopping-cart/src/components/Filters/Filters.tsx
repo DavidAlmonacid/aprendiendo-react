@@ -7,16 +7,16 @@ const Filters: React.FC = () => {
   const handleChangeMinPrice = (event: React.ChangeEvent<HTMLInputElement>) => {
     setFilters((prev) => ({
       ...prev,
-      minPrice: parseInt(event.target.value),
+      minPrice: parseInt(event.target.value)
     }));
   };
 
   const handleChangeCategory = (
-    event: React.ChangeEvent<HTMLSelectElement>,
+    event: React.ChangeEvent<HTMLSelectElement>
   ) => {
     setFilters((prev) => ({
       ...prev,
-      category: event.target.value,
+      category: event.target.value
     }));
   };
 

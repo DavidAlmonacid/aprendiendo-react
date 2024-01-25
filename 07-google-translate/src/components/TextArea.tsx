@@ -10,7 +10,7 @@ interface Props {
 export function TextArea({ type, value, isTranslating, onChange }: Props) {
   const getPlaceholder = ({
     type,
-    isTranslating,
+    isTranslating
   }: {
     type: SelectorType;
     isTranslating?: boolean;

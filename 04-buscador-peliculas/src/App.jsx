@@ -19,7 +19,7 @@ const App = () => {
 
       getMovies({ search: trimmedSearch });
     }, 800),
-    [getMovies],
+    [getMovies]
   );
 
   const handleSubmit = (event) => {

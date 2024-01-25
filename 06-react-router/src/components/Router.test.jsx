@@ -4,7 +4,7 @@ import { getCurrentPath } from "../utils/getCurrentPath.js";
 import Router from "./Router.jsx";
 
 vi.mock("../utils/getCurrentPath.js", () => ({
-  getCurrentPath: vi.fn().mockReturnValue("/about"),
+  getCurrentPath: vi.fn().mockReturnValue("/about")
 }));
 
 describe("Router", () => {
@@ -29,12 +29,12 @@ describe("Router", () => {
     const routes = [
       {
         path: "/",
-        component: () => <h1>Home</h1>,
+        component: () => <h1>Home</h1>
       },
       {
         path: "/about",
-        component: () => <h1>About</h1>,
-      },
+        component: () => <h1>About</h1>
+      }
     ];
 
     render(<Router routes={routes} />);

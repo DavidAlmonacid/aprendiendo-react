@@ -6,7 +6,7 @@ import { getCurrentPath } from "../utils/getCurrentPath.js";
 const Router = ({
   children,
   routes = [],
-  defaultComponent: DefaultComponent = () => <h1>404</h1>,
+  defaultComponent: DefaultComponent = () => <h1>404</h1>
 }) => {
   console.log(children);
 

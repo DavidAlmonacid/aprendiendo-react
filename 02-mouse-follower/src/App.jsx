@@ -38,7 +38,7 @@ const FollowMouse = () => {
       <div
         className="custom-cursor"
         style={{
-          transform: `translate(${position.x}px, ${position.y}px)`,
+          transform: `translate(${position.x}px, ${position.y}px)`
         }}
       />
       <h1>Mouse Follower</h1>

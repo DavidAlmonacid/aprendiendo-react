@@ -24,7 +24,7 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
         cartProducts: state,
         addToCart,
         removeFromCart,
-        clearCart,
+        clearCart
       }}
     >
       {children}

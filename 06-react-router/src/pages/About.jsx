@@ -4,13 +4,13 @@ const i18n = {
   es: {
     title: "Acerca de",
     content: "Esta es la página acerca de nosotros",
-    buttonText: "Ir a la página de inicio",
+    buttonText: "Ir a la página de inicio"
   },
   en: {
     title: "About",
     content: "This is the about page",
-    buttonText: "Go to home page",
-  },
+    buttonText: "Go to home page"
+  }
 };
 
 const useI18n = (lang) => {

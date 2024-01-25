@@ -5,7 +5,7 @@ import {
   type Action,
   type FromLanguage,
   type Language,
-  type State,
+  type State
 } from "../types.d";
 
 const initialState: State = {
@@ -13,7 +13,7 @@ const initialState: State = {
   toLanguage: "en",
   text: "",
   translatedText: "",
-  isTranslating: false,
+  isTranslating: false
 };
 
 function reducer(state: State, action: Action) {
@@ -26,19 +26,19 @@ function reducer(state: State, action: Action) {
       return {
         ...state,
         fromLanguage: state.toLanguage,
-        toLanguage: state.fromLanguage,
+        toLanguage: state.fromLanguage
       };
 
     case ActionType.SET_FROM_LANGUAGE:
       return {
         ...state,
-        fromLanguage: action.payload,
+        fromLanguage: action.payload
       };
 
     case ActionType.SET_TO_LANGUAGE:
       return {
         ...state,
-        toLanguage: action.payload,
+        toLanguage: action.payload
       };
 
     case ActionType.SET_TEXT:
@@ -46,14 +46,14 @@ function reducer(state: State, action: Action) {
         ...state,
         text: action.payload,
         isTranslating: true,
-        translatedText: "",
+        translatedText: ""
       };
 
     case ActionType.SET_TRANSLATED_TEXT:
       return {
         ...state,
         translatedText: action.payload,
-        isTranslating: false,
+        isTranslating: false
       };
 
     default:
@@ -64,7 +64,7 @@ function reducer(state: State, action: Action) {
 export function useStore() {
   const [
     { fromLanguage, toLanguage, text, translatedText, isTranslating },
-    dispatch,
+    dispatch
   ] = useReducer(reducer, initialState);
 
   const interchangeLanguages = () => {
@@ -97,6 +97,6 @@ export function useStore() {
     setFromLanguage,
     setToLanguage,
     setText,
-    setTranslatedText,
+    setTranslatedText
   };
 }

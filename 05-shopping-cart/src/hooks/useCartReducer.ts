@@ -1,7 +1,7 @@
 import {
   CartActiontype,
   cartInitialState,
-  cartReducer,
+  cartReducer
 } from "@/reducers/cart.ts";
 import { Product } from "@/types";
 import { useReducer } from "react";

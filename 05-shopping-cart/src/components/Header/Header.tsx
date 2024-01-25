@@ -9,7 +9,7 @@ const Header: React.FC<HeaderProps> = () => {
         position: "sticky",
         top: 0,
         backgroundColor: "Canvas",
-        zIndex: 10,
+        zIndex: 10
       }}
     >
       <h1>Shopping Cart</h1>

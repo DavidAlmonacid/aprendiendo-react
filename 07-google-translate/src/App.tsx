@@ -16,7 +16,7 @@ function App() {
     setFromLanguage,
     setToLanguage,
     setText,
-    setTranslatedText,
+    setTranslatedText
   } = useStore();
 
   return (

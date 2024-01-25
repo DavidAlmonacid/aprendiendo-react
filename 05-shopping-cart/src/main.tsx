@@ -8,5 +8,5 @@ const root = createRoot(document.getElementById("root")!);
 root.render(
   <FiltersProvider>
     <App />
-  </FiltersProvider>,
+  </FiltersProvider>
 );

@@ -22,6 +22,6 @@ export const useSearch = () => {
   return {
     search,
     updateSearch,
-    error,
+    error
   };
 };

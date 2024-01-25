@@ -20,7 +20,7 @@ export enum ActionType {
   SET_FROM_LANGUAGE = "SET_FROM_LANGUAGE",
   SET_TO_LANGUAGE = "SET_TO_LANGUAGE",
   SET_TEXT = "SET_TEXT",
-  SET_TRANSLATED_TEXT = "SET_TRANSLATED_TEXT",
+  SET_TRANSLATED_TEXT = "SET_TRANSLATED_TEXT"
 }
 
 export type Language = keyof typeof SUPPORTED_LANGUAGES;
@@ -31,5 +31,5 @@ export type FromLanguage = Language | AutoLanguage;
 
 export enum SelectorType {
   FROM = "from",
-  TO = "to",
+  TO = "to"
 }

@@ -4,7 +4,7 @@ export const SUPPORTED_LANGUAGES = {
   fr: "French",
   de: "German",
   it: "Italian",
-  pt: "Portuguese",
+  pt: "Portuguese"
 };
 
 export const AUTO_LANGUAGE = "auto";
