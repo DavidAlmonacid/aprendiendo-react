@@ -1,6 +1,12 @@
+import type { ListOfTodos } from "../types.d.ts";
 import { Todo } from "./Todo.tsx";
 
-export function Todos({ todos }) {
+interface Props {
+  todos: ListOfTodos;
+  onRemoveTodo: (id: string) => void;
+}
+
+export function Todos({ todos, onRemoveTodo }: Props) {
   return (
     <ul className="todo-list">
       {todos?.map((todo) => (
@@ -17,9 +23,9 @@ export function Todos({ todos }) {
             id={todo.id}
             title={todo.title}
             completed={todo.completed}
+            onRemoveTodo={onRemoveTodo}
             // setCompleted={setCompleted}
             // setTitle={setTitle}
-            // removeTodo={removeTodo}
             // isEditing={isEditing}
             // setIsEditing={setIsEditing}
           />
