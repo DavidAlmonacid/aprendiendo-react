@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { TodosContext } from "../contexts/TodosContext.tsx";
-import type { TodoId } from "../types";
+import type { Todo, TodoId } from "../types";
 
 export function useTodos() {
   const { todos, setTodos } = useContext(TodosContext);
@@ -10,14 +10,17 @@ export function useTodos() {
     setTodos(newTodos);
   };
 
-  // const addTodo = (todo: Todo) => {
-  //   setTodos([...todos, todo]);
-  // };
+  const completeTodo = ({ id, completed }: Pick<Todo, "id" | "completed">) => {
+    const newTodos = todos.map((todo) => {
+      if (todo.id === id) {
+        return { ...todo, completed };
+      }
 
-  // const editTodo = (todo: Todo) => {
-  //   const newTodos = todos.map((t) => (t.id === todo.id ? todo : t));
-  //   setTodos(newTodos);
-  // };
+      return todo;
+    });
 
-  return { todos, setTodos, removeTodo };
+    setTodos(newTodos);
+  };
+
+  return { todos, setTodos, removeTodo, completeTodo };
 }

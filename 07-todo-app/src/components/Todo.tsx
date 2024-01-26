@@ -4,21 +4,23 @@ import type { Todo } from "../types";
 type Props = Todo;
 
 export function Todo({ id, title, completed }: Props) {
-  const { removeTodo } = useTodos();
+  const { removeTodo, completeTodo } = useTodos();
 
   const handleRemove = () => {
     removeTodo({ id });
   };
 
+  const handleComplete = (event: React.ChangeEvent<HTMLInputElement>) => {
+    completeTodo({ id, completed: event.target.checked });
+  };
+
   return (
     <div className="view">
       <input
+        type="checkbox"
         className="toggle"
         checked={completed}
-        type="checkbox"
-        // onChange={(e) => {
-        //   setCompleted(id, e.target.checked);
-        // }}
+        onChange={handleComplete}
       />
 
       <label>{title}</label>
