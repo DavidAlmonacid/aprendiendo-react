@@ -6,6 +6,10 @@ type Props = Todo;
 export function Todo({ id, title, completed }: Props) {
   const { removeTodo } = useTodos();
 
+  const handleRemove = () => {
+    removeTodo({ id });
+  };
+
   return (
     <div className="view">
       <input
@@ -19,12 +23,7 @@ export function Todo({ id, title, completed }: Props) {
 
       <label>{title}</label>
 
-      <button
-        className="destroy"
-        onClick={() => {
-          removeTodo(id);
-        }}
-      ></button>
+      <button className="destroy" onClick={handleRemove}></button>
     </div>
   );
 }

@@ -1,10 +1,11 @@
 import { useContext } from "react";
 import { TodosContext } from "../contexts/TodosContext.tsx";
+import type { TodoId } from "../types";
 
 export function useTodos() {
   const { todos, setTodos } = useContext(TodosContext);
 
-  const removeTodo = (id: string) => {
+  const removeTodo = ({ id }: TodoId) => {
     const newTodos = todos.filter((todo) => todo.id !== id);
     setTodos(newTodos);
   };
