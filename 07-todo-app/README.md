@@ -17,27 +17,6 @@
 - [ ] Pasar a Reducer
 - [ ] Sincronizar con el backend
 
-## Marcar TODO como completado
-
-En el `App.tsx`:
-
-```tsx
-const handleCompleted = (id: string, completed: boolean): void => {
-  const newTodos = todos.map((todo) => {
-    if (todo.id === id) {
-      return {
-        ...todo,
-        completed
-      };
-    }
-
-    return todo;
-  });
-
-  setTodos(newTodos);
-};
-```
-
 ## Añadir forma de filtrar TODOs (Footer)
 
 1. Añadir componente Footer
