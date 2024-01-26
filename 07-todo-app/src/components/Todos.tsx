@@ -1,12 +1,15 @@
-import type { ListOfTodos } from "../types.d.ts";
+import { useEffect } from "react";
+import { initialTodos } from "../constants.ts";
+import { useTodos } from "../hooks/useTodos.ts";
 import { Todo } from "./Todo.tsx";
 
-interface Props {
-  todos: ListOfTodos;
-  onRemoveTodo: (id: string) => void;
-}
+export function Todos() {
+  const { todos, setTodos } = useTodos();
 
-export function Todos({ todos, onRemoveTodo }: Props) {
+  useEffect(() => {
+    setTodos(initialTodos);
+  }, [setTodos]);
+
   return (
     <ul className="todo-list">
       {todos?.map((todo) => (
@@ -17,13 +20,13 @@ export function Todos({ todos, onRemoveTodo }: Props) {
           //   ${todo.completed ? "completed" : ""}
           //   ${isEditing === todo.id ? "editing" : ""}
           // `}
+          className={`${todo.completed ? "completed" : ""}`}
         >
           <Todo
             key={todo.id}
             id={todo.id}
             title={todo.title}
             completed={todo.completed}
-            onRemoveTodo={onRemoveTodo}
             // setCompleted={setCompleted}
             // setTitle={setTitle}
             // isEditing={isEditing}

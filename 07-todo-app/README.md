@@ -5,7 +5,7 @@
 - [x] Añadir estilos del TodoMVC
 - [x] Listar todos los TODOs
 - [x] Poder borrar un TODO
-- [ ] Hacer los TODOs globales
+- [x] Hacer los TODOs globales
 - [ ] Marcar TODO como completado
 - [ ] Añadir forma de filtrar TODOs (Footer)
 - [ ] Mostrar número de TODOs pendientes (Footer)

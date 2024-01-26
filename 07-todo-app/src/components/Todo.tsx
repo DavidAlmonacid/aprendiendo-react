@@ -1,10 +1,11 @@
+import { useTodos } from "../hooks/useTodos";
 import type { Todo } from "../types";
 
-interface Props extends Todo {
-  onRemoveTodo: (id: string) => void;
-}
+type Props = Todo;
 
-export function Todo({ id, title, completed, onRemoveTodo }: Props) {
+export function Todo({ id, title, completed }: Props) {
+  const { removeTodo } = useTodos();
+
   return (
     <div className="view">
       <input
@@ -21,7 +22,7 @@ export function Todo({ id, title, completed, onRemoveTodo }: Props) {
       <button
         className="destroy"
         onClick={() => {
-          onRemoveTodo(id);
+          removeTodo(id);
         }}
       ></button>
     </div>
