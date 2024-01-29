@@ -15,14 +15,14 @@ export const TODO_FILTERS = {
 export const FILTER_BUTTONS = {
   [TODO_FILTERS.ALL]: {
     label: "All",
-    herf: `/?filter=${TODO_FILTERS.ALL}`
+    href: `/?filter=${TODO_FILTERS.ALL}`
   },
   [TODO_FILTERS.ACTIVE]: {
     label: "Active",
-    herf: `/?filter=${TODO_FILTERS.ACTIVE}`
+    href: `/?filter=${TODO_FILTERS.ACTIVE}`
   },
   [TODO_FILTERS.COMPLETED]: {
     label: "Completed",
-    herf: `/?filter=${TODO_FILTERS.COMPLETED}`
+    href: `/?filter=${TODO_FILTERS.COMPLETED}`
   }
 } as const;
