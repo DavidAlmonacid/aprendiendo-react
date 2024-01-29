@@ -1,13 +1,44 @@
+import { useState } from "react";
+import { Footer } from "./components/Footer.tsx";
 import { Todos } from "./components/Todos.tsx";
-import { TodosProvider } from "./contexts/TodosContext.tsx";
+import { TODO_FILTERS } from "./constants.ts";
+import { useTodos } from "./hooks/useTodos.ts";
+import type { FilterValue } from "./types";
 
 function App() {
+  const [filter, setFilter] = useState<FilterValue>(TODO_FILTERS.ALL);
+  const { todos } = useTodos();
+
+  const handleFilterChange = (filter: FilterValue) => {
+    setFilter(filter);
+  };
+
+  const activeCount = todos.filter((todo) => !todo.completed).length;
+  const completedCount = todos.length - activeCount;
+
+  const filteredTodos = todos.filter((todo) => {
+    if (filter === TODO_FILTERS.ACTIVE) {
+      return !todo.completed;
+    }
+
+    if (filter === TODO_FILTERS.COMPLETED) {
+      return todo.completed;
+    }
+
+    return true;
+  });
+
   return (
-    <TodosProvider>
-      <div className="todoapp">
-        <Todos />
-      </div>
-    </TodosProvider>
+    <div className="todoapp">
+      <Todos todos={filteredTodos} />
+      <Footer
+        activeCount={activeCount}
+        completedCount={completedCount}
+        selectedFilter={filter}
+        handleFilterChange={handleFilterChange}
+        onClearCompleted={() => {}}
+      />
+    </div>
   );
 }
 
