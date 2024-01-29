@@ -1,15 +1,11 @@
-import { useEffect } from "react";
-import { INITIAL_TODOS } from "../constants.ts";
-import { useTodos } from "../hooks/useTodos.ts";
+import type { Todo as ITodo } from "../types.d.ts";
 import { Todo } from "./Todo.tsx";
 
-export function Todos() {
-  const { todos, setTodos } = useTodos();
+interface Props {
+  todos: ITodo[];
+}
 
-  useEffect(() => {
-    setTodos(INITIAL_TODOS);
-  }, [setTodos]);
-
+export function Todos({ todos }: Props) {
   return (
     <ul className="todo-list">
       {todos?.map((todo) => (
