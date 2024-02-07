@@ -8,7 +8,7 @@
 - [x] Hacer los TODOs globales
 - [x] Marcar TODO como completado
 - [x] Añadir forma de filtrar TODOs (Footer)
-- [ ] Mostrar número de TODOs pendientes (Footer)
+- [x] Mostrar número de TODOs pendientes (Footer)
 - [ ] Añadir forma de borrar todos los TODOs completados
 - [ ] Crear Header con input (Header)
 - [ ] Crear un TODO (Header)
