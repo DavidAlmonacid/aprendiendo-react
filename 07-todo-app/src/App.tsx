@@ -36,7 +36,6 @@ function App() {
         completedCount={completedCount}
         selectedFilter={filter}
         handleFilterChange={handleFilterChange}
-        onClearCompleted={() => {}}
       />
     </div>
   );

@@ -10,6 +10,11 @@ export function useTodos() {
     setTodos(newTodos);
   };
 
+  const removeCompletedTodos = () => {
+    const newTodos = todos.filter((todo) => !todo.completed);
+    setTodos(newTodos);
+  };
+
   const completeTodo = ({ id, completed }: Pick<Todo, "id" | "completed">) => {
     const newTodos = todos.map((todo) => {
       if (todo.id === id) {
@@ -22,5 +27,5 @@ export function useTodos() {
     setTodos(newTodos);
   };
 
-  return { todos, setTodos, removeTodo, completeTodo };
+  return { todos, setTodos, removeTodo, removeCompletedTodos, completeTodo };
 }
