@@ -1,9 +1,13 @@
 import { useState } from "react";
-import { Footer } from "./components/Footer.tsx";
-import { Todos } from "./components/Todos.tsx";
+
+import type { FilterValue } from "./types";
+
 import { TODO_FILTERS } from "./constants.ts";
 import { useTodos } from "./hooks/useTodos.ts";
-import type { FilterValue } from "./types";
+
+import { Footer } from "./components/Footer.tsx";
+import { Header } from "./components/Header.tsx";
+import { Todos } from "./components/Todos.tsx";
 
 function App() {
   const [filter, setFilter] = useState<FilterValue>(TODO_FILTERS.ALL);
@@ -30,6 +34,7 @@ function App() {
 
   return (
     <div className="todoapp">
+      <Header />
       <Todos todos={filteredTodos} />
       <Footer
         activeCount={activeCount}

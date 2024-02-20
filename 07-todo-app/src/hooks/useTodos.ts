@@ -5,6 +5,17 @@ import type { Todo, TodoId } from "../types";
 export function useTodos() {
   const { todos, setTodos } = useContext(TodosContext);
 
+  const addTodo = ({ title }: { title: string }) => {
+    const newTodo: Todo = {
+      title,
+      id: crypto.randomUUID(),
+      completed: false
+    };
+
+    const newTodos = [...todos, newTodo];
+    setTodos(newTodos);
+  };
+
   const removeTodo = ({ id }: TodoId) => {
     const newTodos = todos.filter((todo) => todo.id !== id);
     setTodos(newTodos);
@@ -27,5 +38,12 @@ export function useTodos() {
     setTodos(newTodos);
   };
 
-  return { todos, setTodos, removeTodo, removeCompletedTodos, completeTodo };
+  return {
+    todos,
+    setTodos,
+    addTodo,
+    removeTodo,
+    removeCompletedTodos,
+    completeTodo
+  };
 }
