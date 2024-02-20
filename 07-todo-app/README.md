@@ -12,8 +12,7 @@
 - [x] Añadir forma de borrar todos los TODOs completados
 - [x] Crear Header con input (Header)
 - [x] Crear un TODO (Header)
-- [ ] Poder editar el texto de un TODO (Doble click)
-- [ ] Añadir animaciones con AutoAnimate
+- [x] Poder editar el texto de un TODO (Doble click)
 - [ ] Sincronizar con el backend
 
 [Todo MVC React](https://todomvc.com/examples/react/dist/)

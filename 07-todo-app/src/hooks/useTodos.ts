@@ -16,6 +16,18 @@ export function useTodos() {
     setTodos(newTodos);
   };
 
+  const updateTodo = ({ id, title }: Pick<Todo, "id" | "title">) => {
+    const newTodos = todos.map((todo) => {
+      if (todo.id === id) {
+        return { ...todo, title };
+      }
+
+      return todo;
+    });
+
+    setTodos(newTodos);
+  };
+
   const removeTodo = ({ id }: TodoId) => {
     const newTodos = todos.filter((todo) => todo.id !== id);
     setTodos(newTodos);
@@ -42,6 +54,7 @@ export function useTodos() {
     todos,
     setTodos,
     addTodo,
+    updateTodo,
     removeTodo,
     removeCompletedTodos,
     completeTodo
