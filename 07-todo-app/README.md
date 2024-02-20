@@ -15,3 +15,5 @@
 - [ ] Poder editar el texto de un TODO (Doble click)
 - [ ] Añadir animaciones con AutoAnimate
 - [ ] Sincronizar con el backend
+
+[Todo MVC React](https://todomvc.com/examples/react/dist/)
