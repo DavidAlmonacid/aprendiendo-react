@@ -17,7 +17,6 @@ export function Filters({ selectedFilter, onFilterChange }: Props) {
             <a
               href={href}
               className={isSelected ? "selected" : ""}
-              // onClick={() => onFilterChange(key)}
               onClick={(event) => {
                 event.preventDefault();
                 onFilterChange(key as FilterValue);
