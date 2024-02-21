@@ -1,4 +1,4 @@
-import type { Todo } from "./types";
+import type { Todo } from "./types.d.ts";
 
 export const INITIAL_TODOS: Todo[] = [
   { id: "1", title: "Aprender React", completed: false },

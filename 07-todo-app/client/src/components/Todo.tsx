@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useTodos } from "../hooks/useTodos";
-import type { Todo } from "../types";
+import type { Todo } from "../types.d.ts";
 
 type Props = Todo;
 

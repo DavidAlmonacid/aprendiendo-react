@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { TodosContext } from "../contexts/TodosContext.tsx";
-import type { Todo, TodoId } from "../types";
+import type { Todo, TodoId } from "../types.d.ts";
 
 export function useTodos() {
   const { todos, setTodos } = useContext(TodosContext);
@@ -52,7 +52,6 @@ export function useTodos() {
 
   return {
     todos,
-    setTodos,
     addTodo,
     updateTodo,
     removeTodo,

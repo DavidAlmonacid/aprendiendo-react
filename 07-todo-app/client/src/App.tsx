@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import type { FilterValue } from "./types";
+import type { FilterValue } from "./types.d.ts";
 
 import { TODO_FILTERS } from "./constants.ts";
 import { useTodos } from "./hooks/useTodos.ts";
