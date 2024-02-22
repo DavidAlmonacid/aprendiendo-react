@@ -1,8 +1,5 @@
 import { createContext, useState } from "react";
-import { fetchTasks } from "../api/tasks.ts";
 import type { Todo } from "../types.d.ts";
-
-const initialTodos: Todo[] = await fetchTasks();
 
 interface TodosContextProps {
   todos: Todo[];
@@ -12,7 +9,7 @@ interface TodosContextProps {
 export const TodosContext = createContext({} as TodosContextProps);
 
 export function TodosProvider({ children }: { children: React.ReactNode }) {
-  const [todos, setTodos] = useState(initialTodos);
+  const [todos, setTodos] = useState<Todo[]>([]);
 
   return (
     <TodosContext.Provider value={{ todos, setTodos }}>

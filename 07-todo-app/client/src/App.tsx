@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import type { FilterValue } from "./types.d.ts";
 
@@ -11,7 +11,15 @@ import { Todos } from "./components/Todos.tsx";
 
 function App() {
   const [filter, setFilter] = useState<FilterValue>(TODO_FILTERS.ALL);
-  const { todos } = useTodos();
+  const { todos, setTodos } = useTodos();
+
+  useEffect(() => {
+    fetch("http://localhost:3000/api/tasks")
+      .then((res) => res.json())
+      .then(({ data }) => {
+        setTodos(data);
+      });
+  }, [setTodos]);
 
   const handleFilterChange = (filter: FilterValue) => {
     setFilter(filter);

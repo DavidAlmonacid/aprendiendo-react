@@ -10,4 +10,16 @@ export class TaskController {
 
     return res.json(data);
   }
+
+  static async updateCompleted(req, res) {
+    const { id } = req.params;
+    const { completed } = req.body;
+    const data = await TaskModel.updateCompleted({ id, completed });
+
+    if (data.error) {
+      return res.status(500).json({ error: data.message });
+    }
+
+    return res.json(data);
+  }
 }

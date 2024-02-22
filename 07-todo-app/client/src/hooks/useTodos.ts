@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import { fetchTasks, updateCompleted } from "../api/tasks.ts";
 import { TodosContext } from "../contexts/TodosContext.tsx";
 import type { Todo, TodoId } from "../types.d.ts";
 
@@ -38,20 +39,18 @@ export function useTodos() {
     setTodos(newTodos);
   };
 
-  const completeTodo = ({ id, completed }: Pick<Todo, "id" | "completed">) => {
-    const newTodos = todos.map((todo) => {
-      if (todo.id === id) {
-        return { ...todo, completed };
-      }
-
-      return todo;
-    });
-
+  const completeTodo = async ({
+    id,
+    completed
+  }: Pick<Todo, "id" | "completed">) => {
+    await updateCompleted({ id, completed });
+    const newTodos = await fetchTasks();
     setTodos(newTodos);
   };
 
   return {
     todos,
+    setTodos,
     addTodo,
     updateTodo,
     removeTodo,

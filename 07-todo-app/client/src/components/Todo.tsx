@@ -1,12 +1,13 @@
 import { useState } from "react";
+// import { updateCompleted } from "../api/tasks.ts";
 import { useTodos } from "../hooks/useTodos";
 import type { Todo } from "../types.d.ts";
 
 type Props = Todo;
 
-export function Todo({ id, title, completed }: Props) {
+export function Todo({ id, title: initialTitle, completed }: Props) {
   const [isEditing, setIsEditing] = useState(false);
-  const [newTitle, setNewTitle] = useState("");
+  const [title, setTitle] = useState(initialTitle);
   const { removeTodo, updateTodo, completeTodo } = useTodos();
 
   const handleRemove = () => {
@@ -21,11 +22,15 @@ export function Todo({ id, title, completed }: Props) {
     setIsEditing(true);
   };
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
 
     setIsEditing(false);
-    updateTodo({ id, title: newTitle });
+    updateTodo({ id, title: title });
+  };
+
+  const handleBlur = () => {
+    setIsEditing(false);
   };
 
   return (
@@ -39,18 +44,22 @@ export function Todo({ id, title, completed }: Props) {
             onChange={handleComplete}
           />
 
-          <label>{newTitle || title}</label>
+          <label>{title}</label>
 
           <button className="destroy" onClick={handleRemove}></button>
         </>
       ) : (
-        <form className="input-container" onSubmit={handleSubmit}>
+        <form
+          className="input-container"
+          onSubmit={handleSubmit}
+          onBlur={handleBlur}
+        >
           <input
             type="text"
             className="new-todo"
             style={{ color: "#484848" }}
-            value={newTitle || title}
-            onChange={(event) => setNewTitle(event.target.value)}
+            value={title}
+            onChange={(event) => setTitle(event.target.value)}
             autoFocus
           />
         </form>
