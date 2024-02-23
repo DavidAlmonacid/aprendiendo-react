@@ -31,6 +31,7 @@ export function Todo({ id, title: initialTitle, completed }: Props) {
 
   const handleBlur = () => {
     setIsEditing(false);
+    updateTodo({ id, title: title });
   };
 
   return (

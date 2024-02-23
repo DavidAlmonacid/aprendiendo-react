@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { fetchTasks, updateCompleted } from "../api/tasks.ts";
+import { fetchTasks, updateCompleted, updateTitle } from "../api/tasks.ts";
 import { TodosContext } from "../contexts/TodosContext.tsx";
 import type { Todo, TodoId } from "../types.d.ts";
 
@@ -17,15 +17,16 @@ export function useTodos() {
     setTodos(newTodos);
   };
 
-  const updateTodo = ({ id, title }: Pick<Todo, "id" | "title">) => {
-    const newTodos = todos.map((todo) => {
-      if (todo.id === id) {
-        return { ...todo, title };
-      }
+  const updateTodo = async ({ id, title }: Pick<Todo, "id" | "title">) => {
+    // const newTodos = todos.map((todo) => {
+    //   if (todo.id === id) {
+    //     return { ...todo, title };
+    //   }
 
-      return todo;
-    });
-
+    //   return todo;
+    // });
+    await updateTitle({ id, title });
+    const newTodos = await fetchTasks();
     setTodos(newTodos);
   };
 

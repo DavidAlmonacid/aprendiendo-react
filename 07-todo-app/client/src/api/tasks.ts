@@ -17,3 +17,11 @@ export async function updateCompleted({
     body: JSON.stringify({ completed })
   });
 }
+
+export async function updateTitle({ id, title }: Pick<Todo, "id" | "title">) {
+  await fetch(`http://localhost:3000/api/tasks/title/${id}`, {
+    method: "PATCH",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ title })
+  });
+}
