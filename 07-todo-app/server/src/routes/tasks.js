@@ -7,7 +7,7 @@ export const tasksRouter = Router();
 tasksRouter.get("/", TaskController.getAll);
 
 // Update a completed task
-tasksRouter.patch("/:id", TaskController.updateCompleted);
+tasksRouter.patch("/done/:id", TaskController.updateCompleted);
 
 // Update a title task
-// tasksRouter.patch("/:id", TaskController.updateTitle);
+tasksRouter.patch("/title/:id", TaskController.updateTitle);

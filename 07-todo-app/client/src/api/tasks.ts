@@ -11,7 +11,7 @@ export async function updateCompleted({
   id,
   completed
 }: Pick<Todo, "id" | "completed">) {
-  await fetch(`http://localhost:3000/api/tasks/${id}`, {
+  await fetch(`http://localhost:3000/api/tasks/done/${id}`, {
     method: "PATCH",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ completed })

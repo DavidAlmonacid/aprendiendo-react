@@ -25,4 +25,17 @@ export class TaskModel {
       return { error: true, message: error.message };
     }
   }
+
+  static async updateTitle({ id, title }) {
+    try {
+      await pool.query("UPDATE tasks SET title = $1 WHERE id = $2", [
+        title,
+        id
+      ]);
+
+      return { success: true };
+    } catch (error) {
+      return { error: true, message: error.message };
+    }
+  }
 }
