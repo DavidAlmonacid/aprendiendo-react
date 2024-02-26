@@ -1,5 +1,4 @@
 import { useState } from "react";
-// import { updateCompleted } from "../api/tasks.ts";
 import { useTodos } from "../hooks/useTodos";
 import type { Todo } from "../types.d.ts";
 

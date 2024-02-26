@@ -1,4 +1,4 @@
-import type { Todo } from "../types.d.ts";
+import type { Todo, TodoId } from "../types.d.ts";
 
 export async function fetchTasks() {
   const res = await fetch("http://localhost:3000/api/tasks");
@@ -31,5 +31,11 @@ export async function updateTitle({ id, title }: Pick<Todo, "id" | "title">) {
     method: "PATCH",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ title })
+  });
+}
+
+export async function deleteTask({ id }: TodoId) {
+  await fetch(`http://localhost:3000/api/tasks/${id}`, {
+    method: "DELETE"
   });
 }
