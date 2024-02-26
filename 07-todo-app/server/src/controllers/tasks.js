@@ -56,4 +56,14 @@ export class TaskController {
 
     return res.json(data);
   }
+
+  static async deleteAllCompleted(req, res) {
+    const data = await TaskModel.deleteAllCompleted();
+
+    if (data.error) {
+      return res.status(500).json({ error: data.message });
+    }
+
+    return res.json(data);
+  }
 }

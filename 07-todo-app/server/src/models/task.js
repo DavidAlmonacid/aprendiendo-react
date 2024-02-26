@@ -58,4 +58,14 @@ export class TaskModel {
       return { error: true, message: error.message };
     }
   }
+
+  static async deleteAllCompleted() {
+    try {
+      await pool.query("DELETE FROM tasks WHERE completed = true");
+
+      return { success: true };
+    } catch (error) {
+      return { error: true, message: error.message };
+    }
+  }
 }
