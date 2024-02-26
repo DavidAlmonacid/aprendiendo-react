@@ -9,14 +9,14 @@ tasksRouter.get("/", TaskController.getAll);
 // Create a task
 tasksRouter.post("/", TaskController.create);
 
-// Update a completed task
-tasksRouter.patch("/done/:id", TaskController.updateCompleted);
-
-// Update a title task
-tasksRouter.patch("/title/:id", TaskController.updateTitle);
-
 // Delete a task
 tasksRouter.delete("/:id", TaskController.delete);
 
+// Update a completed task
+tasksRouter.patch("/done/:id", TaskController.updateCompleted);
+
 // Delete all completed tasks
-tasksRouter.delete("/completed", TaskController.deleteAllCompleted);
+tasksRouter.delete("/done/all", TaskController.deleteAllCompleted);
+
+// Update a title task
+tasksRouter.patch("/title/:id", TaskController.updateTitle);
