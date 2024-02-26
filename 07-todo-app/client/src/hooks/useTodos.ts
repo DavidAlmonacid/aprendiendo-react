@@ -1,30 +1,23 @@
 import { useContext } from "react";
-import { fetchTasks, updateCompleted, updateTitle } from "../api/tasks.ts";
+import {
+  createTask,
+  fetchTasks,
+  updateCompleted,
+  updateTitle
+} from "../api/tasks.ts";
 import { TodosContext } from "../contexts/TodosContext.tsx";
 import type { Todo, TodoId } from "../types.d.ts";
 
 export function useTodos() {
   const { todos, setTodos } = useContext(TodosContext);
 
-  const addTodo = ({ title }: { title: string }) => {
-    const newTodo: Todo = {
-      title,
-      id: crypto.randomUUID(),
-      completed: false
-    };
-
-    const newTodos = [...todos, newTodo];
+  const addTodo = async ({ title }: { title: string }) => {
+    await createTask({ title });
+    const newTodos = await fetchTasks();
     setTodos(newTodos);
   };
 
   const updateTodo = async ({ id, title }: Pick<Todo, "id" | "title">) => {
-    // const newTodos = todos.map((todo) => {
-    //   if (todo.id === id) {
-    //     return { ...todo, title };
-    //   }
-
-    //   return todo;
-    // });
     await updateTitle({ id, title });
     const newTodos = await fetchTasks();
     setTodos(newTodos);
