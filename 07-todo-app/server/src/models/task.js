@@ -38,4 +38,14 @@ export class TaskModel {
       return { error: true, message: error.message };
     }
   }
+
+  static async create({ title }) {
+    try {
+      await pool.query("INSERT INTO tasks (title) VALUES ($1)", [title]);
+
+      return { success: true };
+    } catch (error) {
+      return { error: true, message: error.message };
+    }
+  }
 }

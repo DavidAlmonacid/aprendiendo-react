@@ -34,4 +34,15 @@ export class TaskController {
 
     return res.json(data);
   }
+
+  static async create(req, res) {
+    const { title } = req.body;
+    const data = await TaskModel.create({ title });
+
+    if (data.error) {
+      return res.status(500).json({ error: data.message });
+    }
+
+    return res.json(data);
+  }
 }
