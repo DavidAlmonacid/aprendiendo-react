@@ -14,3 +14,6 @@ tasksRouter.patch("/done/:id", TaskController.updateCompleted);
 
 // Update a title task
 tasksRouter.patch("/title/:id", TaskController.updateTitle);
+
+// Delete a task
+tasksRouter.delete("/:id", TaskController.delete);

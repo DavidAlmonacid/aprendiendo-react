@@ -45,4 +45,15 @@ export class TaskController {
 
     return res.json(data);
   }
+
+  static async delete(req, res) {
+    const { id } = req.params;
+    const data = await TaskModel.delete({ id });
+
+    if (data.error) {
+      return res.status(500).json({ error: data.message });
+    }
+
+    return res.json(data);
+  }
 }

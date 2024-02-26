@@ -48,4 +48,14 @@ export class TaskModel {
       return { error: true, message: error.message };
     }
   }
+
+  static async delete({ id }) {
+    try {
+      await pool.query("DELETE FROM tasks WHERE id = $1", [id]);
+
+      return { success: true };
+    } catch (error) {
+      return { error: true, message: error.message };
+    }
+  }
 }
