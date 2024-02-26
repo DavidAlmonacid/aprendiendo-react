@@ -39,3 +39,9 @@ export async function deleteTask({ id }: TodoId) {
     method: "DELETE"
   });
 }
+
+export async function deleteCompletedTasks() {
+  await fetch("http://localhost:3000/api/tasks/done/all", {
+    method: "DELETE"
+  });
+}

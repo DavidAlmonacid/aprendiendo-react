@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import {
   createTask,
+  deleteCompletedTasks,
   deleteTask,
   fetchTasks,
   updateCompleted,
@@ -30,8 +31,9 @@ export function useTodos() {
     setTodos(newTodos);
   };
 
-  const removeCompletedTodos = () => {
-    const newTodos = todos.filter((todo) => !todo.completed);
+  const removeCompletedTodos = async () => {
+    await deleteCompletedTasks();
+    const newTodos = await fetchTasks();
     setTodos(newTodos);
   };
 
