@@ -1,18 +1,37 @@
-import { ArrowsSwap } from "./components/Icons.tsx";
+import { AUTO_LANGUAGE } from "./constants.ts";
 import { useStore } from "./hooks/useStore.ts";
-import { AUTO_LANGUAGE } from "./types/constants.ts";
+import { SectionType } from "./types/enums.ts";
+
+import { ArrowsSwap } from "./components/Icons.tsx";
+import { LanguageSelector } from "./components/LanguageSelector.tsx";
+import { TextArea } from "./components/TextArea.tsx";
+import { TranslateArea } from "./components/TranslateArea.tsx";
 
 function App() {
-  const { fromLanguage, toLanguage, interchangeLanguages } = useStore();
+  const {
+    fromLanguage,
+    setFromLanguage,
+    toLanguage,
+    setToLanguage,
+    interchangeLanguages,
+    text,
+    setText,
+    translatedText,
+    isLoading
+  } = useStore();
 
   return (
-    <div>
+    <div className="px-5">
       <h1>Google Translate</h1>
 
-      <div className="grid grid-cols-[1fr_min-content_1fr] max-w-3xl mx-auto">
+      <div className="grid grid-cols-[1fr_min-content_1fr] max-w-4xl mx-auto">
         <section>
-          <h2>from</h2>
-          {fromLanguage}
+          <LanguageSelector
+            type={SectionType.From}
+            value={fromLanguage}
+            onChange={setFromLanguage}
+          />
+          <TextArea value={text} onChange={setText} />
         </section>
 
         <div>
@@ -26,8 +45,15 @@ function App() {
         </div>
 
         <section>
-          <h2>to</h2>
-          {toLanguage}
+          <LanguageSelector
+            type={SectionType.To}
+            value={toLanguage}
+            onChange={setToLanguage}
+          />
+          <TranslateArea
+            isLoading={isLoading}
+            translatedText={translatedText}
+          />
         </section>
       </div>
     </div>
