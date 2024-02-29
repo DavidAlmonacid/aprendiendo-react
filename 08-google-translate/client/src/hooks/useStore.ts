@@ -1,5 +1,6 @@
 import { useReducer } from "react";
-import { AUTO_LANGUAGE } from "../types/constants.ts";
+import { AUTO_LANGUAGE } from "../constants.ts";
+import { ActionType } from "../types/enums.ts";
 import type {
   Action,
   FromLanguage,
@@ -17,17 +18,17 @@ const initialState: State = {
 
 function reducer(state: State, action: Action) {
   switch (action.type) {
-    case "SET_FROM_LANGUAGE":
+    case ActionType.SetFromLanguage:
       return {
         ...state,
         fromLanguage: action.payload
       };
-    case "SET_TO_LANGUAGE":
+    case ActionType.SetToLanguage:
       return {
         ...state,
         toLanguage: action.payload
       };
-    case "INTERCHANGE_LANGUAGES":
+    case ActionType.InterchangeLanguages:
       if (state.fromLanguage === AUTO_LANGUAGE) {
         return state;
       }
@@ -37,14 +38,14 @@ function reducer(state: State, action: Action) {
         fromLanguage: state.toLanguage,
         toLanguage: state.fromLanguage
       };
-    case "SET_TEXT":
+    case ActionType.SetText:
       return {
         ...state,
         text: action.payload,
         translatedText: "",
         isLoading: true
       };
-    case "SET_TRANSLATED_TEXT":
+    case ActionType.SetTranslatedText:
       return {
         ...state,
         translatedText: action.payload,
@@ -62,23 +63,23 @@ export function useStore() {
   ] = useReducer(reducer, initialState);
 
   const interchangeLanguages = () => {
-    dispatch({ type: "INTERCHANGE_LANGUAGES" });
+    dispatch({ type: ActionType.InterchangeLanguages });
   };
 
   const setFromLanguage = (payload: FromLanguage) => {
-    dispatch({ type: "SET_FROM_LANGUAGE", payload });
+    dispatch({ type: ActionType.SetFromLanguage, payload });
   };
 
   const setToLanguage = (payload: Language) => {
-    dispatch({ type: "SET_TO_LANGUAGE", payload });
+    dispatch({ type: ActionType.SetToLanguage, payload });
   };
 
   const setText = (payload: string) => {
-    dispatch({ type: "SET_TEXT", payload });
+    dispatch({ type: ActionType.SetText, payload });
   };
 
   const setTranslatedText = (payload: string) => {
-    dispatch({ type: "SET_TRANSLATED_TEXT", payload });
+    dispatch({ type: ActionType.SetTranslatedText, payload });
   };
 
   return {
