@@ -36,7 +36,8 @@ function reducer(state: State, action: Action) {
       return {
         ...state,
         fromLanguage: state.toLanguage,
-        toLanguage: state.fromLanguage
+        toLanguage: state.fromLanguage,
+        text: state.translatedText
       };
     case ActionType.SetText:
       return {
