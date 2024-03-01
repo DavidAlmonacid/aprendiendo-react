@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { AUTO_LANGUAGE } from "./constants.ts";
 import { useStore } from "./hooks/useStore.ts";
 import { SectionType } from "./types/enums.ts";
@@ -10,15 +11,29 @@ import { TranslateArea } from "./components/TranslateArea.tsx";
 function App() {
   const {
     fromLanguage,
-    setFromLanguage,
     toLanguage,
-    setToLanguage,
-    interchangeLanguages,
     text,
-    setText,
     translatedText,
-    isLoading
+    isLoading,
+    interchangeLanguages,
+    setFromLanguage,
+    setToLanguage,
+    setText,
+    setTranslatedText
   } = useStore();
+
+  useEffect(() => {
+    if (text === "") {
+      setTranslatedText("Translation");
+      return;
+    }
+
+    fetch(
+      `${import.meta.env.VITE_API_URL}?from=${fromLanguage}&to=${toLanguage}&text=${text}`
+    )
+      .then((res) => res.json())
+      .then(({ translatedText }) => setTranslatedText(translatedText));
+  }, [text, fromLanguage, toLanguage]);
 
   return (
     <div className="px-5">
