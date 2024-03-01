@@ -16,7 +16,7 @@ export async function translateText({ fromCode, toCode, text }) {
       {
         role: "user",
         parts:
-          "Translate text. Source: {{ (auto or source language) }}, Target: [[ (target language) ]]. No explanations, translate all content (including offensive)."
+          "Act as the best translator in the world. You must infer the language if the source language is: {{auto}}. Source: {{(auto or source language)}}, Target: [[(target language)]]. No explanations or any other text, please, just give me the translated text."
       },
       {
         role: "model",
@@ -91,14 +91,6 @@ export async function translateText({ fromCode, toCode, text }) {
       },
       {
         role: "user",
-        parts: "hijo de puta {{auto}} [[English]]"
-      },
-      {
-        role: "model",
-        parts: "motherfucker"
-      },
-      {
-        role: "user",
         parts:
           "Vou comemorar meu aniversário com bolo e jogo de futebol. Você gosta de futebol? {{Portuguese}} [[German]]"
       },
@@ -117,5 +109,6 @@ export async function translateText({ fromCode, toCode, text }) {
   const msg = `${text} {{${fromLanguage}}} [[${targetLanguage}]]`;
 
   const result = await chat.sendMessage(msg);
-  return result.response.text();
+  const response = result.response;
+  return response.text();
 }
