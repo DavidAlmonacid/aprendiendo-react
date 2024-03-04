@@ -23,11 +23,16 @@ function reducer(state: State, action: Action) {
         ...state,
         fromLanguage: action.payload
       };
-    case ActionType.SetToLanguage:
+    case ActionType.SetToLanguage: {
+      const isLoading = state.text !== "";
+
       return {
         ...state,
-        toLanguage: action.payload
+        toLanguage: action.payload,
+        translatedText: "",
+        isLoading
       };
+    }
     case ActionType.InterchangeLanguages:
       if (state.fromLanguage === AUTO_LANGUAGE) {
         return state;
