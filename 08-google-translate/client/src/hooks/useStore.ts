@@ -33,17 +33,23 @@ function reducer(state: State, action: Action) {
         isLoading
       };
     }
-    case ActionType.InterchangeLanguages:
+    case ActionType.InterchangeLanguages: {
       if (state.fromLanguage === AUTO_LANGUAGE) {
         return state;
       }
+
+      const isLoading = state.text !== "";
 
       return {
         ...state,
         fromLanguage: state.toLanguage,
         toLanguage: state.fromLanguage,
-        text: state.translatedText
+        text:
+          state.translatedText !== "Translation" ? state.translatedText : "",
+        translatedText: "",
+        isLoading
       };
+    }
     case ActionType.SetText:
       return {
         ...state,
