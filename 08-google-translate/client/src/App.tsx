@@ -1,7 +1,10 @@
 import { useEffect } from "react";
-import { AUTO_LANGUAGE } from "./constants.ts";
-import { useStore } from "./hooks/useStore.ts";
 import { SectionType } from "./types/enums.ts";
+
+import { AUTO_LANGUAGE } from "./constants.ts";
+
+import { useDebounce } from "./hooks/useDebounce.ts";
+import { useStore } from "./hooks/useStore.ts";
 
 import { ArrowsSwap } from "./components/Icons.tsx";
 import { LanguageSelector } from "./components/LanguageSelector.tsx";
@@ -22,18 +25,20 @@ function App() {
     setTranslatedText
   } = useStore();
 
+  const debouncedText = useDebounce(text, 700);
+
   useEffect(() => {
-    if (text === "") {
+    if (text.trim() === "") {
       setTranslatedText("Translation");
       return;
     }
 
     fetch(
-      `${import.meta.env.VITE_API_URL}?from=${fromLanguage}&to=${toLanguage}&text=${text}`
+      `${import.meta.env.VITE_API_URL}?from=${fromLanguage}&to=${toLanguage}&text=${debouncedText?.trim()}`
     )
       .then((res) => res.json())
       .then(({ translatedText }) => setTranslatedText(translatedText));
-  }, [text, fromLanguage, toLanguage]);
+  }, [debouncedText, fromLanguage, toLanguage]);
 
   return (
     <div className="px-5">
