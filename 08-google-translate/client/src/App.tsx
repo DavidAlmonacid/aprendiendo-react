@@ -6,7 +6,7 @@ import { AUTO_LANGUAGE } from "./constants.ts";
 import { useDebounce } from "./hooks/useDebounce.ts";
 import { useStore } from "./hooks/useStore.ts";
 
-import { ArrowsSwap } from "./components/Icons.tsx";
+import { ArrowsSwapIcon } from "./components/Icons.tsx";
 import { LanguageSelector } from "./components/LanguageSelector.tsx";
 import { TextArea } from "./components/TextArea.tsx";
 import { TranslateArea } from "./components/TranslateArea.tsx";
@@ -60,7 +60,7 @@ function App() {
             className="disabled:opacity-40 disabled:cursor-auto"
             onClick={() => interchangeLanguages()}
           >
-            <ArrowsSwap />
+            <ArrowsSwapIcon />
           </button>
         </div>
 
