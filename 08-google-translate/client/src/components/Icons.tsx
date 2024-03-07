@@ -16,7 +16,9 @@ export const ClipboardIcon = () => (
     viewBox="0 0 24 24"
     width="24"
     height="24"
-    className="size-6"
+    className="size-6 opacity-80 hover:opacity-100"
+    style={{ transform: "rotateX(180deg)" }}
+    fill="currentColor"
   >
     <g>
       <rect fill="none" height="24" width="24"></rect>
