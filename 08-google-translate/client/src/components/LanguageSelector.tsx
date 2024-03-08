@@ -30,9 +30,9 @@ export function LanguageSelector({ type, value, onChange }: Props) {
         <option value={AUTO_LANGUAGE}>Detect language</option>
       )}
 
-      {Object.entries(SUPPORTED_LANGUAGES).map(([code, name]) => (
+      {Object.entries(SUPPORTED_LANGUAGES).map(([code, value]) => (
         <option key={code} value={code}>
-          {name}
+          {value.name}
         </option>
       ))}
     </select>
