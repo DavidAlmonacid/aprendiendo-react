@@ -73,6 +73,7 @@ function App() {
           <TranslateArea
             isLoading={isLoading}
             translatedText={translatedText}
+            toLanguage={toLanguage}
           />
         </section>
       </div>
