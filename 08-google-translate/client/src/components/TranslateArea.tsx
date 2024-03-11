@@ -49,8 +49,8 @@ export function TranslateArea({
   const synth = window.speechSynthesis;
   const currentTagLanguage = SUPPORTED_LANGUAGES[toLanguage].tag;
 
-  const navigatorVoices = synth.getVoices();
-  const supportedVoices = navigatorVoices.filter((voice) => {
+  const navigatorVoices = synth?.getVoices();
+  const supportedVoices = navigatorVoices?.filter((voice) => {
     return voice.lang === currentTagLanguage;
   });
 
@@ -72,7 +72,7 @@ export function TranslateArea({
               <ClipboardIcon />
             </button>
 
-            {supportedVoices.length !== 0 && (
+            {supportedVoices?.length !== 0 && (
               <button onClick={handleSpeak}>
                 <SpeakerIcon />
               </button>
