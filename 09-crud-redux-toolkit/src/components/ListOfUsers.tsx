@@ -9,61 +9,12 @@ import {
   TableRow,
   Title
 } from "@tremor/react";
-import { EditIcon, TrashIcon } from "./Icons";
-
-export interface User {
-  id: string;
-  name: string;
-  email: string;
-  github: string;
-}
-
-const users: User[] = [
-  {
-    id: "1",
-    name: "Viola Amherd",
-    email: "viola.amherd@example.com",
-    github: "violaamherd"
-  },
-  {
-    id: "2",
-    name: "Albert Rösti",
-    email: "albert.roesti@example.com",
-    github: "albertroesti"
-  },
-  {
-    id: "3",
-    name: "Beat Jans",
-    email: "beat.jans@example.com",
-    github: "beatjans"
-  },
-  {
-    id: "4",
-    name: "Ignazio Cassis",
-    email: "ignazio.cassis@example.com",
-    github: "ignaziocassis"
-  },
-  {
-    id: "5",
-    name: "Karin Keller-Sutter",
-    email: "karin.keller-sutter@example.com",
-    github: "karinkellersutter"
-  },
-  {
-    id: "6",
-    name: "Guy Parmelin",
-    email: "guy.parmelin@example.com",
-    github: "guyparmelin"
-  },
-  {
-    id: "7",
-    name: "Elisabeth Baume-Schneider",
-    email: "elisabeth.baume-schneider@example.com",
-    github: "elisabethbaumeschneider"
-  }
-];
+import { useSelector } from "react-redux";
+import { EditIcon, TrashIcon } from "./Icons.tsx";
 
 export function ListOfUsers() {
+  const users = useSelector((state) => state.users);
+
   return (
     <Card>
       <Title>
@@ -81,20 +32,20 @@ export function ListOfUsers() {
           </TableRow>
         </TableHead>
         <TableBody>
-          {users.map((item) => (
-            <TableRow key={item.name}>
-              <TableCell>{item.id}</TableCell>
+          {users.map((user) => (
+            <TableRow key={user.name}>
+              <TableCell>{user.id}</TableCell>
               <TableCell className="flex items-center gap-2">
                 <picture>
                   <img
-                    src={`https://unavatar.io/github/${item.github}`}
-                    alt={item.name}
+                    src={`https://unavatar.io/github/${user.github}`}
+                    alt={user.name}
                     className="w-8 h-8 rounded-full"
                   />
                 </picture>
-                <span>{item.name}</span>
+                <span>{user.name}</span>
               </TableCell>
-              <TableCell>{item.email}</TableCell>
+              <TableCell>{user.email}</TableCell>
               <TableCell>
                 <button>
                   <EditIcon />
