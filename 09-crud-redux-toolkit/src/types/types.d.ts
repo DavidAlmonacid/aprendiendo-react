@@ -4,6 +4,8 @@ export interface User {
   github: string;
 }
 
+export type UserId = string;
+
 export interface UserWithId extends User {
-  id: string;
+  id: UserId;
 }
