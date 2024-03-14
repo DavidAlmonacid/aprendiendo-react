@@ -9,11 +9,14 @@ import {
   TableRow,
   Title
 } from "@tremor/react";
-import { useSelector } from "react-redux";
 import { EditIcon, TrashIcon } from "./Icons.tsx";
 
+import { useAppSelector } from "../hooks/store.ts";
+import { useUserActions } from "../hooks/useUserActions.ts";
+
 export function ListOfUsers() {
-  const users = useSelector((state) => state.users);
+  const users = useAppSelector((state) => state.users);
+  const { deleteUser } = useUserActions();
 
   return (
     <Card>
@@ -51,7 +54,7 @@ export function ListOfUsers() {
                   <EditIcon />
                 </button>
 
-                <button>
+                <button onClick={() => deleteUser(user.id)}>
                   <TrashIcon />
                 </button>
               </TableCell>
