@@ -37,7 +37,9 @@ export function ListOfUsers() {
         <TableBody>
           {users.map((user) => (
             <TableRow key={user.name}>
-              <TableCell>{user.id}</TableCell>
+              <TableCell>
+                {user.id.length > 4 ? user.id.slice(0, 4) + "..." : user.id}
+              </TableCell>
               <TableCell className="flex items-center gap-2">
                 <picture>
                   <img
