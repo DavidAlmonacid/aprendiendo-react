@@ -5,8 +5,8 @@ import { useAppDispatch } from "./store";
 export function useUserActions() {
   const dispatch = useAppDispatch();
 
-  const addUser = ({ name, email, github }: User) => {
-    dispatch(addNewUser({ name, email, github }));
+  const addUser = ({ name, email, role }: User) => {
+    dispatch(addNewUser({ name, email, role }));
   };
 
   const deleteUser = (id: UserId) => {

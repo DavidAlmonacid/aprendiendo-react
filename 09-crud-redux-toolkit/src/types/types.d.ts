@@ -1,7 +1,7 @@
 export interface User {
   name: string;
   email: string;
-  github: string;
+  role: string;
 }
 
 export type UserId = string;

@@ -17,14 +17,14 @@ export function CreateNewUser() {
 
     const name = formData.get("name") as string;
     const email = formData.get("email") as string;
-    const github = formData.get("github") as string;
+    const role = formData.get("role") as string;
 
-    if (!name || !email || !github) {
+    if (!name || !email || !role) {
       setResult("ko");
       return;
     }
 
-    addUser({ name, email, github });
+    addUser({ name, email, role });
     setResult("ok");
     form.reset();
   };
@@ -36,7 +36,7 @@ export function CreateNewUser() {
       <form onSubmit={handleSubmit}>
         <TextInput placeholder="Name" name="name" />
         <TextInput placeholder="Email" name="email" type="email" />
-        <TextInput placeholder="GitHub username" name="github" />
+        <TextInput placeholder="Role" name="role" />
 
         <div>
           <Button>Create</Button>
