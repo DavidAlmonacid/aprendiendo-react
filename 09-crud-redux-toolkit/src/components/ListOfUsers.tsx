@@ -8,62 +8,52 @@ export function ListOfUsers() {
 
   return (
     <div className="px-4">
-      <div className="shadow-md sm:rounded-2xl max-w-3xl mx-auto overflow-hidden">
-        <section className="flex items-center justify-between flex-column flex-wrap md:flex-row gap-4 bg-white sm:bg-gray-900 sm:px-4 py-3">
-          <div>
+      <div className="shadow-md rounded-2xl max-w-3xl mx-auto overflow-hidden">
+        <section className="flex flex-col gap-y-4 bg-gray-900 px-4 py-3">
+          <header className="flex items-end justify-between gap-x-2 text-gray-300">
+            <h3 className="text-2xl font-semibold leading-none">Users</h3>
+
+            <span>
+              Total&nbsp;
+              <span className="bg-gray-100 text-sm font-medium px-2.5 py-0.5 rounded dark:bg-gray-700">
+                {users.length}
+              </span>
+            </span>
+          </header>
+
+          <div className="flex justify-between gap-x-4">
             <button
-              id="dropdownActionButton"
-              data-dropdown-toggle="dropdownAction"
-              className="inline-flex items-center text-gray-500 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-3 py-1.5 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
+              className="inline-flex text-nowrap items-center text-gray-500 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-3 py-1.5 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
               type="button"
             >
-              <span className="sr-only">Action button</span>
-              Action
-              <svg
-                className="w-2.5 h-2.5 ms-2.5"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 10 6"
-              >
-                <path
-                  stroke="currentColor"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="m1 1 4 4 4-4"
-                />
-              </svg>
+              Add New User
             </button>
-          </div>
 
-          <label htmlFor="table-search-users" className="sr-only">
-            Search
-          </label>
-          <div className="relative">
-            <div className="absolute inset-y-0 rtl:inset-r-0 start-0 flex items-center ps-3 pointer-events-none">
-              <svg
-                className="w-4 h-4 text-gray-500 dark:text-gray-400"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 20 20"
-              >
-                <path
-                  stroke="currentColor"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
-                />
-              </svg>
+            <label className="sr-only">Search</label>
+            <div className="flex items-center border border-gray-300 rounded-lg dark:border-gray-600 dark:bg-gray-700 overflow-hidden">
+              <span className="px-2">
+                <svg
+                  className="w-4 h-4 text-gray-500 dark:text-gray-400"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    stroke="currentColor"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
+                  />
+                </svg>
+              </span>
+              <input
+                type="text"
+                className="p-2 text-sm text-gray-900 w-80 bg-transparent dark:placeholder-gray-400 dark:text-white outline-none"
+                placeholder="Search for users"
+              />
             </div>
-            <input
-              type="text"
-              id="table-search-users"
-              className="block p-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              placeholder="Search for users"
-            />
           </div>
         </section>
 
@@ -80,7 +70,7 @@ export function ListOfUsers() {
                 </th>
 
                 <th scope="col" className="px-6 py-3">
-                  Position
+                  Role
                 </th>
 
                 <th scope="col" className="px-6 py-3">
