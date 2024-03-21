@@ -7,9 +7,9 @@ export function ListOfUsers() {
   const { deleteUser } = useUserActions();
 
   return (
-    <div className="px-4">
-      <div className="shadow-md rounded-2xl max-w-3xl mx-auto overflow-hidden">
-        <section className="flex flex-col gap-y-4 bg-gray-900 px-4 py-3">
+    <div className="flex items-center px-4 min-h-screen">
+      <div className="max-w-3xl mx-auto py-16 w-full overflow-hidden">
+        <section className="flex flex-col gap-y-4 bg-gray-900 px-4 py-3 rounded-t-2xl">
           <header className="flex items-end justify-between gap-x-2 text-gray-300">
             <h3 className="text-2xl font-semibold leading-none">Users</h3>
 
@@ -22,13 +22,6 @@ export function ListOfUsers() {
           </header>
 
           <div className="flex justify-between gap-x-4">
-            <button
-              className="inline-flex text-nowrap items-center text-gray-400 bg-gray-800 border border-gray-600 focus:outline-none hover:bg-gray-700 focus:ring-4 focus:ring-gray-700 font-medium rounded-lg text-sm px-3 py-1.5 hover:border-gray-600"
-              type="button"
-            >
-              Add New User
-            </button>
-
             <div className="flex items-center border border-gray-600 rounded-lg bg-gray-700 overflow-hidden">
               <span className="px-2 text-gray-400">
                 <SearchIcon />
@@ -40,10 +33,17 @@ export function ListOfUsers() {
                 placeholder="Search for users"
               />
             </div>
+
+            <button
+              className="inline-flex text-nowrap items-center text-gray-400 bg-gray-800 border border-gray-600 focus:outline-none hover:bg-gray-700 focus:ring-4 focus:ring-gray-700 font-medium rounded-lg text-sm px-3 py-1.5 hover:border-gray-600"
+              type="button"
+            >
+              Add New User
+            </button>
           </div>
         </section>
 
-        <div className="w-full overflow-x-auto">
+        <div className="w-full overflow-x-auto rounded-b-2xl shadow-md">
           <table className="w-full text-sm text-left rtl:text-right text-gray-400">
             <thead className="text-xs text-gray-400 uppercase bg-gray-700">
               <tr>
