@@ -29,13 +29,13 @@ export function ListOfUsers() {
               Add New User
             </button>
 
-            <label className="sr-only">Search</label>
             <div className="flex items-center border border-gray-600 rounded-lg bg-gray-700 overflow-hidden">
               <span className="px-2 text-gray-400">
                 <SearchIcon />
               </span>
               <input
                 type="text"
+                name="search"
                 className="p-2 text-sm text-white w-80 bg-transparent placeholder-gray-400 outline-none"
                 placeholder="Search for users"
               />
@@ -67,7 +67,10 @@ export function ListOfUsers() {
 
             <tbody>
               {users.map((user, index) => (
-                <tr className="bg-gray-800 border-b border-gray-700 hover:bg-gray-600">
+                <tr
+                  key={user.id}
+                  className="bg-gray-800 border-b border-gray-700 hover:bg-gray-600"
+                >
                   <td className="w-4 p-4">
                     {user.id.length > 4 ? user.id.slice(0, 4) + "..." : user.id}
                   </td>
@@ -92,13 +95,19 @@ export function ListOfUsers() {
                   <td className="px-6 py-4">{user.role}</td>
 
                   <td className="px-6 py-4">
-                    <button>
-                      <EditIcon />
-                    </button>
+                    <section className="flex items-center justify-evenly h-full">
+                      <button type="button" aria-label="Edit user">
+                        <EditIcon />
+                      </button>
 
-                    <button onClick={() => deleteUser(user.id)}>
-                      <TrashIcon />
-                    </button>
+                      <button
+                        type="button"
+                        aria-label="Delete user"
+                        onClick={() => deleteUser(user.id)}
+                      >
+                        <TrashIcon />
+                      </button>
+                    </section>
                   </td>
                 </tr>
               ))}
