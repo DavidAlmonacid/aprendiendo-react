@@ -138,12 +138,17 @@ export function ListOfUsers() {
 
                   <td className="px-6 py-4">
                     <section className="flex items-center justify-evenly h-full">
-                      <button type="button" aria-label="Edit user">
+                      <button
+                        type="button"
+                        className="hover:text-yellow-600 focus:text-yellow-600"
+                        aria-label="Edit user"
+                      >
                         <EditIcon />
                       </button>
 
                       <button
                         type="button"
+                        className="hover:text-red-600 focus:text-red-600"
                         aria-label="Delete user"
                         onClick={() => handleDeleteUser(user.id)}
                       >
