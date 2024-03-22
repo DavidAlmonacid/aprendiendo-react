@@ -33,13 +33,13 @@ export function ListOfUsers() {
             </span>
           </section>
 
-          <div className="flex justify-between gap-x-4">
-            <div className="flex items-center border border-gray-600 rounded-lg bg-gray-700 overflow-hidden">
+          <div className="relative flex justify-between gap-x-4">
+            <div className="flex items-center border border-gray-600 rounded-lg bg-gray-700 overflow-hidden has-[:focus]:ring-2">
               <span className="px-2 text-gray-400">
                 <SearchIcon />
               </span>
               <input
-                type="text"
+                type="search"
                 name="search"
                 className="p-2 text-sm text-white w-80 bg-transparent placeholder-gray-400 outline-none"
                 placeholder="Search for users"
@@ -47,7 +47,7 @@ export function ListOfUsers() {
             </div>
 
             <button
-              className="inline-flex text-nowrap items-center text-gray-400 bg-gray-800 border border-gray-600 focus:outline-none hover:bg-gray-700 focus:ring-4 focus:ring-gray-700 font-medium rounded-lg text-sm px-3 py-1.5 hover:border-gray-600"
+              className="inline-flex text-nowrap items-center text-gray-400 bg-gray-800 border border-gray-600 focus:outline-none hover:bg-gray-700 focus:ring-2 font-medium rounded-lg text-sm px-3 py-1.5 hover:border-gray-600"
               type="button"
               onClick={handleOpenModal}
             >
