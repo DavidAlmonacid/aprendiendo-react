@@ -7,7 +7,10 @@ import { EditIcon, SearchIcon, TrashIcon } from "./Icons.tsx";
 
 export function ListOfUsers() {
   const [isOpenModal, setIsOpenModal] = useState(false);
+
   const users = useAppSelector((state) => state.users);
+  const [filteredUsers, setFilteredUsers] = useState(users);
+
   const { deleteUser } = useUserActions();
 
   const handleOpenModal = () => {
@@ -16,6 +19,24 @@ export function ListOfUsers() {
 
   const handleDeleteUser = (id: UserId) => {
     deleteUser(id);
+  };
+
+  const handleSearchUsers = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const userFilter = event.target.value.toLowerCase();
+
+    setFilteredUsers(
+      users.filter((user) => {
+        const id = user.id;
+        const name = user.name.toLowerCase();
+        const role = user.role.toLowerCase();
+
+        return (
+          name.includes(userFilter) ||
+          role.includes(userFilter) ||
+          id.includes(userFilter)
+        );
+      })
+    );
   };
 
   return (
@@ -28,7 +49,7 @@ export function ListOfUsers() {
             <span>
               Total&nbsp;
               <span className="text-sm font-medium px-2.5 py-0.5 rounded bg-gray-700">
-                {users.length}
+                {filteredUsers.length}
               </span>
             </span>
           </section>
@@ -43,6 +64,7 @@ export function ListOfUsers() {
                 name="search"
                 className="p-2 text-sm text-white w-80 bg-transparent placeholder-gray-400 outline-none"
                 placeholder="Search for users"
+                onChange={handleSearchUsers}
               />
             </div>
 
@@ -83,7 +105,7 @@ export function ListOfUsers() {
             </thead>
 
             <tbody>
-              {users.map((user, index) => (
+              {filteredUsers.map((user, index) => (
                 <tr
                   key={user.id}
                   className="bg-gray-800 border-b border-gray-700 hover:bg-gray-600"
