@@ -1,17 +1,20 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useAppSelector } from "../hooks/store.ts";
 import { useUserActions } from "../hooks/useUserActions.ts";
-import type { UserId } from "../types/types";
+import type { UserId, UserWithId } from "../types/types";
 import { CreateNewUser } from "./CreateNewUser.tsx";
 import { EditIcon, SearchIcon, TrashIcon } from "./Icons.tsx";
 
 export function ListOfUsers() {
   const [isOpenModal, setIsOpenModal] = useState(false);
+  const [filteredUsers, setFilteredUsers] = useState<UserWithId[]>([]);
 
   const users = useAppSelector((state) => state.users);
-  const [filteredUsers, setFilteredUsers] = useState(users);
-
   const { deleteUser } = useUserActions();
+
+  useEffect(() => {
+    setFilteredUsers(users);
+  }, [users]);
 
   const handleOpenModal = () => {
     setIsOpenModal(true);
