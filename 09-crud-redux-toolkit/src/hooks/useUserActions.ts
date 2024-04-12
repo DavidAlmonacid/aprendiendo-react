@@ -1,5 +1,9 @@
-import { addNewUser, deleteUserById } from "../store/users/slice.ts";
-import type { User, UserId } from "../types/types.d.ts";
+import {
+  addNewUser,
+  deleteUserById,
+  updateUserById
+} from "../store/users/slice.ts";
+import type { User, UserId, UserWithId } from "../types/types.d.ts";
 import { useAppDispatch } from "./store";
 
 export function useUserActions() {
@@ -9,9 +13,13 @@ export function useUserActions() {
     dispatch(addNewUser({ name, email, role }));
   };
 
+  const updateUser = (user: UserWithId) => {
+    dispatch(updateUserById(user));
+  };
+
   const deleteUser = (id: UserId) => {
     dispatch(deleteUserById(id));
   };
 
-  return { addUser, deleteUser };
+  return { addUser, updateUser, deleteUser };
 }
