@@ -1,4 +1,9 @@
-import { configureStore, type Middleware } from "@reduxjs/toolkit";
+import {
+  configureStore,
+  type Middleware,
+  type PayloadAction
+} from "@reduxjs/toolkit";
+import { toast } from "sonner";
 import usersReducer from "./users/slice.ts";
 
 const persistanceLocalStorageMiddleware: Middleware =
@@ -9,8 +14,33 @@ const persistanceLocalStorageMiddleware: Middleware =
 
 const syncWithDatabaseMiddleware: Middleware =
   (store) => (next) => (action) => {
-    console.log({ action, state: store.getState() });
-    next(action);
+    if (
+      typeof action === "object" &&
+      action !== null &&
+      "type" in action &&
+      action.type === "users/deleteUserById"
+    ) {
+      const typedAction = action as PayloadAction<string>;
+      const { payload } = typedAction;
+
+      next(action);
+
+      fetch(`https://jsonplaceholder.typicode.com/users/${payload}`, {
+        method: "DELETE"
+      })
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error("Error deleting user");
+          }
+
+          toast.success("User deleted successfully");
+        })
+        .catch((error) => {
+          toast.error(error.message);
+        });
+    } else {
+      next(action);
+    }
   };
 
 export const store = configureStore({
