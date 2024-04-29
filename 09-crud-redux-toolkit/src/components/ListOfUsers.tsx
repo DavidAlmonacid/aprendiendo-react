@@ -39,7 +39,7 @@ export function ListOfUsers() {
 
   return (
     <div className="flex items-center px-4 min-h-screen">
-      <div className="max-w-3xl mx-auto py-16 w-full overflow-hidden">
+      <div className="max-w-3xl mx-auto py-16 w-full">
         <header className="flex flex-col gap-y-4 bg-gray-900 px-4 py-3 rounded-t-2xl">
           <section className="flex items-end justify-between gap-x-2 text-gray-300">
             <h3 className="text-2xl font-semibold leading-none">Users</h3>
