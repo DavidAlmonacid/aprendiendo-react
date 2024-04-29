@@ -1,4 +1,5 @@
-import { useId, useState } from "react";
+import { useId } from "react";
+import { toast } from "sonner";
 import { useUserActions } from "../hooks/useUserActions.ts";
 
 interface Props {
@@ -7,7 +8,6 @@ interface Props {
 }
 
 export function CreateNewUser({ open = false, setOpen }: Props) {
-  const [result, setResult] = useState<"ok" | "ko" | null>(null);
   const id = useId();
   const { addUser } = useUserActions();
 
@@ -20,8 +20,6 @@ export function CreateNewUser({ open = false, setOpen }: Props) {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    setResult(null);
-
     const form = event.currentTarget;
     const formData = new FormData(form);
 
@@ -33,17 +31,13 @@ export function CreateNewUser({ open = false, setOpen }: Props) {
     const isEmailValid = emailPattern.test(email);
 
     if (!name || !isEmailValid || !role) {
-      setResult("ko");
+      toast.error("Invalid input, please check the fields");
       return;
     }
 
     addUser({ name, email, role });
-    setResult("ok");
+    toast.success("User created successfully");
     form.reset();
-
-    setTimeout(() => {
-      setResult(null);
-    }, 2000);
   };
 
   return (
@@ -157,18 +151,6 @@ export function CreateNewUser({ open = false, setOpen }: Props) {
             </svg>
             Create
           </button>
-          <span className="justify-self-center">
-            {result === "ok" && (
-              <span className="text-sm font-medium px-2.5 py-0.5 rounded bg-gray-700 text-green-400 border border-green-400">
-                User created
-              </span>
-            )}
-            {result === "ko" && (
-              <span className="text-sm font-medium px-2.5 py-0.5 rounded bg-gray-700 text-red-400 border border-red-400">
-                Invalid input
-              </span>
-            )}
-          </span>
         </div>
       </form>
     </dialog>
