@@ -4,7 +4,8 @@ import {
   type PayloadAction
 } from "@reduxjs/toolkit";
 import { toast } from "sonner";
-import usersReducer from "./users/slice.ts";
+import usersReducer, { rollbackDeleteUserById } from "./users/slice.ts";
+import type { UserWithId } from "../types/types";
 
 const persistanceLocalStorageMiddleware: Middleware =
   (store) => (next) => (action) => {
@@ -14,18 +15,16 @@ const persistanceLocalStorageMiddleware: Middleware =
 
 const syncWithDatabaseMiddleware: Middleware =
   (store) => (next) => (action) => {
-    if (
-      typeof action === "object" &&
-      action !== null &&
-      "type" in action &&
-      action.type === "users/deleteUserById"
-    ) {
-      const typedAction = action as PayloadAction<string>;
-      const { payload } = typedAction;
+    const { type, payload } = action as PayloadAction<string>;
+    const users: UserWithId[] = store.getState().users;
 
-      next(action);
+    next(action);
 
-      fetch(`https://jsonplaceholder.typicode.com/users/${payload}`, {
+    if (type === "users/deleteUserById") {
+      const userIdToDelete = payload;
+      const userToDelete = users.find((user) => user.id === userIdToDelete);
+
+      fetch(`https://jsonplaceholder.typicode.com/users/${userIdToDelete}`, {
         method: "DELETE"
       })
         .then((response) => {
@@ -35,8 +34,12 @@ const syncWithDatabaseMiddleware: Middleware =
 
           toast.success("User deleted successfully");
         })
-        .catch((error) => {
-          toast.error(error.message);
+        .catch(() => {
+          toast.error("Error deleting user with id: " + userIdToDelete);
+
+          if (userToDelete) {
+            store.dispatch(rollbackDeleteUserById(userToDelete));
+          }
         });
     } else {
       next(action);
