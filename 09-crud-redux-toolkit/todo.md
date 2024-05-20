@@ -4,5 +4,5 @@
 - [x] Modal to display a form to create a new user
 - [x] Search funtionality
 - [x] Add edit functionality
-- [ ] Change badges for sonner cards
+- [x] Change badges for sonner cards
 - [ ] Make some tests
