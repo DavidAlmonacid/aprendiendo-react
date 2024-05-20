@@ -12,7 +12,7 @@ export function ListOfUsers() {
   const users = useAppSelector((state) => state.users);
 
   useEffect(() => {
-    setFilteredUsers(users);
+    setFilteredUsers(users.toSorted((a, b) => a.id.localeCompare(b.id)));
   }, [users]);
 
   const handleOpenModal = () => {
