@@ -63,7 +63,7 @@ export const userSlice = createSlice({
   reducers: {
     addNewUser: (state, action: PayloadAction<User>) => {
       const id = crypto.randomUUID();
-      return [...state, { id, ...action.payload }];
+      state.push({ id, ...action.payload });
     },
     updateUserById: (state, action: PayloadAction<UserWithId>) => {
       const updatedUser = action.payload;
@@ -89,7 +89,6 @@ export const userSlice = createSlice({
 });
 
 export default userSlice.reducer;
-export const { addNewUser, updateUserById, deleteUserById } = userSlice.actions;
 export const {
   addNewUser,
   updateUserById,
