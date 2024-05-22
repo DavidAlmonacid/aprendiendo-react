@@ -2,10 +2,11 @@ import type { User } from "../types";
 
 interface Props {
   users: User[];
+  deleteUser: (uuid: string) => void;
   colorRows: boolean;
 }
 
-export default function UserList({ users, colorRows }: Props) {
+export default function UserList({ users, deleteUser, colorRows }: Props) {
   return (
     <div className="overflow-x-auto">
       <table className="w-full text-sm text-gray-200">
@@ -47,7 +48,9 @@ export default function UserList({ users, colorRows }: Props) {
               <td className="px-4 py-3">{user.location.country}</td>
               <td className="px-4 py-3">
                 <div className="flex">
-                  <button>Borrar</button>
+                  <button onClick={() => deleteUser(user.login.uuid)}>
+                    Borrar
+                  </button>
                 </div>
               </td>
             </tr>

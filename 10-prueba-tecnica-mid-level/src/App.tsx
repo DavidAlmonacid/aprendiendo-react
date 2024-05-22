@@ -32,6 +32,10 @@ function App() {
       )
     : users;
 
+  const handleDeleteUser = (uuid: string) => {
+    setUsers(users.filter((user) => user.login.uuid !== uuid));
+  };
+
   return (
     <section className="bg-gray-50 dark:bg-gray-950 p-3 sm:p-5">
       <div className="mx-auto max-w-screen-sm px-4 lg:px-12">
@@ -58,7 +62,11 @@ function App() {
           </div>
           {/* end header */}
 
-          <UserList users={sortedUsers} colorRows={colorRows} />
+          <UserList
+            users={sortedUsers}
+            deleteUser={handleDeleteUser}
+            colorRows={colorRows}
+          />
         </main>
       </div>
     </section>
