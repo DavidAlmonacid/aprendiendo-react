@@ -45,7 +45,7 @@ function App() {
 
   return (
     <section className="bg-gray-50 dark:bg-gray-950 p-3 sm:p-5">
-      <div className="mx-auto max-w-screen-sm px-4 lg:px-12">
+      <div className="mx-auto max-w-screen-md px-4 lg:px-12">
         <main className="bg-white dark:bg-gray-800 relative shadow-md sm:rounded-lg overflow-hidden">
           {/* start header */}
           <div className="flex flex-col md:flex-row items-center justify-between space-y-3 md:space-y-0 md:space-x-4 p-4">
