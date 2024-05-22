@@ -1,17 +1,20 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import type { User } from "./types";
 import UserList from "./components/UserList";
 
 function App() {
   const [users, setUsers] = useState<User[]>([]);
+  const originalUsers = useRef<User[]>([]);
+
   const [colorRows, setColorRows] = useState(false);
   const [sortByCountry, setSortByCountry] = useState(false);
 
   useEffect(() => {
     fetch("https://randomuser.me/api/?results=100")
       .then(async (response) => await response.json())
-      .then((data) => {
-        setUsers(data.results);
+      .then(({ results }) => {
+        setUsers(results);
+        originalUsers.current = results;
       })
       .catch((error) => {
         console.error(error);
@@ -36,6 +39,10 @@ function App() {
     setUsers(users.filter((user) => user.login.uuid !== uuid));
   };
 
+  const handleRestoreUsers = () => {
+    setUsers(originalUsers.current);
+  };
+
   return (
     <section className="bg-gray-50 dark:bg-gray-950 p-3 sm:p-5">
       <div className="mx-auto max-w-screen-sm px-4 lg:px-12">
@@ -57,6 +64,14 @@ function App() {
                 onClick={toggleSortByCountry}
               >
                 {sortByCountry ? "No ordenar" : "Ordenar"} por país
+              </button>
+
+              <button
+                type="button"
+                className="flex items-center justify-center text-white focus:ring-4 font-medium rounded-lg text-sm px-4 py-2 bg-gray-600 hover:bg-gray-700 focus:outline-none focus:ring-gray-800"
+                onClick={handleRestoreUsers}
+              >
+                Restaurar usuarios
               </button>
             </div>
           </div>
