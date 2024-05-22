@@ -30,9 +30,9 @@ export default function UserList({ users, colorRows }: Props) {
         </thead>
 
         <tbody>
-          {users.map((user, index) => (
+          {users.map((user) => (
             <tr
-              key={user.id.value ?? index}
+              key={user.login.uuid}
               className={`border-b dark:border-gray-700 ${colorRows ? "odd:bg-gray-600 even:bg-gray-500" : ""}`}
             >
               <td scope="row" className="px-4 py-3">
