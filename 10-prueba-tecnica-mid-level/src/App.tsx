@@ -8,6 +8,7 @@ function App() {
 
   const [colorRows, setColorRows] = useState(false);
   const [sortByCountry, setSortByCountry] = useState(false);
+  const [filterByCountry, setFilterByCountry] = useState("");
 
   useEffect(() => {
     fetch("https://randomuser.me/api/?results=100")
@@ -29,11 +30,20 @@ function App() {
     setSortByCountry((prevState) => !prevState);
   };
 
+  const filteredUsers = filterByCountry
+    ? users.filter((user) => {
+        const currentUserCountry = user.location.country.toLowerCase();
+        const inputFilterCountry = filterByCountry.toLowerCase();
+
+        return currentUserCountry.includes(inputFilterCountry);
+      })
+    : users;
+
   const sortedUsers = sortByCountry
-    ? [...users].sort((a, b) =>
+    ? [...filteredUsers].sort((a, b) =>
         a.location.country.localeCompare(b.location.country)
       )
-    : users;
+    : filteredUsers;
 
   const handleDeleteUser = (uuid: string) => {
     setUsers(users.filter((user) => user.login.uuid !== uuid));
@@ -41,6 +51,10 @@ function App() {
 
   const handleRestoreUsers = () => {
     setUsers(originalUsers.current);
+  };
+
+  const handleFilterChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setFilterByCountry(event.target.value);
   };
 
   return (
@@ -73,6 +87,14 @@ function App() {
               >
                 Restaurar usuarios
               </button>
+
+              <input
+                type="search"
+                className="border text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 p-2 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-primary-500 focus:border-primary-500"
+                placeholder="Filtrar por país"
+                defaultValue={filterByCountry}
+                onChange={handleFilterChange}
+              />
             </div>
           </div>
           {/* end header */}
