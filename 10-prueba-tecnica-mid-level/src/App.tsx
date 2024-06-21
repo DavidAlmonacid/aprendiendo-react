@@ -1,6 +1,6 @@
-import { useState, useEffect, useRef } from "react";
-import type { User } from "./types";
+import { useEffect, useRef, useState } from "react";
 import UserList from "./components/UserList";
+import type { User } from "./types";
 
 function App() {
   const [users, setUsers] = useState<User[]>([]);
@@ -58,12 +58,12 @@ function App() {
   };
 
   return (
-    <section className="bg-gray-50 dark:bg-gray-950 p-3 sm:p-5">
-      <div className="mx-auto max-w-screen-md px-4 lg:px-12">
+    <section className="bg-gray-950 p-3 sm:p-5">
+      <div className="mx-auto max-w-screen-md px-4">
         <main className="bg-white dark:bg-gray-800 relative shadow-md sm:rounded-lg overflow-hidden">
           {/* start header */}
-          <div className="flex flex-col md:flex-row items-center justify-between space-y-3 md:space-y-0 md:space-x-4 p-4">
-            <div className="w-full md:w-auto flex flex-col md:flex-row space-y-2 md:space-y-0 items-stretch md:items-center justify-end md:space-x-3 flex-shrink-0">
+          <div className="p-4">
+            <div className="w-full flex flex-col md:flex-row items-stretch md:items-center gap-y-2 gap-x-3">
               <button
                 type="button"
                 className="flex items-center justify-center text-white focus:ring-4 font-medium rounded-lg text-sm px-4 py-2 bg-gray-600 hover:bg-gray-700 focus:outline-none focus:ring-gray-800"
@@ -90,7 +90,7 @@ function App() {
 
               <input
                 type="search"
-                className="border text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 p-2 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-primary-500 focus:border-primary-500"
+                className="border text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 p-2 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-primary-500 focus:border-primary-500 grow"
                 placeholder="Filtrar por país"
                 defaultValue={filterByCountry}
                 onChange={handleFilterChange}
