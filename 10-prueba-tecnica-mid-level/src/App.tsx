@@ -12,7 +12,7 @@ function App() {
 
   useEffect(() => {
     fetch("https://randomuser.me/api/?results=100")
-      .then(async (response) => await response.json())
+      .then((response) => response.json())
       .then(({ results }) => {
         setUsers(results);
         originalUsers.current = results;
