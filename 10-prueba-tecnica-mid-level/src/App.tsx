@@ -1,13 +1,13 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import UserList from "./components/UserList";
-import type { User } from "./types";
+import { SortBy, type User } from "./types";
 
 function App() {
   const [users, setUsers] = useState<User[]>([]);
   const originalUsers = useRef<User[]>([]);
 
   const [colorRows, setColorRows] = useState(false);
-  const [sortByCountry, setSortByCountry] = useState(false);
+  const [sorting, setSorting] = useState<SortBy>(SortBy.None);
   const [filterByCountry, setFilterByCountry] = useState("");
 
   useEffect(() => {
@@ -27,7 +27,9 @@ function App() {
   };
 
   const toggleSortByCountry = () => {
-    setSortByCountry((prevState) => !prevState);
+    const newSortingValue =
+      sorting !== SortBy.Country ? SortBy.Country : SortBy.None;
+    setSorting(newSortingValue);
   };
 
   const filteredUsers = useMemo(() => {
@@ -42,12 +44,22 @@ function App() {
   }, [users, filterByCountry]);
 
   const sortedUsers = useMemo(() => {
-    return sortByCountry
-      ? filteredUsers.toSorted((a, b) => {
-          return a.location.country.localeCompare(b.location.country);
-        })
-      : filteredUsers;
-  }, [filteredUsers, sortByCountry]);
+    if (sorting === SortBy.None) {
+      return filteredUsers;
+    }
+
+    const compareProperties: Record<string, (user: User) => any> = {
+      [SortBy.Name]: (user) => user.name.first,
+      [SortBy.Lastname]: (user) => user.name.last,
+      [SortBy.Country]: (user) => user.location.country
+    };
+
+    return filteredUsers.toSorted((a, b) => {
+      const sortingProperty = compareProperties[sorting];
+
+      return sortingProperty(a).localeCompare(sortingProperty(b));
+    });
+  }, [filteredUsers, sorting]);
 
   const handleDeleteUser = (uuid: string) => {
     setUsers(users.filter((user) => user.login.uuid !== uuid));
@@ -59,6 +71,10 @@ function App() {
 
   const handleFilterChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setFilterByCountry(event.target.value);
+  };
+
+  const handleSortUsers = (sortBy: SortBy) => {
+    setSorting(sortBy);
   };
 
   return (
@@ -81,7 +97,7 @@ function App() {
                 className="flex items-center justify-center text-white focus:ring-4 font-medium rounded-lg text-sm px-4 py-2 bg-gray-600 hover:bg-gray-700 focus:outline-none focus:ring-gray-800"
                 onClick={toggleSortByCountry}
               >
-                {sortByCountry ? "No ordenar" : "Ordenar"} por país
+                {sorting === SortBy.Country ? "No ordenar" : "Ordenar"} por país
               </button>
 
               <button
@@ -106,6 +122,7 @@ function App() {
           <UserList
             users={sortedUsers}
             deleteUser={handleDeleteUser}
+            handleSortUsers={handleSortUsers}
             colorRows={colorRows}
           />
         </main>

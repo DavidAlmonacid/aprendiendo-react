@@ -1,12 +1,18 @@
-import type { User } from "../types";
+import { SortBy, type User } from "../types";
 
 interface Props {
   users: User[];
   deleteUser: (uuid: string) => void;
+  handleSortUsers: (sortBy: SortBy) => void;
   colorRows: boolean;
 }
 
-export default function UserList({ users, deleteUser, colorRows }: Props) {
+export default function UserList({
+  users,
+  deleteUser,
+  handleSortUsers,
+  colorRows
+}: Props) {
   return (
     <div className="overflow-x-auto">
       <table className="w-full text-sm text-gray-200">
@@ -15,13 +21,25 @@ export default function UserList({ users, deleteUser, colorRows }: Props) {
             <th scope="col" className="px-4 py-3">
               Foto
             </th>
-            <th scope="col" className="px-4 py-3">
+            <th
+              scope="col"
+              className="px-4 py-3 cursor-cell"
+              onClick={() => handleSortUsers(SortBy.Name)}
+            >
               Nombre
             </th>
-            <th scope="col" className="px-4 py-3">
+            <th
+              scope="col"
+              className="px-4 py-3 cursor-cell"
+              onClick={() => handleSortUsers(SortBy.Lastname)}
+            >
               Apellido
             </th>
-            <th scope="col" className="px-4 py-3">
+            <th
+              scope="col"
+              className="px-4 py-3 cursor-cell"
+              onClick={() => handleSortUsers(SortBy.Country)}
+            >
               País
             </th>
             <th scope="col" className="px-4 py-3">
