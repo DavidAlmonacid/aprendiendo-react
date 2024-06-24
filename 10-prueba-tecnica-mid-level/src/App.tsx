@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import UserList from "./components/UserList";
 import type { User } from "./types";
 
@@ -30,20 +30,24 @@ function App() {
     setSortByCountry((prevState) => !prevState);
   };
 
-  const filteredUsers = filterByCountry
-    ? users.filter((user) => {
-        const currentUserCountry = user.location.country.toLowerCase();
-        const inputFilterCountry = filterByCountry.toLowerCase();
+  const filteredUsers = useMemo(() => {
+    return filterByCountry !== ""
+      ? users.filter((user) => {
+          const currentUserCountry = user.location.country.toLowerCase();
+          const inputFilterCountry = filterByCountry.toLowerCase();
 
-        return currentUserCountry.includes(inputFilterCountry);
-      })
-    : users;
+          return currentUserCountry.includes(inputFilterCountry);
+        })
+      : users;
+  }, [users, filterByCountry]);
 
-  const sortedUsers = sortByCountry
-    ? [...filteredUsers].toSorted((a, b) =>
-        a.location.country.localeCompare(b.location.country)
-      )
-    : filteredUsers;
+  const sortedUsers = useMemo(() => {
+    return sortByCountry
+      ? filteredUsers.toSorted((a, b) => {
+          return a.location.country.localeCompare(b.location.country);
+        })
+      : filteredUsers;
+  }, [filteredUsers, sortByCountry]);
 
   const handleDeleteUser = (uuid: string) => {
     setUsers(users.filter((user) => user.login.uuid !== uuid));
