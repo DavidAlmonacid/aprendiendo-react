@@ -40,7 +40,7 @@ function App() {
     : users;
 
   const sortedUsers = sortByCountry
-    ? [...filteredUsers].sort((a, b) =>
+    ? [...filteredUsers].toSorted((a, b) =>
         a.location.country.localeCompare(b.location.country)
       )
     : filteredUsers;
