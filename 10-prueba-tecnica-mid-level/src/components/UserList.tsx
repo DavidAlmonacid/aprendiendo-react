@@ -48,7 +48,11 @@ export default function UserList({ users, deleteUser, colorRows }: Props) {
               <td className="px-4 py-3">{user.location.country}</td>
               <td className="px-4 py-3">
                 <div className="flex">
-                  <button onClick={() => deleteUser(user.login.uuid)}>
+                  <button
+                    className="w-full py-1.5 bg-gray-900 rounded-lg"
+                    type="button"
+                    onClick={() => deleteUser(user.login.uuid)}
+                  >
                     Borrar
                   </button>
                 </div>
