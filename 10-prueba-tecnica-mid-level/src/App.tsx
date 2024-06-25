@@ -12,12 +12,13 @@ function App() {
 
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
+  const [page, setPage] = useState(1);
 
   useEffect(() => {
     setLoading(true);
     setError(false);
 
-    fetch("https://randomuser.me/api/?results=10&seed=foobar2")
+    fetch(`https://randomuser.me/api/?results=10&seed=foobar2&page=${page}`)
       .then((response) => {
         if (!response.ok) {
           throw new Error("Error en la petición");
@@ -26,8 +27,12 @@ function App() {
         return response.json();
       })
       .then(({ results }) => {
-        setUsers(results);
-        originalUsers.current = results;
+        setUsers((prevUsers) => {
+          const newUsers = prevUsers.concat(results);
+          originalUsers.current = newUsers;
+
+          return newUsers;
+        });
       })
       .catch((error) => {
         setError(true);
@@ -36,7 +41,7 @@ function App() {
       .finally(() => {
         setLoading(false);
       });
-  }, []);
+  }, [page]);
 
   const toggleColorRows = () => {
     setColorRows(!colorRows);
@@ -93,9 +98,7 @@ function App() {
     setSorting(sortBy);
   };
 
-  return loading ? (
-    <p className="text-white text-center mt-12">Cargando...</p>
-  ) : (
+  return (
     <section className="bg-gray-950 text-white p-3 sm:p-5">
       <div className="mx-auto max-w-screen-md px-4">
         <main className="bg-white dark:bg-gray-800 relative shadow-md sm:rounded-lg overflow-hidden">
@@ -141,12 +144,6 @@ function App() {
           </div>
           {/* end header */}
 
-          {error && <p className="text-center">Error al cargar los usuarios</p>}
-
-          {!error && users.length === 0 && (
-            <p className="text-center">No hay usuarios para mostrar</p>
-          )}
-
           {!error && users.length > 0 && (
             <UserList
               users={sortedUsers}
@@ -155,7 +152,28 @@ function App() {
               colorRows={colorRows}
             />
           )}
+
+          {loading && <p className="text-center">Cargando...</p>}
+
+          {!loading && error && (
+            <p className="text-center">Error al cargar los usuarios</p>
+          )}
+
+          {!loading && !error && users.length === 0 && (
+            <p className="text-center">No hay usuarios para mostrar</p>
+          )}
         </main>
+
+        {!error && users.length > 0 && (
+          <div className="flex justify-center mt-4">
+            <button
+              className="bg-gray-700 text-white font-medium rounded-lg text-sm px-4 py-2"
+              onClick={() => setPage(page + 1)}
+            >
+              Cargar más resultados
+            </button>
+          </div>
+        )}
       </div>
     </section>
   );
