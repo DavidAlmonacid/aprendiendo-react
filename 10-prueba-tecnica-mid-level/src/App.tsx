@@ -104,7 +104,7 @@ function App() {
             <div className="w-full flex flex-col md:flex-row items-stretch md:items-center gap-y-2 gap-x-3">
               <button
                 type="button"
-                className="flex items-center justify-center text-white focus:ring-4 font-medium rounded-lg text-sm px-4 py-2 bg-gray-600 hover:bg-gray-700 focus:outline-none focus:ring-gray-800 disabled:pointer-events-none disabled:opacity-50"
+                className="flex items-center justify-center text-white font-medium rounded-lg text-sm px-4 py-2 bg-gray-600 hover:bg-gray-700 disabled:pointer-events-none disabled:opacity-50"
                 disabled={users.length === 0}
                 onClick={toggleColorRows}
               >
@@ -113,7 +113,7 @@ function App() {
 
               <button
                 type="button"
-                className="flex items-center justify-center text-white focus:ring-4 font-medium rounded-lg text-sm px-4 py-2 bg-gray-600 hover:bg-gray-700 focus:outline-none focus:ring-gray-800 disabled:pointer-events-none disabled:opacity-50"
+                className="flex items-center justify-center text-white font-medium rounded-lg text-sm px-4 py-2 bg-gray-600 hover:bg-gray-700 disabled:pointer-events-none disabled:opacity-50"
                 disabled={users.length === 0}
                 onClick={toggleSortByCountry}
               >
@@ -122,7 +122,7 @@ function App() {
 
               <button
                 type="button"
-                className="flex items-center justify-center text-white focus:ring-4 font-medium rounded-lg text-sm px-4 py-2 bg-gray-600 hover:bg-gray-700 focus:outline-none focus:ring-gray-800 disabled:pointer-events-none disabled:opacity-50"
+                className="flex items-center justify-center text-white font-medium rounded-lg text-sm px-4 py-2 bg-gray-600 hover:bg-gray-700 disabled:pointer-events-none disabled:opacity-50"
                 disabled={users.length === 0}
                 onClick={handleRestoreUsers}
               >
