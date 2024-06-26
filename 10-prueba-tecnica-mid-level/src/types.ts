@@ -96,3 +96,8 @@ export enum SortBy {
   Lastname,
   Country
 }
+
+export interface FetchUsersResponse {
+  users: User[];
+  nextPage: number;
+}
