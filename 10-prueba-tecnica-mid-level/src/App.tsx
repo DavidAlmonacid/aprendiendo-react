@@ -2,6 +2,19 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import UserList from "./components/UserList";
 import { SortBy, type User } from "./types";
 
+async function fetchUsers({ page }: { page: number }): Promise<User[]> {
+  const response = await fetch(
+    `https://randomuser.me/api/?results=10&seed=foobar2&page=${page}`
+  );
+
+  if (!response.ok) {
+    throw new Error("Error en la petición");
+  }
+
+  const { results } = await response.json();
+  return results;
+}
+
 function App() {
   const [users, setUsers] = useState<User[]>([]);
   const originalUsers = useRef<User[]>([]);
@@ -18,17 +31,10 @@ function App() {
     setLoading(true);
     setError(false);
 
-    fetch(`https://randomuser.me/api/?results=10&seed=foobar2&page=${page}`)
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Error en la petición");
-        }
-
-        return response.json();
-      })
-      .then(({ results }) => {
+    fetchUsers({ page })
+      .then((users) => {
         setUsers((prevUsers) => {
-          const newUsers = prevUsers.concat(results);
+          const newUsers = prevUsers.concat(users);
           originalUsers.current = newUsers;
 
           return newUsers;
