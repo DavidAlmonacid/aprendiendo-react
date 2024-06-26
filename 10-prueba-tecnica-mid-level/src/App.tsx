@@ -1,4 +1,5 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useQuery } from "@tanstack/react-query";
+import { useMemo, useState } from "react";
 import UserList from "./components/UserList";
 import { SortBy, type User } from "./types";
 
@@ -16,38 +17,45 @@ async function fetchUsers({ page }: { page: number }): Promise<User[]> {
 }
 
 function App() {
-  const [users, setUsers] = useState<User[]>([]);
-  const originalUsers = useRef<User[]>([]);
+  const query = useQuery({
+    queryKey: ["users"],
+    queryFn: async () => await fetchUsers({ page: 1 })
+  });
+
+  const { data: users = [], isLoading, isError, refetch } = query;
+
+  // const [users, setUsers] = useState<User[]>([]);
+  // const originalUsers = useRef<User[]>([]);
 
   const [colorRows, setColorRows] = useState(false);
   const [sorting, setSorting] = useState<SortBy>(SortBy.None);
   const [filterByCountry, setFilterByCountry] = useState("");
 
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(false);
+  // const [loading, setLoading] = useState(true);
+  // const [error, setError] = useState(false);
   const [page, setPage] = useState(1);
 
-  useEffect(() => {
-    setLoading(true);
-    setError(false);
+  // useEffect(() => {
+  //   setLoading(true);
+  //   setError(false);
 
-    fetchUsers({ page })
-      .then((users) => {
-        setUsers((prevUsers) => {
-          const newUsers = prevUsers.concat(users);
-          originalUsers.current = newUsers;
+  //   fetchUsers({ page })
+  //     .then((users) => {
+  //       setUsers((prevUsers) => {
+  //         const newUsers = prevUsers.concat(users);
+  //         originalUsers.current = newUsers;
 
-          return newUsers;
-        });
-      })
-      .catch((error) => {
-        setError(true);
-        console.error(error);
-      })
-      .finally(() => {
-        setLoading(false);
-      });
-  }, [page]);
+  //         return newUsers;
+  //       });
+  //     })
+  //     .catch((error) => {
+  //       setError(true);
+  //       console.error(error);
+  //     })
+  //     .finally(() => {
+  //       setLoading(false);
+  //     });
+  // }, [page]);
 
   const toggleColorRows = () => {
     setColorRows(!colorRows);
@@ -89,11 +97,12 @@ function App() {
   }, [filteredUsers, sorting]);
 
   const handleDeleteUser = (uuid: string) => {
-    setUsers(users.filter((user) => user.login.uuid !== uuid));
+    // setUsers(users.filter((user) => user.login.uuid !== uuid));
   };
 
   const handleRestoreUsers = () => {
-    setUsers(originalUsers.current);
+    // setUsers(originalUsers.current);
+    refetch();
   };
 
   const handleFilterChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -150,7 +159,7 @@ function App() {
           </div>
           {/* end header */}
 
-          {!error && users.length > 0 && (
+          {!isError && users.length > 0 && (
             <UserList
               users={sortedUsers}
               deleteUser={handleDeleteUser}
@@ -159,18 +168,18 @@ function App() {
             />
           )}
 
-          {loading && <p className="text-center">Cargando...</p>}
+          {isLoading && <p className="text-center py-2">Cargando...</p>}
 
-          {!loading && error && (
-            <p className="text-center">Error al cargar los usuarios</p>
+          {!isLoading && isError && (
+            <p className="text-center py-2">Error al cargar los usuarios</p>
           )}
 
-          {!loading && !error && users.length === 0 && (
-            <p className="text-center">No hay usuarios para mostrar</p>
+          {!isLoading && !isError && users.length === 0 && (
+            <p className="text-center py-2">No hay usuarios para mostrar</p>
           )}
         </main>
 
-        {!error && users.length > 0 && (
+        {!isError && users.length > 0 && (
           <div className="flex justify-center mt-4">
             <button
               className="bg-gray-700 text-white font-medium rounded-lg text-sm px-4 py-2"
