@@ -7,7 +7,8 @@ export function useUsers() {
       queryKey: ["users"],
       queryFn: ({ pageParam }) => fetchUsers({ page: pageParam }),
       initialPageParam: 1,
-      getNextPageParam: (lastPage) => lastPage.nextPage
+      getNextPageParam: (lastPage) => lastPage.nextPage,
+      staleTime: 1000 * 3
     });
 
   return { data, isLoading, isError, hasNextPage, refetch, fetchNextPage };
