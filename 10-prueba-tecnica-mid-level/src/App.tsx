@@ -1,8 +1,7 @@
-import { useInfiniteQuery } from "@tanstack/react-query";
 import { useEffect, useMemo, useState } from "react";
 
-import { fetchUsers } from "./api/users";
 import { UserList } from "./components/UserList";
+import { useUsers } from "./hooks/useUsers";
 import { SortBy, type User } from "./types";
 
 function App() {
@@ -11,22 +10,16 @@ function App() {
   const [sorting, setSorting] = useState<SortBy>(SortBy.None);
   const [filterByCountry, setFilterByCountry] = useState("");
 
-  const query = useInfiniteQuery({
-    queryKey: ["users"],
-    queryFn: ({ pageParam }) => fetchUsers({ page: pageParam }),
-    initialPageParam: 1,
-    getNextPageParam: (lastPage) => lastPage.nextPage
-  });
-
   const { data, isLoading, isError, hasNextPage, refetch, fetchNextPage } =
-    query;
+    useUsers();
 
   console.log(data);
 
   useEffect(() => {
-    if (data) {
-      setUsers(data.pages.flatMap((page) => page.users));
-    }
+    setUsers((prevUsers) => [
+      ...prevUsers,
+      ...(data?.pages?.at(-1)?.users ?? [])
+    ]);
   }, [data]);
 
   const toggleColorRows = () => {
