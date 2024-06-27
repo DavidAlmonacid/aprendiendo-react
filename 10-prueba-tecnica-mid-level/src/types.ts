@@ -99,5 +99,5 @@ export enum SortBy {
 
 export interface FetchUsersResponse {
   users: User[];
-  nextPage: number;
+  nextPage?: number;
 }
