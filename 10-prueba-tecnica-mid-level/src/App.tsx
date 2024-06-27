@@ -1,7 +1,7 @@
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { useEffect, useMemo, useState } from "react";
 
-import { fetchUsers } from "./api";
+import { fetchUsers } from "./api/users";
 import { UserList } from "./components/UserList";
 import { SortBy, type User } from "./types";
 
