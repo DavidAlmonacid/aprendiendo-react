@@ -13,8 +13,6 @@ function App() {
   const { data, isLoading, isError, hasNextPage, refetch, fetchNextPage } =
     useUsers();
 
-  console.log(data);
-
   useEffect(() => {
     setUsers((prevUsers) => [
       ...prevUsers,
