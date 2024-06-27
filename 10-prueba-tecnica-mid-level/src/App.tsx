@@ -12,7 +12,9 @@ function App() {
     getNextPageParam: (lastPage) => lastPage.nextPage
   });
 
-  const { data, isLoading, isError, refetch, fetchNextPage } = query;
+  const { data, isLoading, isError, hasNextPage, refetch, fetchNextPage } =
+    query;
+
   console.log(data);
 
   const users: User[] = data?.pages.flatMap((page) => page.users) ?? [];
@@ -147,12 +149,16 @@ function App() {
 
         {!isError && users.length > 0 && (
           <div className="flex justify-center mt-4">
-            <button
-              className="bg-gray-700 text-white font-medium rounded-lg text-sm px-4 py-2"
-              onClick={() => fetchNextPage()}
-            >
-              Cargar más resultados
-            </button>
+            {hasNextPage ? (
+              <button
+                className="bg-gray-700 text-white font-medium rounded-lg text-sm px-4 py-2"
+                onClick={() => fetchNextPage()}
+              >
+                Cargar más resultados
+              </button>
+            ) : (
+              <p className="text-gray-400 text-sm">No hay más resultados</p>
+            )}
           </div>
         )}
       </div>
