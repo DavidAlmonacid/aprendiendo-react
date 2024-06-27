@@ -1,10 +1,16 @@
 import { useInfiniteQuery } from "@tanstack/react-query";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
+
 import { fetchUsers } from "./api";
 import { UserList } from "./components/UserList";
 import { SortBy, type User } from "./types";
 
 function App() {
+  const [users, setUsers] = useState<User[]>([]);
+  const [colorRows, setColorRows] = useState(false);
+  const [sorting, setSorting] = useState<SortBy>(SortBy.None);
+  const [filterByCountry, setFilterByCountry] = useState("");
+
   const query = useInfiniteQuery({
     queryKey: ["users"],
     queryFn: ({ pageParam }) => fetchUsers({ page: pageParam }),
@@ -17,13 +23,11 @@ function App() {
 
   console.log(data);
 
-  const users: User[] = data?.pages.flatMap((page) => page.users) ?? [];
-
-  // const originalUsers = useRef<User[]>([]);
-
-  const [colorRows, setColorRows] = useState(false);
-  const [sorting, setSorting] = useState<SortBy>(SortBy.None);
-  const [filterByCountry, setFilterByCountry] = useState("");
+  useEffect(() => {
+    if (data) {
+      setUsers(data.pages.flatMap((page) => page.users));
+    }
+  }, [data]);
 
   const toggleColorRows = () => {
     setColorRows(!colorRows);
@@ -65,12 +69,15 @@ function App() {
   }, [filteredUsers, sorting]);
 
   const handleDeleteUser = (uuid: string) => {
-    // setUsers(users.filter((user) => user.login.uuid !== uuid));
+    setUsers(users.filter((user) => user.login.uuid !== uuid));
   };
 
   const handleRestoreUsers = () => {
-    // setUsers(originalUsers.current);
     refetch();
+
+    if (data) {
+      setUsers(data.pages.flatMap((page) => page.users));
+    }
   };
 
   const handleFilterChange = (event: React.ChangeEvent<HTMLInputElement>) => {
