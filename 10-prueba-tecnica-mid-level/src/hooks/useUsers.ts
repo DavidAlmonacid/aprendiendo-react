@@ -10,12 +10,5 @@ export function useUsers() {
       getNextPageParam: (lastPage) => lastPage.nextPage
     });
 
-  return {
-    data,
-    isLoading,
-    isError,
-    hasNextPage,
-    refetch,
-    fetchNextPage
-  };
+  return { data, isLoading, isError, hasNextPage, refetch, fetchNextPage };
 }
