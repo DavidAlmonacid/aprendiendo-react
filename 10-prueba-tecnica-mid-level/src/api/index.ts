@@ -15,5 +15,8 @@ export async function fetchUsers({
 
   const data = await response.json();
 
-  return { users: data.results, nextPage: data.info.page + 1 };
+  const currentPage = Number(data.info.page);
+  const nextPage = currentPage <= 10 ? currentPage + 1 : undefined;
+
+  return { users: data.results, nextPage };
 }
