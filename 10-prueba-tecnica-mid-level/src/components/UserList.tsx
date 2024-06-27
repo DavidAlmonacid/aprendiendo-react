@@ -7,7 +7,7 @@ interface Props {
   colorRows: boolean;
 }
 
-export default function UserList({
+export function UserList({
   users,
   deleteUser,
   handleSortUsers,
