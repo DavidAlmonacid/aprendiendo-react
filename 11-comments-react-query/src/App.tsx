@@ -27,7 +27,7 @@ export default function App() {
     <main className="grid h-screen grid-cols-2">
       <div className="col-span-1 p-8 bg-white">
         {isLoading && <strong>Cargando...</strong>}
-        {error != null && <strong>Algo ha ido mal</strong>}
+        {error != null && <strong>Algo salió mal</strong>}
         <CommentsList data={data} />
       </div>
 
