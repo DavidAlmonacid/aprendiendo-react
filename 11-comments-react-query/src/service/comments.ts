@@ -33,20 +33,17 @@ export const postComment = async (comment: Comment) => {
   const comments = await getComments();
 
   const id = crypto.randomUUID();
-  const newComment = { ...comment, id };
+  const newComment = { id, ...comment };
   const commentsToSave = [...comments, newComment];
 
-  const response = await fetch(
-    "https://api.jsonbin.io/v3/b/643fbe2bc0e7653a05a77535",
-    {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-        "X-Access-Key": import.meta.env.VITE_PUBLIC_API_KEY
-      },
-      body: JSON.stringify(commentsToSave)
-    }
-  );
+  const response = await fetch(`${BASE_URL}/b/${BIN_ID}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      "X-Master-Key": API_KEY
+    },
+    body: JSON.stringify(commentsToSave)
+  });
 
   if (!response.ok) {
     throw new Error("Failed to post comment.");
