@@ -34,8 +34,8 @@ export default function App() {
   };
 
   return (
-    <main className="grid h-screen grid-cols-2">
-      <div className="col-span-1 p-8 bg-white">
+    <main className="grid h-screen grid-cols-2 overflow-hidden">
+      <div className="col-span-1 p-8 bg-white overflow-y-auto">
         {isLoading && <strong>Cargando...</strong>}
         {error != null && <strong>Algo salió mal</strong>}
         <CommentsList data={data} />
