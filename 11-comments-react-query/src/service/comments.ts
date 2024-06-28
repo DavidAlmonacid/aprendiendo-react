@@ -10,7 +10,7 @@ export interface CommentWithId extends Comment {
   id: string;
 }
 
-export const getComments = async () => {
+export async function getComments(): Promise<CommentWithId[]> {
   const response = await fetch(`${BASE_URL}/b/${BIN_ID}?meta=false `, {
     method: "GET",
     headers: {
@@ -24,12 +24,12 @@ export const getComments = async () => {
   }
 
   return await response.json();
-};
+}
 
 // const delay = async (ms: number) =>
 //   await new Promise((resolve) => setTimeout(resolve, ms));
 
-export const postComment = async (comment: Comment) => {
+export async function postComment(comment: Comment): Promise<CommentWithId> {
   const comments = await getComments();
 
   const id = crypto.randomUUID();
@@ -50,4 +50,4 @@ export const postComment = async (comment: Comment) => {
   }
 
   return newComment;
-};
+}
