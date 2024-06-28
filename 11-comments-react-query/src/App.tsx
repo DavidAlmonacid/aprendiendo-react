@@ -1,18 +1,25 @@
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 
 import { FormInput, FormTextArea } from "./components/comment-form-fields";
 import { CommentsList } from "./components/comments-list";
-
-import { getComments, type CommentWithId } from "./service/comments";
+import { getComments, postComment } from "./service/comments";
 
 export default function App() {
-  const { data, isLoading, error } = useQuery<CommentWithId[]>({
+  const { data, isLoading, error } = useQuery({
     queryKey: ["comments"],
     queryFn: getComments
   });
 
+  const { mutate, isPending } = useMutation({
+    mutationFn: postComment
+  });
+
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+
+    if (isPending) {
+      return;
+    }
 
     const formData = new FormData(event.currentTarget);
     const title = formData.get("title")?.toString();
@@ -21,6 +28,8 @@ export default function App() {
     if (!title || !message) {
       return;
     }
+
+    mutate({ title, message });
   };
 
   return (
@@ -33,19 +42,18 @@ export default function App() {
 
       <div className="col-span-1 p-8 bg-black">
         <form
-          // className={`${isLoadingMutation ? "opacity-40" : ""} block max-w-xl px-4 m-auto`}
+          className={`${isPending ? "opacity-60" : ""} block max-w-xl px-4 m-auto`}
           onSubmit={handleSubmit}
         >
           <FormInput />
           <FormTextArea />
 
           <button
-            // disabled={isLoadingMutation}
+            disabled={isPending}
             type="submit"
-            className="mt-4 px-12 text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm py-2.5 text-center mr-2 mb-2"
+            className="mt-4 px-12 text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm py-2.5 text-center mr-2 mb-2 disabled:pointer-events-none"
           >
-            {/* {isLoadingMutation ? "Enviando comentario..." : "Enviar comentario"} */}
-            Enviar comentario
+            {isPending ? "Enviando comentario..." : "Enviar comentario"}
           </button>
         </form>
       </div>
