@@ -1,17 +1,53 @@
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
 import { FormInput, FormTextArea } from "./components/comment-form-fields";
 import { CommentsList } from "./components/comments-list";
-import { getComments, postComment } from "./service/comments";
+import { getComments, postComment, type Comment } from "./service/comments";
 
 export default function App() {
+  const queryClient = useQueryClient();
+
   const { data, isLoading, error } = useQuery({
     queryKey: ["comments"],
     queryFn: getComments
   });
 
   const { mutate, isPending } = useMutation({
-    mutationFn: postComment
+    mutationFn: postComment,
+    onMutate: async (newComment) => {
+      // Optimistically update the cache
+      await queryClient.cancelQueries({ queryKey: ["comments"] });
+
+      const optimisticComment = { ...newComment, preview: true };
+
+      queryClient.setQueryData(["comments"], (oldData?: Comment[]) => {
+        if (!oldData) {
+          return [optimisticComment];
+        }
+
+        return [...oldData, optimisticComment];
+      });
+
+      return { optimisticComment, previousComments: data };
+    },
+    onSuccess: (newComment, _, context) => {
+      // Update the cache with the final data
+      queryClient.setQueryData(["comments"], (oldData: Comment[]) => {
+        return oldData.map((comment) => {
+          return comment.preview && comment.id === context.optimisticComment.id
+            ? newComment
+            : comment;
+        });
+      });
+    },
+    onError: (error, _, context) => {
+      // Rollback the cache update
+      console.error(error);
+
+      if (context?.previousComments) {
+        queryClient.setQueryData(["comments"], context.previousComments);
+      }
+    }
   });
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
