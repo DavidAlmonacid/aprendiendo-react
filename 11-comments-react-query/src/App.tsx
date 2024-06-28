@@ -24,12 +24,13 @@ export default function App() {
     const formData = new FormData(event.currentTarget);
     const title = formData.get("title")?.toString();
     const message = formData.get("message")?.toString();
+    const id = crypto.randomUUID();
 
     if (!title || !message) {
       return;
     }
 
-    mutate({ title, message });
+    mutate({ id, title, message });
   };
 
   return (
