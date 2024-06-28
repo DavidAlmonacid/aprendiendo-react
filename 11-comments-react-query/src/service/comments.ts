@@ -24,7 +24,6 @@ export async function getComments(): Promise<Comment[]> {
 }
 
 export async function postComment(newComment: Comment): Promise<Comment> {
-  // delay(1000);
   const comments = await getComments();
 
   const response = await fetch(`${BASE_URL}/b/${BIN_ID}`, {
@@ -42,7 +41,3 @@ export async function postComment(newComment: Comment): Promise<Comment> {
 
   return newComment;
 }
-
-// async function delay(ms: number) {
-//   await new Promise((resolve) => setTimeout(resolve, ms));
-// }
