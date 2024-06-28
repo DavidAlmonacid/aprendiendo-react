@@ -1,16 +1,13 @@
 import { API_KEY, BASE_URL, BIN_ID } from "../config";
 
 export interface Comment {
+  id: `${string}-${string}-${string}-${string}-${string}`;
   title: string;
   message: string;
   preview?: boolean;
 }
 
-export interface CommentWithId extends Comment {
-  id: string;
-}
-
-export async function getComments(): Promise<CommentWithId[]> {
+export async function getComments(): Promise<Comment[]> {
   const response = await fetch(`${BASE_URL}/b/${BIN_ID}?meta=false `, {
     method: "GET",
     headers: {
@@ -26,15 +23,9 @@ export async function getComments(): Promise<CommentWithId[]> {
   return await response.json();
 }
 
-// const delay = async (ms: number) =>
-//   await new Promise((resolve) => setTimeout(resolve, ms));
-
-export async function postComment(comment: Comment): Promise<CommentWithId> {
+export async function postComment(newComment: Comment): Promise<Comment> {
+  // delay(1000);
   const comments = await getComments();
-
-  const id = crypto.randomUUID();
-  const newComment = { id, ...comment };
-  const commentsToSave = [...comments, newComment];
 
   const response = await fetch(`${BASE_URL}/b/${BIN_ID}`, {
     method: "PUT",
@@ -42,7 +33,7 @@ export async function postComment(comment: Comment): Promise<CommentWithId> {
       "Content-Type": "application/json",
       "X-Master-Key": API_KEY
     },
-    body: JSON.stringify(commentsToSave)
+    body: JSON.stringify([...comments, newComment])
   });
 
   if (!response.ok) {
@@ -51,3 +42,7 @@ export async function postComment(comment: Comment): Promise<CommentWithId> {
 
   return newComment;
 }
+
+// async function delay(ms: number) {
+//   await new Promise((resolve) => setTimeout(resolve, ms));
+// }
