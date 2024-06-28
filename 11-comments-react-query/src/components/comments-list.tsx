@@ -1,6 +1,6 @@
-import type { CommentWithId } from "../service/comments";
+import type { Comment } from "../service/comments";
 
-export function CommentsList({ data }: { data?: CommentWithId[] }) {
+export function CommentsList({ data }: { data?: Comment[] }) {
   return (
     <ul>
       <li>
