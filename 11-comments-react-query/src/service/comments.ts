@@ -11,7 +11,7 @@ export interface CommentWithId extends Comment {
 }
 
 export const getComments = async () => {
-  const response = await fetch(`${BASE_URL}/b/${BIN_ID}`, {
+  const response = await fetch(`${BASE_URL}/b/${BIN_ID}?meta=false `, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -23,9 +23,7 @@ export const getComments = async () => {
     throw new Error("Failed to fetch comments.");
   }
 
-  const json = await response.json();
-
-  return json?.record;
+  return await response.json();
 };
 
 // const delay = async (ms: number) =>
