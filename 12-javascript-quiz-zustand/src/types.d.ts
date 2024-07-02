@@ -1,4 +1,4 @@
-interface QuizQuestion {
+export interface Question {
   id: number;
   question: string;
   language: string;
