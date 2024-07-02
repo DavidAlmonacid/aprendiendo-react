@@ -21,6 +21,7 @@ export default function App() {
               JavaScript Quiz
             </Typography>
           </Stack>
+
           {questions.length === 0 ? <StartButton /> : <div>Questions</div>}
         </Stack>
       </Container>
