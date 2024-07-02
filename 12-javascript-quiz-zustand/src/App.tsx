@@ -1,4 +1,6 @@
 import { Container, Stack, Typography } from "@mui/material";
+
+import { Game } from "./components/game";
 import { PythonIcon } from "./components/icons";
 import { StartButton } from "./components/start-button";
 import { useQuestionsStore } from "./stores/questions";
@@ -22,7 +24,7 @@ export default function App() {
             </Typography>
           </Stack>
 
-          {questions.length === 0 ? <StartButton /> : <div>Questions</div>}
+          {questions.length === 0 ? <StartButton /> : <Game />}
         </Stack>
       </Container>
     </main>
