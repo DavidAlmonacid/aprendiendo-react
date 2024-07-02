@@ -1,7 +1,7 @@
 [
   {
     "id": 1,
-    "question": "¿Cuál es el resultado de la siguiente expresión en Python: `3 + 2 * 2`?",
+    "question": "¿Cuál es el resultado de la siguiente expresión?",
     "language": "Python",
     "level": "básico",
     "code": "3 + 2 * 2",
@@ -10,10 +10,10 @@
   },
   {
     "id": 2,
-    "question": "¿Qué palabra clave se utiliza en JavaScript para declarar una variable?",
+    "question": "¿Qué palabra clave se utiliza para declarar una variable en JavaScript?",
     "language": "JavaScript",
     "level": "básico",
-    "code": "",
+    "code": "var x = 10;",
     "answers": ["var", "int", "str", "const"],
     "correctAnswer": 0
   },
@@ -22,13 +22,13 @@
     "question": "¿Qué función se utiliza para imprimir un mensaje en la consola en Go?",
     "language": "Go",
     "level": "básico",
-    "code": "",
+    "code": "fmt.Println(\"Hola, mundo\")",
     "answers": ["fmt.Println", "console.log", "print", "printf"],
     "correctAnswer": 0
   },
   {
     "id": 4,
-    "question": "¿Cuál es el valor de `a` después de ejecutar el siguiente código en C++: `int a = 5; a += 2;`?",
+    "question": "¿Cuál es el valor de `a` después de ejecutar el siguiente código en C++?",
     "language": "C++",
     "level": "básico",
     "code": "int a = 5; a += 2;",
@@ -40,7 +40,7 @@
     "question": "¿Qué operador se utiliza en Rust para realizar una referencia mutable?",
     "language": "Rust",
     "level": "medio",
-    "code": "",
+    "code": "let mut x = 10;\nlet y = &mut x;",
     "answers": ["&mut", "&", "*", "@"],
     "correctAnswer": 0
   },
@@ -49,7 +49,7 @@
     "question": "¿Qué operador lógico se utiliza para la operación 'AND' en SQL?",
     "language": "SQL",
     "level": "básico",
-    "code": "",
+    "code": "SELECT * FROM users WHERE age > 18 AND city = 'Madrid';",
     "answers": ["AND", "&&", "||", "ALL"],
     "correctAnswer": 0
   },
@@ -58,7 +58,7 @@
     "question": "¿Cómo se declara una función en JavaScript?",
     "language": "JavaScript",
     "level": "básico",
-    "code": "",
+    "code": "function myFunction() {\n  console.log('Hola, mundo');\n}",
     "answers": [
       "function myFunction() {}",
       "def myFunction() {}",
@@ -72,7 +72,7 @@
     "question": "¿Cómo se declara una constante en Kotlin?",
     "language": "Kotlin",
     "level": "básico",
-    "code": "",
+    "code": "const val myConstant = 10",
     "answers": [
       "val myConstant",
       "const myConstant",
@@ -86,13 +86,13 @@
     "question": "¿Qué función se utiliza para leer la entrada del usuario en Python?",
     "language": "Python",
     "level": "básico",
-    "code": "",
+    "code": "nombre = input('¿Cuál es tu nombre? ')",
     "answers": ["input()", "read()", "gets()", "scan()"],
     "correctAnswer": 0
   },
   {
     "id": 10,
-    "question": "¿Cuál es el resultado de la siguiente expresión en JavaScript: `5 === '5'`?",
+    "question": "¿Cuál es el resultado de la siguiente expresión en JavaScript?",
     "language": "JavaScript",
     "level": "básico",
     "code": "5 === '5'",
@@ -101,7 +101,7 @@
   },
   {
     "id": 11,
-    "question": "¿Cuál es el resultado de `2**3` en Python?",
+    "question": "¿Cuál es el resultado de la siguiente operación?",
     "language": "Python",
     "level": "básico",
     "code": "2**3",
@@ -113,7 +113,7 @@
     "question": "¿Qué palabra clave se usa para declarar una clase en JavaScript?",
     "language": "JavaScript",
     "level": "básico",
-    "code": "",
+    "code": "class Persona {\n  constructor(nombre) {\n    this.nombre = nombre;\n  }\n}",
     "answers": ["class", "object", "prototype", "module"],
     "correctAnswer": 0
   },
@@ -122,13 +122,13 @@
     "question": "¿Qué operador se utiliza para la concatenación de cadenas en Kotlin?",
     "language": "Kotlin",
     "level": "básico",
-    "code": "",
+    "code": "val saludo = \"Hola\" + \" \" + \"mundo\"",
     "answers": ["+", "&", ".", "||"],
     "correctAnswer": 0
   },
   {
     "id": 14,
-    "question": "¿Cuál es el resultado de la siguiente consulta en SQL: `SELECT COUNT(*) FROM users`?",
+    "question": "¿Cuál es el resultado de la siguiente consulta en SQL?",
     "language": "SQL",
     "level": "medio",
     "code": "SELECT COUNT(*) FROM users",
@@ -145,16 +145,16 @@
     "question": "¿Qué palabra clave se utiliza en Rust para definir una estructura?",
     "language": "Rust",
     "level": "básico",
-    "code": "",
+    "code": "struct Persona {\n  nombre: String,\n  edad: u32,\n}",
     "answers": ["struct", "class", "object", "module"],
     "correctAnswer": 0
   },
   {
     "id": 16,
-    "question": "¿Cuál es el valor de `x` después de la siguiente operación en Go: `x := 5; x++`?",
+    "question": "¿Cuál es el valor de `x` después de la siguiente operación en Go?",
     "language": "Go",
     "level": "básico",
-    "code": "x := 5; x++",
+    "code": "x := 5\nx++",
     "answers": ["Error de compilación", "6", "5", "7"],
     "correctAnswer": 0
   },
@@ -163,7 +163,7 @@
     "question": "¿Cómo se define una constante en C++?",
     "language": "C++",
     "level": "básico",
-    "code": "",
+    "code": "const int x = 5;",
     "answers": [
       "const int x = 5;",
       "int const x = 5;",
@@ -174,7 +174,7 @@
   },
   {
     "id": 18,
-    "question": "¿Cuál es el resultado de la siguiente expresión en Python: `not True`?",
+    "question": "¿Cuál es el resultado de la siguiente expresión?",
     "language": "Python",
     "level": "básico",
     "code": "not True",
@@ -186,7 +186,7 @@
     "question": "¿Qué operador se utiliza para realizar una operación de desigualdad en SQL?",
     "language": "SQL",
     "level": "básico",
-    "code": "",
+    "code": "SELECT * FROM users WHERE age <> 30;",
     "answers": ["!=", "==", "<>", "IS NOT"],
     "correctAnswer": 2
   },
@@ -195,13 +195,13 @@
     "question": "¿Qué palabra clave se utiliza para definir una función en Kotlin?",
     "language": "Kotlin",
     "level": "básico",
-    "code": "",
+    "code": "fun saludar() {\n  println(\"Hola, mundo\")\n}",
     "answers": ["fun", "function", "def", "fn"],
     "correctAnswer": 0
   },
   {
     "id": 21,
-    "question": "¿Cuál es el resultado de `10 / 2` en JavaScript?",
+    "question": "¿Cuál es el resultado de la siguiente operación?",
     "language": "JavaScript",
     "level": "básico",
     "code": "10 / 2",
@@ -213,7 +213,7 @@
     "question": "¿Qué palabra clave se usa para heredar de una clase en C++?",
     "language": "C++",
     "level": "medio",
-    "code": "",
+    "code": "class Persona {};\nclass Empleado : public Persona {};",
     "answers": ["public", "inherits", "extends", "base"],
     "correctAnswer": 0
   },
@@ -221,372 +221,342 @@
     "id": 23,
     "question": "¿Cómo se llama a una función anónima en JavaScript?",
     "language": "JavaScript",
-    "level": "medio",
-    "code": "",
-    "answers": ["Lambda", "Anonymous", "Delegate", "Closure"],
+    "level": "básico",
+    "code": "const sumar = function(a, b) {\n  return a + b;\n}",
+    "answers": ["Función anónima", "Lambda", "Procedimiento", "Closure"],
     "correctAnswer": 0
   },
   {
     "id": 24,
-    "question": "¿Cuál es el valor de `len([1, 2, 3])` en Python?",
+    "question": "¿Cuál es el valor de `x` después de ejecutar este código en Python?",
     "language": "Python",
-    "level": "básico",
-    "code": "len([1, 2, 3])",
-    "answers": ["3", "2", "1", "4"],
+    "level": "medio",
+    "code": "x = 5\nx *= 2",
+    "answers": ["10", "7", "5", "2"],
     "correctAnswer": 0
   },
   {
     "id": 25,
-    "question": "¿Cuál es la sintaxis correcta para crear un objeto en JavaScript?",
-    "language": "JavaScript",
+    "question": "¿Qué palabra clave se utiliza para definir una interfaz en Go?",
+    "language": "Go",
     "level": "básico",
-    "code": "",
-    "answers": [
-      "let obj = {};",
-      "let obj = [];",
-      "let obj = ();",
-      "let obj = <>;"
-    ],
+    "code": "type Lector interface {\n  Leer(p []byte) (n int, err error)\n}",
+    "answers": ["interface", "implements", "type", "struct"],
     "correctAnswer": 0
   },
   {
     "id": 26,
-    "question": "¿Qué operador se utiliza para la operación de módulo en Python?",
+    "question": "¿Qué función se utiliza para concatenar cadenas en Python?",
     "language": "Python",
     "level": "básico",
-    "code": "",
-    "answers": ["%", "/", "//", "**"],
-    "correctAnswer": 0
-  },
-  {
-    "id": 27,
-    "question": "¿Qué palabra clave se usa para importar un paquete en Go?",
-    "language": "Go",
-    "level": "básico",
-    "code": "",
-    "answers": ["import", "include", "using", "require"],
-    "correctAnswer": 0
-  },
-  {
-    "id": 28,
-    "question": "¿Qué palabra clave se usa para crear una variable en Rust?",
-    "language": "Rust",
-    "level": "básico",
-    "code": "",
-    "answers": ["let", "var", "const", "int"],
-    "correctAnswer": 0
-  },
-  {
-    "id": 29,
-    "question": "¿Cómo se declara un array en Kotlin?",
-    "language": "Kotlin",
-    "level": "medio",
-    "code": "",
-    "answers": [
-      "val myArray = arrayOf(1, 2, 3)",
-      "val myArray = [1, 2, 3]",
-      "val myArray = (1, 2, 3)",
-      "val myArray = {1, 2, 3}"
-    ],
-    "correctAnswer": 0
-  },
-  {
-    "id": 30,
-    "question": "¿Qué operador se utiliza para comprobar si un valor está contenido en una lista en Python?",
-    "language": "Python",
-    "level": "medio",
-    "code": "",
-    "answers": ["in", "contains", "has", "within"],
-    "correctAnswer": 0
-  },
-  {
-    "id": 31,
-    "question": "¿Cómo se llama a una clase en Kotlin?",
-    "language": "Kotlin",
-    "level": "básico",
-    "code": "",
-    "answers": ["class", "struct", "object", "module"],
-    "correctAnswer": 0
-  },
-  {
-    "id": 32,
-    "question": "¿Qué palabra clave se utiliza para declarar una variable global en Python?",
-    "language": "Python",
-    "level": "medio",
-    "code": "",
-    "answers": ["global", "var", "let", "const"],
-    "correctAnswer": 0
-  },
-  {
-    "id": 33,
-    "question": "¿Cuál es el valor de `2 == 2` en JavaScript?",
-    "language": "JavaScript",
-    "level": "básico",
-    "code": "2 == 2",
-    "answers": ["true", "false", "undefined", "null"],
-    "correctAnswer": 0
-  },
-  {
-    "id": 34,
-    "question": "¿Cómo se define una función en Go?",
-    "language": "Go",
-    "level": "medio",
-    "code": "",
-    "answers": [
-      "func myFunction() {}",
-      "def myFunction() {}",
-      "function myFunction() {}",
-      "myFunction() -> {}"
-    ],
-    "correctAnswer": 0
-  },
-  {
-    "id": 35,
-    "question": "¿Qué función se usa para convertir una cadena a mayúsculas en Python?",
-    "language": "Python",
-    "level": "básico",
-    "code": "",
-    "answers": ["upper()", "toUpperCase()", "capitalize()", "uppercase()"],
-    "correctAnswer": 0
-  },
-  {
-    "id": 36,
-    "question": "¿Qué palabra clave se usa para crear una estructura de control condicional en C++?",
-    "language": "C++",
-    "level": "básico",
-    "code": "",
-    "answers": ["if", "cond", "when", "test"],
-    "correctAnswer": 0
-  },
-  {
-    "id": 37,
-    "question": "¿Qué palabra clave se usa para definir una función en Rust?",
-    "language": "Rust",
-    "level": "básico",
-    "code": "",
-    "answers": ["fn", "def", "function", "fun"],
-    "correctAnswer": 0
-  },
-  {
-    "id": 38,
-    "question": "¿Qué palabra clave se usa para declarar una constante en Go?",
-    "language": "Go",
-    "level": "medio",
-    "code": "",
-    "answers": ["const", "val", "let", "constant"],
-    "correctAnswer": 0
-  },
-  {
-    "id": 39,
-    "question": "¿Cómo se agrega un elemento al final de una lista en Python?",
-    "language": "Python",
-    "level": "medio",
-    "code": "",
-    "answers": ["append()", "add()", "push()", "insert()"],
-    "correctAnswer": 0
-  },
-  {
-    "id": 40,
-    "question": "¿Cómo se declara una variable en JavaScript?",
-    "language": "JavaScript",
-    "level": "básico",
-    "code": "",
-    "answers": ["let", "var", "const", "All of the above"],
-    "correctAnswer": 3
-  },
-  {
-    "id": 41,
-    "question": "¿Cuál es el resultado de `2 + '2'` en JavaScript?",
-    "language": "JavaScript",
-    "level": "medio",
-    "code": "2 + '2'",
-    "answers": ["'22'", "4", "undefined", "null"],
-    "correctAnswer": 0
-  },
-  {
-    "id": 42,
-    "question": "¿Qué función se utiliza para obtener el tamaño de una lista en Python?",
-    "language": "Python",
-    "level": "básico",
-    "code": "",
-    "answers": ["len()", "size()", "count()", "length()"],
-    "correctAnswer": 0
-  },
-  {
-    "id": 43,
-    "question": "¿Cómo se define una clase en JavaScript?",
-    "language": "JavaScript",
-    "level": "medio",
-    "code": "",
-    "answers": [
-      "class MyClass {}",
-      "class = MyClass {}",
-      "def class MyClass {}",
-      "MyClass = class {}"
-    ],
-    "correctAnswer": 0
-  },
-  {
-    "id": 44,
-    "question": "¿Qué palabra clave se usa para definir un bloque de código que puede lanzar excepciones en Python?",
-    "language": "Python",
-    "level": "medio",
-    "code": "",
-    "answers": ["try", "catch", "throw", "except"],
-    "correctAnswer": 0
-  },
-  {
-    "id": 45,
-    "question": "¿Qué operador se utiliza para la concatenación de cadenas en JavaScript?",
-    "language": "JavaScript",
-    "level": "básico",
-    "code": "",
+    "code": "nombre_completo = 'Juan' + ' ' + 'Pérez'",
     "answers": ["+", "&", ".", "concat()"],
     "correctAnswer": 0
   },
   {
-    "id": 46,
-    "question": "¿Cuál es la función correcta para encontrar la longitud de una cadena en Go?",
-    "language": "Go",
+    "id": 27,
+    "question": "¿Qué palabra clave se utiliza para definir una constante en Java?",
+    "language": "Java",
+    "level": "básico",
+    "code": "final int x = 10;",
+    "answers": ["final", "const", "let", "var"],
+    "correctAnswer": 0
+  },
+  {
+    "id": 28,
+    "question": "¿Cómo se llama al siguiente tipo de estructura en Rust?",
+    "language": "Rust",
     "level": "medio",
-    "code": "",
-    "answers": ["len()", "length()", "size()", "count()"],
+    "code": "enum Color {\n  Rojo,\n  Verde,\n  Azul,\n}",
+    "answers": ["Enum", "Struct", "Trait", "Class"],
+    "correctAnswer": 0
+  },
+  {
+    "id": 29,
+    "question": "¿Cuál es el resultado de la siguiente operación en Kotlin?",
+    "language": "Kotlin",
+    "level": "medio",
+    "code": "val resultado = 4 / 2",
+    "answers": ["2", "8", "4", "1"],
+    "correctAnswer": 0
+  },
+  {
+    "id": 30,
+    "question": "¿Cuál es el valor de `y` después de ejecutar este código en JavaScript?",
+    "language": "JavaScript",
+    "level": "básico",
+    "code": "let y = 10;\ny += 5;",
+    "answers": ["15", "10", "5", "20"],
+    "correctAnswer": 0
+  },
+  {
+    "id": 31,
+    "question": "¿Cuál es el resultado de la siguiente expresión en Python?",
+    "language": "Python",
+    "level": "básico",
+    "code": "10 % 3",
+    "answers": ["1", "3", "0", "2"],
+    "correctAnswer": 0
+  },
+  {
+    "id": 32,
+    "question": "¿Cómo se declara un arreglo en JavaScript?",
+    "language": "JavaScript",
+    "level": "básico",
+    "code": "let arr = [1, 2, 3];",
+    "answers": ["[]", "{}", "()", "array()"],
+    "correctAnswer": 0
+  },
+  {
+    "id": 33,
+    "question": "¿Qué palabra clave se utiliza para heredar una clase en Python?",
+    "language": "Python",
+    "level": "básico",
+    "code": "class Animal:\n  pass\nclass Perro(Animal):\n  pass",
+    "answers": ["class", "inherit", "extends", "super"],
+    "correctAnswer": 0
+  },
+  {
+    "id": 34,
+    "question": "¿Cómo se llama al siguiente tipo de estructura en Java?",
+    "language": "Java",
+    "level": "medio",
+    "code": "public enum Color {\n  ROJO, VERDE, AZUL\n}",
+    "answers": ["Enum", "Class", "Interface", "Trait"],
+    "correctAnswer": 0
+  },
+  {
+    "id": 35,
+    "question": "¿Cuál es el resultado de la siguiente expresión en JavaScript?",
+    "language": "JavaScript",
+    "level": "básico",
+    "code": "typeof NaN",
+    "answers": ["'number'", "'NaN'", "'undefined'", "'object'"],
+    "correctAnswer": 0
+  },
+  {
+    "id": 36,
+    "question": "¿Qué palabra clave se utiliza para definir un módulo en Python?",
+    "language": "Python",
+    "level": "básico",
+    "code": "import math",
+    "answers": ["import", "include", "require", "module"],
+    "correctAnswer": 0
+  },
+  {
+    "id": 37,
+    "question": "¿Cuál es el resultado de la siguiente operación en Java?",
+    "language": "Java",
+    "level": "básico",
+    "code": "int x = 5; x = x + 2;",
+    "answers": ["7", "5", "2", "6"],
+    "correctAnswer": 0
+  },
+  {
+    "id": 38,
+    "question": "¿Qué función se utiliza para convertir una cadena a un número entero en JavaScript?",
+    "language": "JavaScript",
+    "level": "básico",
+    "code": "parseInt('123')",
+    "answers": ["parseInt()", "parseFloat()", "Number()", "toString()"],
+    "correctAnswer": 0
+  },
+  {
+    "id": 39,
+    "question": "¿Qué operador se utiliza para la concatenación de cadenas en Python?",
+    "language": "Python",
+    "level": "básico",
+    "code": "\"Hola\" + \" \" + \"mundo\"",
+    "answers": ["+", "&", ".", "concat()"],
+    "correctAnswer": 0
+  },
+  {
+    "id": 40,
+    "question": "¿Cómo se define una función en Go?",
+    "language": "Go",
+    "level": "básico",
+    "code": "func saludar() {\n  fmt.Println(\"Hola, mundo\")\n}",
+    "answers": ["func", "function", "def", "fn"],
+    "correctAnswer": 0
+  },
+  {
+    "id": 41,
+    "question": "¿Cuál es el valor de `x` después de ejecutar este código en C++?",
+    "language": "C++",
+    "level": "básico",
+    "code": "int x = 10;\nx--;",
+    "answers": ["9", "10", "11", "8"],
+    "correctAnswer": 0
+  },
+  {
+    "id": 42,
+    "question": "¿Qué palabra clave se utiliza para definir una constante en Rust?",
+    "language": "Rust",
+    "level": "básico",
+    "code": "const PI: f64 = 3.14159;",
+    "answers": ["const", "let", "var", "static"],
+    "correctAnswer": 0
+  },
+  {
+    "id": 43,
+    "question": "¿Cómo se llama una función anónima en Python?",
+    "language": "Python",
+    "level": "medio",
+    "code": "lambda x, y: x + y",
+    "answers": ["lambda", "anonymous", "func", "closure"],
+    "correctAnswer": 0
+  },
+  {
+    "id": 44,
+    "question": "¿Cuál es el resultado de la siguiente operación en SQL?",
+    "language": "SQL",
+    "level": "básico",
+    "code": "SELECT UPPER('hola');",
+    "answers": ["HOLA", "hola", "Hola", "Error"],
+    "correctAnswer": 0
+  },
+  {
+    "id": 45,
+    "question": "¿Qué palabra clave se utiliza para definir una interfaz en Java?",
+    "language": "Java",
+    "level": "básico",
+    "code": "public interface Animal {\n  void hacerSonido();\n}",
+    "answers": ["interface", "implements", "class", "struct"],
+    "correctAnswer": 0
+  },
+  {
+    "id": 46,
+    "question": "¿Cuál es el resultado de la siguiente expresión en JavaScript?",
+    "language": "JavaScript",
+    "level": "básico",
+    "code": "2 + '2'",
+    "answers": ["'22'", "4", "NaN", "undefined"],
     "correctAnswer": 0
   },
   {
     "id": 47,
-    "question": "¿Qué palabra clave se usa para definir una constante en Rust?",
-    "language": "Rust",
+    "question": "¿Cuál es el valor de `a` después de la siguiente operación en Python?",
+    "language": "Python",
     "level": "básico",
-    "code": "",
-    "answers": ["const", "val", "let", "constant"],
+    "code": "a = 10\na /= 2",
+    "answers": ["5.0", "5", "10", "2"],
     "correctAnswer": 0
   },
   {
     "id": 48,
-    "question": "¿Cuál es el operador de igualdad en Python?",
-    "language": "Python",
+    "question": "¿Qué palabra clave se utiliza para crear una clase en Kotlin?",
+    "language": "Kotlin",
     "level": "básico",
-    "code": "",
-    "answers": ["==", "=", "===", "equals"],
+    "code": "class Persona(val nombre: String, val edad: Int)",
+    "answers": ["class", "object", "struct", "interface"],
     "correctAnswer": 0
   },
   {
     "id": 49,
-    "question": "¿Cómo se declara una variable en C++?",
+    "question": "¿Cuál es el resultado de la siguiente operación en C++?",
     "language": "C++",
-    "level": "básico",
-    "code": "",
-    "answers": ["int x = 5;", "var x = 5;", "let x = 5;", "const x = 5;"],
+    "level": "medio",
+    "code": "int x = 5;\nint y = 3;\nint z = x * y;",
+    "answers": ["15", "8", "5", "3"],
     "correctAnswer": 0
   },
   {
     "id": 50,
-    "question": "¿Qué palabra clave se usa para definir una función en Python?",
+    "question": "¿Cómo se define una lista en Python?",
     "language": "Python",
     "level": "básico",
-    "code": "",
-    "answers": ["def", "function", "func", "lambda"],
+    "code": "lista = [1, 2, 3, 4]",
+    "answers": ["[]", "{}", "()", "<>"],
     "correctAnswer": 0
   },
   {
     "id": 51,
-    "question": "¿Qué palabra clave se usa para definir un paquete en Go?",
-    "language": "Go",
+    "question": "¿Cuál es el resultado de la siguiente expresión en JavaScript?",
+    "language": "JavaScript",
     "level": "básico",
-    "code": "",
-    "answers": ["package", "module", "import", "namespace"],
+    "code": "0 == false",
+    "answers": ["true", "false", "null", "undefined"],
     "correctAnswer": 0
   },
   {
     "id": 52,
-    "question": "¿Cómo se declara un vector en C++?",
-    "language": "C++",
+    "question": "¿Cuál es el resultado de la siguiente operación en SQL?",
+    "language": "SQL",
     "level": "medio",
-    "code": "",
-    "answers": [
-      "std::vector<int> v;",
-      "vector<int> v;",
-      "int[] v;",
-      "array<int> v;"
-    ],
+    "code": "SELECT LENGTH('Hola');",
+    "answers": ["4", "5", "3", "Error"],
     "correctAnswer": 0
   },
   {
     "id": 53,
-    "question": "¿Cuál es el resultado de `5 / 2` en Python 3?",
-    "language": "Python",
+    "question": "¿Qué palabra clave se utiliza para definir una estructura en Go?",
+    "language": "Go",
     "level": "básico",
-    "code": "5 / 2",
-    "answers": ["2.5", "2", "3", "Error"],
+    "code": "type Persona struct {\n  Nombre string\n  Edad int\n}",
+    "answers": ["struct", "class", "interface", "type"],
     "correctAnswer": 0
   },
   {
     "id": 54,
-    "question": "¿Qué palabra clave se usa para definir una interfaz en TypeScript?",
-    "language": "TypeScript",
-    "level": "básico",
-    "code": "",
-    "answers": ["interface", "class", "type", "struct"],
+    "question": "¿Cómo se llama al siguiente tipo de estructura en Kotlin?",
+    "language": "Kotlin",
+    "level": "medio",
+    "code": "enum class Color {\n  ROJO, VERDE, AZUL\n}",
+    "answers": ["Enum", "Class", "Interface", "Trait"],
     "correctAnswer": 0
   },
   {
     "id": 55,
-    "question": "¿Qué operador se usa para la comparación de valores en Kotlin?",
-    "language": "Kotlin",
-    "level": "medio",
-    "code": "",
-    "answers": ["==", "=", "===", "equals"],
+    "question": "¿Qué operador se utiliza para la división en Python?",
+    "language": "Python",
+    "level": "básico",
+    "code": "10 / 2",
+    "answers": ["/", "*", "-", "+"],
     "correctAnswer": 0
   },
   {
     "id": 56,
-    "question": "¿Cuál es la sintaxis correcta para crear una función anónima en JavaScript?",
+    "question": "¿Cuál es el resultado de la siguiente operación en JavaScript?",
     "language": "JavaScript",
-    "level": "medio",
-    "code": "",
-    "answers": ["() => {}", "function() {}", "fun() {}", "def() {}"],
+    "level": "básico",
+    "code": "5 === '5'",
+    "answers": ["false", "true", "null", "undefined"],
     "correctAnswer": 0
   },
   {
     "id": 57,
-    "question": "¿Cómo se define un objeto en JSON?",
-    "language": "JSON",
+    "question": "¿Qué palabra clave se utiliza para definir un alias de tipo en Go?",
+    "language": "Go",
     "level": "básico",
-    "code": "",
-    "answers": [
-      "{\"key\": \"value\"}",
-      "{key: \"value\"}",
-      "[\"key\": \"value\"]",
-      "(\"key\": \"value\")"
-    ],
+    "code": "type MiCadena string",
+    "answers": ["type", "alias", "typedef", "struct"],
     "correctAnswer": 0
   },
   {
     "id": 58,
-    "question": "¿Qué palabra clave se usa para definir una clase en Rust?",
-    "language": "Rust",
-    "level": "medio",
-    "code": "",
-    "answers": ["struct", "class", "object", "module"],
+    "question": "¿Cuál es el valor de `y` después de ejecutar este código en Python?",
+    "language": "Python",
+    "level": "básico",
+    "code": "y = 4\nx = y // 2",
+    "answers": ["2", "4", "0", "2.0"],
     "correctAnswer": 0
   },
   {
     "id": 59,
-    "question": "¿Cuál es el valor de `5 % 2` en Python?",
-    "language": "Python",
-    "level": "básico",
-    "code": "5 % 2",
-    "answers": ["1", "2", "0", "3"],
+    "question": "¿Cuál es el resultado de la siguiente operación en C++?",
+    "language": "C++",
+    "level": "medio",
+    "code": "int x = 5;\nint y = 10;\nx += y;",
+    "answers": ["15", "10", "5", "20"],
     "correctAnswer": 0
   },
   {
     "id": 60,
-    "question": "¿Cuál es el resultado de `5 + '5'` en JavaScript?",
-    "language": "JavaScript",
-    "level": "medio",
-    "code": "5 + '5'",
-    "answers": ["'55'", "10", "undefined", "null"],
+    "question": "¿Qué palabra clave se utiliza para definir una variable mutable en Rust?",
+    "language": "Rust",
+    "level": "básico",
+    "code": "let mut x = 5;",
+    "answers": ["mut", "let", "var", "mutable"],
     "correctAnswer": 0
   }
 ]
