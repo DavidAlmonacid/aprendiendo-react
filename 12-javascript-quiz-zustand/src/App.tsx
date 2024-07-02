@@ -1,8 +1,11 @@
 import { Container, Stack, Typography } from "@mui/material";
 import { PythonIcon } from "./components/icons";
 import { StartButton } from "./components/start-button";
+import { useQuestionsStore } from "./stores/questions";
 
 export default function App() {
+  const questions = useQuestionsStore((state) => state.questions);
+
   return (
     <main>
       <Container maxWidth="sm">
@@ -18,8 +21,7 @@ export default function App() {
               JavaScript Quiz
             </Typography>
           </Stack>
-
-          <StartButton />
+          {questions.length === 0 ? <StartButton /> : <div>Questions</div>}
         </Stack>
       </Container>
     </main>
