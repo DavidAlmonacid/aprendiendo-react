@@ -11,7 +11,12 @@ export function StartButton() {
   };
 
   return (
-    <Button variant="contained" color="primary" onClick={handleClick}>
+    <Button
+      variant="contained"
+      color="primary"
+      sx={{ p: "8px 30px" }}
+      onClick={handleClick}
+    >
       ¡Comenzar!
     </Button>
   );
