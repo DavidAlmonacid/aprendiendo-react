@@ -5,7 +5,7 @@ import { PythonIcon } from "./components/icons";
 import { StartButton } from "./components/start-button";
 import { useQuestionsStore } from "./stores/questions";
 
-export default function App() {
+function App() {
   const questions = useQuestionsStore((state) => state.questions);
 
   return (
@@ -30,3 +30,5 @@ export default function App() {
     </main>
   );
 }
+
+export default App;
