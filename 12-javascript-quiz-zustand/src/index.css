@@ -6,11 +6,10 @@
 }
 
 :root {
-  --red-pantone: #e63946;
-  --honeydew: #f1faee;
-  --non-photo-blue: #a8dadc;
-  --cerulean: #457b9d;
-  --berkeley-blue: #1d3557;
+  --gunmetal: #222831;
+  --gunmetal-light: #31363f;
+  --verdigris: #76abae;
+  --antiflash-white: #eeeeee;
 }
 
 html {
@@ -19,8 +18,8 @@ html {
 
 body {
   font-family: "Roboto", sans-serif;
-  background-color: var(--berkeley-blue);
-  color: var(--honeydew);
+  background-color: var(--gunmetal);
+  color: var(--antiflash-white);
 }
 
 main {
