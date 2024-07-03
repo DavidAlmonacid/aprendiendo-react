@@ -14,7 +14,7 @@ export function StartButton() {
     <Button
       variant="contained"
       color="primary"
-      sx={{ p: "8px 30px" }}
+      sx={{ padding: "8px 30px" }}
       onClick={handleClick}
     >
       ¡Comenzar!
