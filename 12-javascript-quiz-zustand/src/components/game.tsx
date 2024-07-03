@@ -1,4 +1,13 @@
-import { Box, Card, Typography } from "@mui/material";
+import {
+  Box,
+  Card,
+  List,
+  ListItem,
+  ListItemButton,
+  ListItemText,
+  Stack,
+  Typography
+} from "@mui/material";
 import SyntaxHighlighter from "react-syntax-highlighter";
 import { gradientDark } from "react-syntax-highlighter/dist/esm/styles/hljs";
 
@@ -15,39 +24,50 @@ function Question({ question }: { question: QuestionType }) {
 
   return (
     <Card variant="outlined" sx={{ bgcolor: "#222831" }}>
-      <Typography
-        variant="h6"
-        component="h2"
-        lineHeight={1.5}
-        padding={2}
-        marginBottom={1}
-      >
-        {currentQuestionSplit != null ? (
-          <>
-            {currentQuestionSplit[0]}
-            <Box
-              component="code"
-              sx={{
-                display: "inline-block",
-                bgcolor: "#31363F",
-                padding: "0 8px",
-                borderRadius: "4px"
-              }}
-            >
-              {currentQuestionSplit[1]}
-            </Box>
-            {currentQuestionSplit[2]}
-          </>
-        ) : (
-          currentQuestion
-        )}
-      </Typography>
+      <Stack direction="column" rowGap="16px" padding="16px">
+        <Typography variant="h6" component="h2" lineHeight={1.5}>
+          {currentQuestionSplit != null ? (
+            <>
+              {currentQuestionSplit[0]}
+              <Box
+                component="code"
+                sx={{
+                  display: "inline-block",
+                  bgcolor: "#31363F",
+                  padding: "0 8px",
+                  borderRadius: "4px"
+                }}
+              >
+                {currentQuestionSplit[1]}
+              </Box>
+              {currentQuestionSplit[2]}
+            </>
+          ) : (
+            currentQuestion
+          )}
+        </Typography>
 
-      <Box fontSize={14}>
-        <SyntaxHighlighter language={question.language} style={gradientDark}>
-          {question.code}
-        </SyntaxHighlighter>
-      </Box>
+        <Box
+          fontSize={14.5}
+          borderRadius="8px"
+          marginBottom="12px"
+          overflow="hidden"
+        >
+          <SyntaxHighlighter language={question.language} style={gradientDark}>
+            {question.code}
+          </SyntaxHighlighter>
+        </Box>
+
+        <List sx={{ bgcolor: "#31363F" }} disablePadding>
+          {question.answers.map((answer) => (
+            <ListItem key={answer} disablePadding divider>
+              <ListItemButton>
+                <ListItemText primary={answer} />
+              </ListItemButton>
+            </ListItem>
+          ))}
+        </List>
+      </Stack>
     </Card>
   );
 }
