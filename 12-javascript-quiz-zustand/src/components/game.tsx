@@ -14,12 +14,12 @@ function Question({ question }: { question: QuestionType }) {
   }
 
   return (
-    <Card variant="outlined">
+    <Card variant="outlined" sx={{ bgcolor: "#222831" }}>
       <Typography
         variant="h6"
         component="h2"
         lineHeight={1.5}
-        padding={1}
+        padding={2}
         marginBottom={1}
       >
         {currentQuestionSplit != null ? (
