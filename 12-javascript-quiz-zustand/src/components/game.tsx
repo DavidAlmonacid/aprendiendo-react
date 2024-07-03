@@ -6,6 +6,13 @@ import { useQuestionsStore } from "../stores/questions";
 import type { Question as QuestionType } from "../types";
 
 function Question({ question }: { question: QuestionType }) {
+  const currentQuestion = question.question;
+  let currentQuestionSplit: string[] | null = null;
+
+  if (currentQuestion.includes("`")) {
+    currentQuestionSplit = currentQuestion.split("`");
+  }
+
   return (
     <Card variant="outlined">
       <Typography
@@ -15,7 +22,25 @@ function Question({ question }: { question: QuestionType }) {
         padding={1}
         marginBottom={1}
       >
-        {question.question}
+        {currentQuestionSplit != null ? (
+          <>
+            {currentQuestionSplit[0]}
+            <Box
+              component="code"
+              sx={{
+                display: "inline-block",
+                bgcolor: "#31363F",
+                padding: "0 8px",
+                borderRadius: "4px"
+              }}
+            >
+              {currentQuestionSplit[1]}
+            </Box>
+            {currentQuestionSplit[2]}
+          </>
+        ) : (
+          currentQuestion
+        )}
       </Typography>
 
       <Box fontSize={14}>
