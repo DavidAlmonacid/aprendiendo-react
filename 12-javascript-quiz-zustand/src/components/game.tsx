@@ -16,11 +16,9 @@ import type { Question as QuestionType } from "../types";
 
 function Question({ question }: { question: QuestionType }) {
   const currentQuestion = question.question;
-  let currentQuestionSplit: string[] | null = null;
-
-  if (currentQuestion.includes("`")) {
-    currentQuestionSplit = currentQuestion.split("`");
-  }
+  const currentQuestionSplit = currentQuestion.includes("`")
+    ? currentQuestion.split("`")
+    : null;
 
   return (
     <Card variant="outlined" sx={{ bgcolor: "#222831" }}>
