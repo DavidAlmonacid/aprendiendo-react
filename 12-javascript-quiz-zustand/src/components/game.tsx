@@ -1,6 +1,7 @@
 import {
   Box,
   Card,
+  Chip,
   List,
   ListItem,
   ListItemButton,
@@ -20,9 +21,47 @@ function Question({ question }: { question: QuestionType }) {
     ? currentQuestion.split("`")
     : null;
 
+  let currentLanguage = question.language;
+
+  if (currentLanguage === "javascript") {
+    currentLanguage = "JavaScript";
+  } else if (currentLanguage === "sql") {
+    currentLanguage = "SQL";
+  } else if (currentLanguage === "cpp") {
+    currentLanguage = "C++";
+  }
+
   return (
     <Card variant="outlined" sx={{ bgcolor: "#222831" }}>
       <Stack direction="column" rowGap="16px" padding="16px">
+        <Stack direction="row" justifyContent="flex-end" columnGap="12px">
+          <Chip
+            label={`Dificultad: ${question.level}`}
+            variant="outlined"
+            sx={{
+              height: "fit-content",
+              textTransform: "capitalize",
+              fontSize: "12px",
+              fontWeight: 500,
+              padding: "4px"
+            }}
+            color="warning"
+          />
+
+          <Chip
+            label={`Lenguaje: ${currentLanguage}`}
+            variant="outlined"
+            sx={{
+              height: "fit-content",
+              textTransform: "capitalize",
+              fontSize: "12px",
+              fontWeight: 500,
+              padding: "4px"
+            }}
+            color="info"
+          />
+        </Stack>
+
         <Typography variant="h6" component="h2" lineHeight={1.5}>
           {currentQuestionSplit != null ? (
             <>
