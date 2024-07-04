@@ -16,6 +16,8 @@ import { useQuestionsStore } from "../stores/questions";
 import type { Question as QuestionType } from "../types";
 
 function Question({ question }: { question: QuestionType }) {
+  const selectAnswer = useQuestionsStore((state) => state.selectAnswer);
+
   const currentQuestion = question.question;
   const currentQuestionSplit = currentQuestion.includes("`")
     ? currentQuestion.split("`")
@@ -30,6 +32,10 @@ function Question({ question }: { question: QuestionType }) {
   } else if (currentLanguage === "cpp") {
     currentLanguage = "C++";
   }
+
+  const handleAnswerClick = (answerIndex: number) => {
+    selectAnswer(question.id, answerIndex);
+  };
 
   return (
     <Card variant="outlined" sx={{ bgcolor: "#222831" }}>
@@ -96,13 +102,19 @@ function Question({ question }: { question: QuestionType }) {
         </Box>
 
         <List sx={{ bgcolor: "#31363F" }} disablePadding>
-          {question.answers.map((answer) => (
-            <ListItem key={answer} disablePadding divider>
-              <ListItemButton>
-                <ListItemText primary={answer} />
-              </ListItemButton>
-            </ListItem>
-          ))}
+          {question.answers
+            .toSorted(() => Math.random() - 0.5)
+            .map((answer) => (
+              <ListItem key={answer} disablePadding divider>
+                <ListItemButton
+                  onClick={() => {
+                    handleAnswerClick(question.answers.indexOf(answer));
+                  }}
+                >
+                  <ListItemText primary={answer} />
+                </ListItemButton>
+              </ListItem>
+            ))}
         </List>
       </Stack>
     </Card>
