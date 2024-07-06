@@ -9,11 +9,30 @@ import {
   Stack,
   Typography
 } from "@mui/material";
+import { green, red } from "@mui/material/colors";
 import SyntaxHighlighter from "react-syntax-highlighter";
 import { gradientDark } from "react-syntax-highlighter/dist/esm/styles/hljs";
 
 import { useQuestionsStore } from "../stores/questions";
 import type { Question as QuestionType } from "../types";
+
+const setAnswerColor = (question: QuestionType, index: number): string => {
+  const { userSelectedAnswer, correctAnswer, isCorrectUserAnswer } = question;
+
+  if (userSelectedAnswer == null) {
+    return "transparent";
+  }
+
+  if (index === userSelectedAnswer) {
+    return isCorrectUserAnswer ? green[700] : red[500];
+  }
+
+  if (index === correctAnswer) {
+    return green[700];
+  }
+
+  return "transparent";
+};
 
 export function Question({ question }: { question: QuestionType }) {
   const selectAnswer = useQuestionsStore((state) => state.selectAnswer);
@@ -102,19 +121,23 @@ export function Question({ question }: { question: QuestionType }) {
         </Box>
 
         <List sx={{ bgcolor: "#31363F" }} disablePadding>
-          {question.answers
-            .toSorted(() => Math.random() - 0.5)
-            .map((answer) => (
-              <ListItem key={answer} disablePadding divider>
-                <ListItemButton
-                  onClick={() => {
-                    handleAnswerClick(question.answers.indexOf(answer));
-                  }}
-                >
-                  <ListItemText primary={answer} />
-                </ListItemButton>
-              </ListItem>
-            ))}
+          {question.answers.map((answer, index) => (
+            <ListItem key={index} disablePadding divider>
+              <ListItemButton
+                sx={{
+                  bgcolor: setAnswerColor(question, index),
+                  "&:hover": {
+                    bgcolor: setAnswerColor(question, index)
+                  }
+                }}
+                onClick={() => {
+                  handleAnswerClick(index);
+                }}
+              >
+                <ListItemText primary={answer} />
+              </ListItemButton>
+            </ListItem>
+          ))}
         </List>
       </Stack>
     </Card>
