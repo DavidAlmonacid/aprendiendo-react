@@ -130,6 +130,7 @@ export function Question({ question }: { question: QuestionType }) {
                     bgcolor: setAnswerColor(question, index)
                   }
                 }}
+                disabled={question.userSelectedAnswer != null}
                 onClick={() => {
                   handleAnswerClick(index);
                 }}
