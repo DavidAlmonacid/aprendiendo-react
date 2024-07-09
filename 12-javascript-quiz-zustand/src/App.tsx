@@ -26,6 +26,7 @@ function App() {
             spacing={2}
             alignItems="center"
             justifyContent="center"
+            sx={{ scale: questions.length === 0 ? "1" : "0.72" }}
           >
             <PythonIcon />
             <Typography variant="h3" component="h1" fontWeight={700}>
