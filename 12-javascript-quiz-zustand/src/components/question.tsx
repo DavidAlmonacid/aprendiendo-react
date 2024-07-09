@@ -57,7 +57,10 @@ export function Question({ question }: { question: QuestionType }) {
   };
 
   return (
-    <Card variant="outlined" sx={{ bgcolor: "#222831", minWidth: "500px" }}>
+    <Card
+      variant="outlined"
+      sx={{ bgcolor: "#222831", minWidth: "500px", userSelect: "none" }}
+    >
       <Stack direction="column" rowGap="16px" padding="16px">
         <Stack direction="row" justifyContent="flex-end" columnGap="12px">
           <Chip
