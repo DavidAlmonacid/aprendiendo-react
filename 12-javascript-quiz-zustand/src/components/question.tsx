@@ -1,7 +1,6 @@
 import {
   Box,
   Card,
-  Chip,
   List,
   ListItem,
   ListItemButton,
@@ -15,6 +14,7 @@ import { gradientDark } from "react-syntax-highlighter/dist/esm/styles/hljs";
 
 import { useQuestionsStore } from "../stores/questions";
 import type { Question as QuestionType } from "../types";
+import { Info } from "./info";
 
 const setAnswerColor = (question: QuestionType, index: number): string => {
   const { userSelectedAnswer, correctAnswer, isCorrectUserAnswer } = question;
@@ -62,33 +62,7 @@ export function Question({ question }: { question: QuestionType }) {
       sx={{ bgcolor: "#222831", minWidth: "500px", userSelect: "none" }}
     >
       <Stack direction="column" rowGap="16px" padding="16px">
-        <Stack direction="row" justifyContent="flex-end" columnGap="12px">
-          <Chip
-            label={`Dificultad: ${question.level}`}
-            variant="outlined"
-            sx={{
-              height: "fit-content",
-              textTransform: "capitalize",
-              fontSize: "12px",
-              fontWeight: 500,
-              padding: "4px"
-            }}
-            color="warning"
-          />
-
-          <Chip
-            label={`Lenguaje: ${currentLanguage}`}
-            variant="outlined"
-            sx={{
-              height: "fit-content",
-              textTransform: "capitalize",
-              fontSize: "12px",
-              fontWeight: 500,
-              padding: "4px"
-            }}
-            color="info"
-          />
-        </Stack>
+        <Info level={question.level} language={currentLanguage} />
 
         <Typography variant="h6" component="h2" lineHeight={1.5}>
           {currentQuestionSplit != null ? (
