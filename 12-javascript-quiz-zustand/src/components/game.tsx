@@ -21,7 +21,7 @@ export function Game() {
         direction="row"
         alignItems="center"
         justifyContent="center"
-        columnGap="12px"
+        columnGap="20px"
         marginY="8px"
       >
         <IconButton
