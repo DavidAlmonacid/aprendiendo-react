@@ -17,13 +17,23 @@ export function Game() {
 
   return (
     <Box sx={{ margin: "0 !important" }}>
-      <Stack direction="row" justifyContent="center" marginY="8px">
+      <Stack
+        direction="row"
+        alignItems="center"
+        justifyContent="center"
+        columnGap="12px"
+        marginY="8px"
+      >
         <IconButton
           onClick={goPreviousQuestion}
           disabled={currentQuestionIndex === 0}
         >
           <ArrowBackIosNew sx={{ paddingRight: "3px" }} />
         </IconButton>
+
+        <span>
+          {currentQuestionIndex + 1} / {questions.length}
+        </span>
 
         <IconButton
           onClick={goNextQuestion}
