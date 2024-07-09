@@ -1,4 +1,4 @@
-import { Container, Stack, Typography } from "@mui/material";
+import { Box, Container, Stack, Typography } from "@mui/material";
 
 import { Game } from "./components/game";
 import { PythonIcon } from "./components/icons";
@@ -9,7 +9,16 @@ function App() {
   const questions = useQuestionsStore((state) => state.questions);
 
   return (
-    <main>
+    <Box
+      component="main"
+      sx={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: questions.length === 0 ? "center" : "flex-start",
+        padding: "40px",
+        height: "100vh"
+      }}
+    >
       <Container maxWidth="sm">
         <Stack direction="column" spacing={4} alignItems="center">
           <Stack
@@ -27,7 +36,7 @@ function App() {
           {questions.length === 0 ? <StartButton /> : <Game />}
         </Stack>
       </Container>
-    </main>
+    </Box>
   );
 }
 
