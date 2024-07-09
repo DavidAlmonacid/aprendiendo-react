@@ -37,10 +37,10 @@ export const useQuestionsStore = create<State>((set, get) => ({
   },
   goPreviousQuestion: () => {
     const { currentQuestionIndex } = get();
-    const nextIndex = currentQuestionIndex - 1;
+    const previousIndex = currentQuestionIndex - 1;
 
-    if (nextIndex >= 0) {
-      set({ currentQuestionIndex: nextIndex });
+    if (previousIndex >= 0) {
+      set({ currentQuestionIndex: previousIndex });
     }
   },
   goNextQuestion: () => {
