@@ -1,4 +1,6 @@
 import { create } from "zustand";
+import { persist } from "zustand/middleware";
+
 import type { Question } from "../types";
 
 export interface State {
@@ -10,45 +12,54 @@ export interface State {
   goNextQuestion: () => void;
 }
 
-export const useQuestionsStore = create<State>((set, get) => ({
-  questions: [],
-  currentQuestionIndex: 0,
-  fetchQuestions: async (limit) => {
-    const response = await fetch("http://localhost:5173/data.json");
-    const data = (await response.json()) as Question[];
+export const useQuestionsStore = create<State>()(
+  persist(
+    (set, get) => ({
+      questions: [],
+      currentQuestionIndex: 0,
+      fetchQuestions: async (limit) => {
+        const response = await fetch("http://localhost:5173/data.json");
+        const data = (await response.json()) as Question[];
 
-    const questions = data.sort(() => Math.random() - 0.5).slice(0, limit);
-    set({ questions });
-  },
-  selectAnswer: (questionId, answerIndex) => {
-    const { questions } = get();
-    const newQuestions = structuredClone(questions);
-    const questionIndex = newQuestions.findIndex((q) => q.id === questionId);
-    const questionInfo = newQuestions[questionIndex];
-    const isCorrectUserAnswer = questionInfo.correctAnswer === answerIndex;
+        const questions = data.sort(() => Math.random() - 0.5).slice(0, limit);
+        set({ questions });
+      },
+      selectAnswer: (questionId, answerIndex) => {
+        const { questions } = get();
+        const newQuestions = structuredClone(questions);
+        const questionIndex = newQuestions.findIndex(
+          (q) => q.id === questionId
+        );
+        const questionInfo = newQuestions[questionIndex];
+        const isCorrectUserAnswer = questionInfo.correctAnswer === answerIndex;
 
-    newQuestions[questionIndex] = {
-      ...questionInfo,
-      userSelectedAnswer: answerIndex,
-      isCorrectUserAnswer
-    };
+        newQuestions[questionIndex] = {
+          ...questionInfo,
+          userSelectedAnswer: answerIndex,
+          isCorrectUserAnswer
+        };
 
-    set({ questions: newQuestions });
-  },
-  goPreviousQuestion: () => {
-    const { currentQuestionIndex } = get();
-    const previousIndex = currentQuestionIndex - 1;
+        set({ questions: newQuestions });
+      },
+      goPreviousQuestion: () => {
+        const { currentQuestionIndex } = get();
+        const previousIndex = currentQuestionIndex - 1;
 
-    if (previousIndex >= 0) {
-      set({ currentQuestionIndex: previousIndex });
+        if (previousIndex >= 0) {
+          set({ currentQuestionIndex: previousIndex });
+        }
+      },
+      goNextQuestion: () => {
+        const { currentQuestionIndex, questions } = get();
+        const nextIndex = currentQuestionIndex + 1;
+
+        if (nextIndex < questions.length) {
+          set({ currentQuestionIndex: nextIndex });
+        }
+      }
+    }),
+    {
+      name: "javascript_quiz_questions"
     }
-  },
-  goNextQuestion: () => {
-    const { currentQuestionIndex, questions } = get();
-    const nextIndex = currentQuestionIndex + 1;
-
-    if (nextIndex < questions.length) {
-      set({ currentQuestionIndex: nextIndex });
-    }
-  }
-}));
+  )
+);
