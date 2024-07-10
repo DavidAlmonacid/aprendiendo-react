@@ -1,6 +1,7 @@
 import { ArrowBackIosNew } from "@mui/icons-material";
 import { Box, IconButton, Stack } from "@mui/material";
 import { useQuestionsStore } from "../stores/questions";
+import { Footer } from "./footer";
 import { Question } from "./question";
 
 export function Game() {
@@ -44,6 +45,8 @@ export function Game() {
       </Stack>
 
       <Question question={currentQuestion} />
+
+      <Footer />
     </Box>
   );
 }
